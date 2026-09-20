@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Notificações — RIGHTJOMA7</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="logo">
+
+        <a href="../index.html">
+
+            <img
+                src="../images/logo/logo-rj7.png"
+                alt="RJ7"
+            >
+
+        </a>
+
+    </div>
+
+
+    <nav class="header-nav">
+
+        <a href="shop.html">
+            Loja
+        </a>
+
+
+        <a
+            href="favorites.html"
+            class="favorite-button"
+        >
+
+            <i class="fa-regular fa-heart"></i>
+
+        </a>
+
+
+        <a
+            href="cart.html"
+            class="cart-button"
+        >
+
+            <i class="fa-solid fa-bag-shopping"></i>
+
+            <span id="cartCount">
+                0
+            </span>
+
+        </a>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+        >
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </nav>
+
+</header>
+
+
+
+<div
+    class="side-menu"
+    id="sideMenu"
+>
+
+    <button
+        class="close-menu"
+        id="closeMenu"
+    >
+
+        <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
+
+    <a href="../index.html">
+
+        <i class="fa-solid fa-house"></i>
+
+        <span>
+            Home
+        </span>
+
+    </a>
+
+
+    <a href="shop.html">
+
+        <i class="fa-solid fa-store"></i>
+
+        <span>
+            Loja
+        </span>
+
+    </a>
+
+
+    <a href="favorites.html">
+
+        <i class="fa-solid fa-heart"></i>
+
+        <span>
+            Favoritos
+        </span>
+
+    </a>
+
+
+    <a href="cart.html">
+
+        <i class="fa-solid fa-bag-shopping"></i>
+
+        <span>
+            Carrinho
+        </span>
+
+    </a>
+
+
+    <a href="notifications.html">
+
+        <i class="fa-regular fa-bell"></i>
+
+        <span>
+            Notificações
+        </span>
+
+    </a>
+
+
+    <a href="login.html">
+
+        <i class="fa-solid fa-user"></i>
+
+        <span>
+            Minha Conta
+        </span>
+
+    </a>
+
+</div>
+
+
+
+<main class="notifications-page">
+
+
+    <section class="notifications-container">
+
+
+        <div class="notifications-header">
+
+            <div>
+
+                <span class="notifications-label">
+                    RIGHTJOMA7
+                </span>
+
+                <h1>
+                    Notificações
+                </h1>
+
+            </div>
+
+
+            <button
+                id="markAllRead"
+                class="notifications-read-all"
+                type="button"
+            >
+
+                Marcar todas como lidas
+
+            </button>
+
+        </div>
+
+
+
+        <div
+            id="notificationsList"
+            class="notifications-list"
+        >
+
+            <div class="notifications-loading">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                <p>
+                    A carregar notificações...
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<footer class="footer">
+
+    <div class="footer-logo">
+
+        <h2>
+            RIGHTJOMA7
+        </h2>
+
+        <p>
+            Moda premium. Estilo sem limites.
+        </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+        <h3>
+            Links
+        </h3>
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <a href="shop.html">
+            Loja
+        </a>
+
+        <a href="favorites.html">
+            Favoritos
+        </a>
+
+        <a href="cart.html">
+            Carrinho
+        </a>
+
+        <a href="notifications.html">
+            Notificações
+        </a>
+
+        <a href="login.html">
+            Minha Conta
+        </a>
+
+    </div>
+
+
+    <div class="footer-copy">
+
+        <p>
+            © 2026 RIGHTJOMA7. Todos os direitos reservados.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<script
+    type="module"
+    src="../js/script.js"
+></script>
+
+
+<script
+    type="module"
+    src="../js/notifications.js"
+></script>
+<script type="module" src="../js/account-floating-button.js"></script>
+
+</body>
+
+</html>

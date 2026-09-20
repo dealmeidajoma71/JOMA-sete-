@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Favoritos | RIGHTJOMA7</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="header">
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
+    <div class="logo">
+
+        <img
+            src="../images/logo/logo-rj7.png"
+            alt="RJ7"
+        >
+
+    </div>
+
+
+    <nav class="header-nav">
+
+        <a href="shop.html">
+            Loja
+        </a>
+
+
+<a
+    href="favorites.html"
+    class="favorite-button"
+    aria-label="Favoritos"
+>
+    <i class="fa-regular fa-heart"></i>
+</a>
+
+<a
+    href="cart.html"
+    class="cart-button"
+    aria-label="Carrinho"
+>
+    <i class="fa-solid fa-bag-shopping"></i>
+</a>
+
+    </nav>
+
+</header>
+
+
+<main class="rj7-favorites-page">
+
+    <section class="rj7-favorites-heading">
+
+        <p>
+            RIGHTJOMA7
+        </p>
+
+        <h1>
+            Os teus favoritos
+        </h1>
+
+        <span id="favoritesCount">
+            0 produtos
+        </span>
+
+    </section>
+
+
+    <section
+        id="favoritesList"
+        class="rj7-favorites-list"
+    >
+
+        <p class="rj7-favorites-loading">
+            A carregar favoritos...
+        </p>
+
+    </section>
+
+</main>
+
+
+<script
+    type="module"
+    src="../js/favorites.js"
+></script>
+<script type="module" src="../js/account-floating-button.js"></script>
+</body>
+
+</html>

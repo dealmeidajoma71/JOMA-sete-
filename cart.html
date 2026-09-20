@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Carrinho | RIGHTJOMA7</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     RJ7 CART — HEADER
+====================================================== -->
+
+<header class="header">
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <a href="../index.html">
+
+            <img
+                src="../images/logo/logo-rj7.png"
+                alt="RJ7"
+            >
+
+        </a>
+
+    </div>
+
+
+    <!-- NAVEGAÇÃO -->
+
+    <nav class="header-nav">
+
+        <!-- CONTINUAR COMPRAS -->
+
+        <a
+            href="shop.html"
+            class="shop-header-link"
+        >
+            Loja
+        </a>
+
+
+        <!-- FAVORITOS -->
+
+        <a
+            href="favorites.html"
+            class="header-icon favorite-button"
+            aria-label="Favoritos"
+        >
+
+            <i class="fa-regular fa-heart"></i>
+
+        </a>
+
+
+        <!-- CARRINHO -->
+
+        <a
+            href="cart.html"
+            class="header-icon cart-button"
+            aria-label="Carrinho"
+        >
+
+            <i class="fa-solid fa-bag-shopping"></i>
+
+            <span id="cartCount">
+                0
+            </span>
+
+        </a>
+
+
+        <!-- MENU -->
+
+        <button
+            type="button"
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Abrir menu"
+        >
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ==========================================
+     MENU
+========================================== -->
+
+<div
+    class="side-menu"
+    id="sideMenu"
+>
+
+    <button
+        class="close-menu"
+        id="closeMenu"
+        aria-label="Fechar menu"
+    >
+
+        <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
+
+    <a href="../index.html">
+
+        <i class="fa-solid fa-house"></i>
+
+        <span>
+            Home
+        </span>
+
+    </a>
+
+
+    <a href="shop.html">
+
+        <i class="fa-solid fa-store"></i>
+
+        <span>
+            Loja
+        </span>
+
+    </a>
+
+
+    <a href="favorites.html">
+
+        <i class="fa-solid fa-heart"></i>
+
+        <span>
+            Favoritos
+        </span>
+
+    </a>
+
+
+    <a href="cart.html">
+
+        <i class="fa-solid fa-bag-shopping"></i>
+
+        <span>
+            Carrinho
+        </span>
+
+    </a>
+
+
+    <a href="login.html">
+
+        <i class="fa-solid fa-user"></i>
+
+        <span>
+            Minha Conta
+        </span>
+
+    </a>
+
+</div>
+
+
+
+<main>
+
+
+<section class="cart-section">
+
+
+<div class="cart-header">
+
+    <div class="cart-header-label">
+        RIGHTJOMA7
+    </div>
+
+    <h1>
+        Meu Carrinho
+    </h1>
+
+    <p class="cart-header-description">
+        Revê as tuas peças antes de finalizar a compra.
+    </p>
+
+    <a
+        href="shop.html"
+        class="cart-continue"
+    >
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        <span>
+            Continuar compras
+        </span>
+
+    </a>
+
+</div>
+
+
+
+    <!-- ======================================
+         PRODUTOS DO CARRINHO
+    ======================================= -->
+
+    <div
+        id="cartList"
+        class="cart-list"
+    >
+
+    </div>
+
+
+
+    <!-- ======================================
+         RESUMO
+    ======================================= -->
+
+    <div class="cart-summary">
+
+        <div class="cart-summary-row">
+
+            <span>
+                Total
+            </span>
+
+
+            <h2 id="cartTotal">
+                Total: 0 Kz
+            </h2>
+
+        </div>
+
+
+        <button
+            id="checkoutButton"
+            class="checkout-button"
+            type="button"
+        >
+
+            Finalizar compra
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+
+        <div class="footer-brand">
+
+            <h3>
+                RIGHTJOMA7
+            </h3>
+
+            <p>
+                Moda, estilo e qualidade.
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-links">
+
+            <h4>
+                Links
+            </h4>
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="shop.html">
+                Loja
+            </a>
+
+            <a href="favorites.html">
+                Favoritos
+            </a>
+
+            <a href="cart.html">
+                Carrinho
+            </a>
+
+            <a href="login.html">
+                Minha Conta
+            </a>
+
+        </div>
+
+
+
+       <div class="footer-social">
+
+    <h3>Siga-nos</h3>
+
+    <a
+        href="https://www.instagram.com/rightjoma7"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+    >
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <a
+        href="https://www.tiktok.com/@rightjoma7"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="TikTok"
+    >
+        <i class="fa-brands fa-tiktok"></i>
+    </a>
+
+    <a
+        href="https://youtube.com/@rightjomah"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube"
+    >
+        <i class="fa-brands fa-youtube"></i>
+    </a>
+
+</div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 RIGHTJOMA7.
+            Todos os direitos reservados.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<script
+    type="module"
+    src="../js/script.js"
+></script>
+<script type="module" src="../js/account-floating-button.js"></script>
+
+</body>
+
+</html>
