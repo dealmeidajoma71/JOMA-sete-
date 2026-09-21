@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pagamento | RIGHTJOMA7</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="logo">
+
+        <img
+            src="../images/logo/logo-rj7.png"
+            alt="RJ7"
+        >
+
+    </div>
+
+</header>
+
+
+
+<main class="rj7-payment-page">
+
+
+    <section class="rj7-payment-section">
+
+
+        <div class="rj7-payment-header">
+
+            <p>
+                RIGHTJOMA7
+            </p>
+
+            <h1>
+                Pagamento
+            </h1>
+
+            <span>
+                Finaliza a tua compra com segurança.
+            </span>
+
+        </div>
+
+
+
+        <!-- ======================================
+             RESUMO DO PEDIDO
+        ======================================= -->
+
+        <div
+            id="paymentOrderSummary"
+            class="rj7-payment-summary"
+        >
+
+            <div>
+
+                <span>
+                    Pedido
+                </span>
+
+                <strong id="paymentOrderId">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="paymentTotal">
+                    0 Kz
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ======================================
+             MÉTODO DE PAGAMENTO
+        ======================================= -->
+
+        <div class="rj7-payment-method">
+
+
+            <h2>
+                Método de pagamento
+            </h2>
+
+
+
+            <button
+                type="button"
+                id="visaPaymentButton"
+                class="rj7-visa-payment"
+            >
+
+                <span class="rj7-visa-icon">
+                    💳
+                </span>
+
+                <span>
+
+                    <strong>
+                        Cartão Visa
+                    </strong>
+
+                    <small>
+                        Pagamento seguro por cartão
+                    </small>
+
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- ======================================
+             ÁREA DO GATEWAY
+             
+             Será ligada ao gateway Visa
+             quando tivermos as credenciais.
+        ======================================= -->
+
+        <div
+            id="visaPaymentArea"
+            class="rj7-visa-payment-area"
+            hidden
+        >
+
+            <div class="rj7-payment-secure">
+
+                <span>
+                    🔒
+                </span>
+
+                <div>
+
+                    <strong>
+                        Pagamento seguro
+                    </strong>
+
+                    <p>
+                        Serás encaminhado para o sistema
+                        seguro de pagamento.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="continueVisaPayment"
+                class="rj7-continue-payment"
+            >
+
+                Continuar para pagamento
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ======================================
+             VOLTAR
+        ======================================= -->
+
+        <a
+            href="checkout.html"
+            class="rj7-payment-back"
+        >
+
+            ← Voltar ao checkout
+
+        </a>
+
+
+    </section>
+
+</main>
+
+
+
+<script type="module">
+
+    // ==========================================
+    // RJ7 — PAGAMENTO
+    // ==========================================
+
+    const currentOrder =
+        JSON.parse(
+            localStorage.getItem(
+                "RJ7_currentOrder"
+            )
+        );
+
+
+    const paymentOrderId =
+        document.getElementById(
+            "paymentOrderId"
+        );
+
+    const paymentTotal =
+        document.getElementById(
+            "paymentTotal"
+        );
+
+    const visaPaymentButton =
+        document.getElementById(
+            "visaPaymentButton"
+        );
+
+    const visaPaymentArea =
+        document.getElementById(
+            "visaPaymentArea"
+        );
+
+    const continueVisaPayment =
+        document.getElementById(
+            "continueVisaPayment"
+        );
+
+
+    // ==========================================
+    // VERIFICAR PEDIDO
+    // ==========================================
+
+    if (!currentOrder) {
+
+        alert(
+            "Não foi encontrado nenhum pedido."
+        );
+
+        window.location.href =
+            "cart.html";
+
+    }
+
+
+    // ==========================================
+    // MOSTRAR PEDIDO
+    // ==========================================
+
+    if (currentOrder) {
+
+        if (paymentOrderId) {
+
+            paymentOrderId.textContent =
+                currentOrder.id;
+
+        }
+
+
+        if (paymentTotal) {
+
+            paymentTotal.textContent =
+                Number(
+                    currentOrder.total
+                ).toLocaleString(
+                    "pt-PT"
+                ) + " Kz";
+
+        }
+
+    }
+
+
+    // ==========================================
+    // SELECIONAR VISA
+    // ==========================================
+
+    if (visaPaymentButton) {
+
+        visaPaymentButton.addEventListener(
+            "click",
+            function () {
+
+                if (visaPaymentArea) {
+
+                    visaPaymentArea.hidden =
+                        false;
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // ==========================================
+    // CONTINUAR PARA VISA
+    // ==========================================
+
+    if (continueVisaPayment) {
+
+        continueVisaPayment.addEventListener(
+            "click",
+            function () {
+
+                alert(
+                    "A integração do pagamento Visa será ativada quando o gateway de pagamento estiver configurado."
+                );
+
+            }
+        );
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
