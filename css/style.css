@@ -1,0 +1,10190 @@
+/* =========================================================
+   RJ7 — RIGHTJOMA7
+   LUXURY EDITORIAL SYSTEM
+   Inspired by modern luxury fashion websites
+   ========================================================= */
+
+
+/* =========================================================
+   01. RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    background: #ffffff;
+    color: #111111;
+
+    line-height: 1.5;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+main {
+    width: 100%;
+}
+
+
+/* =========================================================
+   02. HEADER
+   ========================================================= */
+
+.header {
+    position: relative;
+    z-index: 1000;
+
+    width: 100%;
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 34px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 74px;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* HEADER NAV */
+
+.header-nav {
+    display: flex;
+    align-items: center;
+
+    gap: 24px;
+}
+
+
+/* ICONS */
+
+.header-icon,
+.cart-button,
+.menu-btn {
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #111111;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.header-icon i,
+.cart-button i,
+.menu-btn i {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.header-icon:hover,
+.cart-button:hover,
+.menu-btn:hover {
+    opacity: 0.55;
+}
+
+
+/* CART */
+
+.cart-button {
+    position: relative;
+}
+
+#cartCount {
+    position: absolute;
+
+    top: -8px;
+    right: -9px;
+
+    min-width: 15px;
+    height: 15px;
+
+    padding: 0 3px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #111111;
+    color: #ffffff;
+
+    font-size: 8px;
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+.cart-count-hidden {
+    display: none !important;
+}
+
+
+/* NOTIFICATION */
+
+#notificationArea {
+    display: flex;
+    align-items: center;
+}
+
+.notification-button {
+    position: relative;
+
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-button i {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.notification-count {
+    position: absolute;
+
+    top: -8px;
+    right: -8px;
+
+    min-width: 15px;
+    height: 15px;
+
+    padding: 0 3px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #111111;
+    color: #ffffff;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   03. SIDE MENU
+   ========================================================= */
+
+.side-menu {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    z-index: 2000;
+
+    width: 360px;
+    max-width: 90vw;
+    height: 100vh;
+
+    padding: 90px 38px 40px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    background: #ffffff;
+
+    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.08);
+
+    transform: translateX(100%);
+
+    transition: transform 0.4s cubic-bezier(.77,0,.18,1);
+}
+
+.side-menu.active {
+    transform: translateX(0);
+}
+
+.close-menu {
+    position: absolute;
+
+    top: 28px;
+    right: 32px;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-menu i {
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.side-menu > a {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #eeeeee;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    letter-spacing: 0.02em;
+}
+
+.side-menu > a i {
+    width: 20px;
+
+    font-size: 13px;
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   04. HERO / SINGLE SLIDER — RJ7
+   ========================================================= */
+
+.home-banners {
+    position: relative;
+
+    width: 100%;
+    height: 78vh;
+    min-height: 520px;
+
+    overflow: hidden;
+
+    background: #f4f4f4;
+}
+
+
+/* TODOS OS BANNERS FICAM NO MESMO PALCO */
+
+.home-banner {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 1;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+
+/* PRIMEIRO BANNER */
+
+.home-banner:first-child {
+    position: absolute;
+}
+
+
+/* BANNER ATIVO */
+
+.home-banner.active {
+    opacity: 1;
+    visibility: visible;
+
+    z-index: 2;
+}
+
+
+/* IMAGEM */
+
+.home-banner img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* OVERLAY */
+
+.home-banner::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.30),
+            rgba(0,0,0,0.02) 55%,
+            rgba(0,0,0,0.05)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   TEXTO DO BANNER
+========================================================= */
+
+.banner-content {
+    position: absolute;
+
+    left: 50%;
+    bottom: 70px;
+
+    z-index: 3;
+
+    width: min(90%, 900px);
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    color: #ffffff;
+}
+
+.banner-content span {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    letter-spacing: 0.25em;
+}
+
+.banner-content h1 {
+    margin: 0 0 12px;
+
+    font-size: clamp(38px, 6vw, 78px);
+
+    font-weight: 400;
+
+    letter-spacing: 0.02em;
+
+    line-height: 1;
+}
+
+.banner-content p {
+    margin: 0 0 25px;
+
+    font-size: 14px;
+
+    font-weight: 300;
+
+    letter-spacing: 0.04em;
+}
+
+.banner-content a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 130px;
+
+    padding: 13px 25px;
+
+    background: #ffffff;
+    color: #111111;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    text-decoration: none;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.banner-content a:hover {
+    background: #111111;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .home-banners {
+        height: 62vh;
+        min-height: 470px;
+    }
+
+    .home-banner {
+        height: 100%;
+    }
+
+    .home-banner img {
+        height: 100%;
+    }
+
+    .banner-content {
+        bottom: 55px;
+
+        width: 90%;
+    }
+
+    .banner-content h1 {
+        font-size: clamp(34px, 10vw, 54px);
+    }
+
+    .banner-content p {
+        font-size: 14px;
+    }
+
+    .banner-content a {
+        min-width: 125px;
+        padding: 13px 23px;
+    }
+}
+/* =========================================================
+   05. SECTION GLOBAL
+   ========================================================= */
+
+section {
+    width: 100%;
+}
+
+.rj7-section-heading {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    margin-bottom: 34px;
+}
+
+.rj7-section-heading span,
+.rj7-world-heading > span,
+.rj7-build-heading > span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+
+    color: #666666;
+}
+
+.rj7-section-heading h2 {
+    font-size: clamp(24px, 3vw, 34px);
+
+    font-weight: 400;
+
+    letter-spacing: -0.025em;
+}
+
+.rj7-section-heading > a {
+    padding-bottom: 4px;
+
+    border-bottom: 1px solid #111111;
+
+    font-size: 11px;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   06. RJ7 WORLD
+   ========================================================= */
+
+.rj7-world {
+    padding: 120px 5vw 80px;
+}
+
+.rj7-world-heading {
+    max-width: 700px;
+
+    margin: 0 auto 55px;
+
+    text-align: center;
+}
+
+.rj7-world-heading h2 {
+    margin-bottom: 14px;
+
+    font-size: clamp(28px, 4vw, 46px);
+
+    font-weight: 400;
+
+    letter-spacing: -0.035em;
+}
+
+.rj7-world-heading p {
+    color: #666666;
+
+    font-size: 14px;
+
+    font-weight: 300;
+}
+
+
+/* EXPERIENCE GRID */
+
+.rj7-experience-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 3px;
+}
+
+.rj7-experience-card {
+    position: relative;
+
+    min-height: 390px;
+
+    overflow: hidden;
+
+    background: #f3f3f3;
+}
+
+.rj7-experience-image {
+    width: 100%;
+    height: 100%;
+}
+
+.rj7-experience-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.8s cubic-bezier(.2,.7,.2,1);
+}
+
+.rj7-experience-card:hover
+.rj7-experience-image img {
+    transform: scale(1.04);
+}
+
+.rj7-experience-content {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.45),
+            transparent
+        );
+}
+
+.rj7-experience-content span {
+    font-size: 12px;
+    font-weight: 500;
+
+    letter-spacing: 0.18em;
+}
+
+.rj7-experience-content strong {
+    font-size: 11px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   07. RJ7 MODE
+   ========================================================= */
+
+.rj7-mode-section {
+    padding: 80px 5vw 120px;
+
+    text-align: center;
+}
+
+.rj7-mode-intro {
+    max-width: 650px;
+
+    margin: 0 auto;
+}
+
+.rj7-mode-label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.22em;
+
+    color: #777777;
+}
+
+.rj7-mode-intro h2 {
+    margin-bottom: 12px;
+
+    font-size: clamp(34px, 5vw, 58px);
+
+    font-weight: 400;
+
+    letter-spacing: -0.04em;
+}
+
+.rj7-mode-intro p {
+    margin-bottom: 30px;
+
+    color: #666666;
+
+    font-size: 14px;
+}
+
+.rj7-mode-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    padding: 15px 25px;
+
+    background: #111111;
+    color: #ffffff;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.15em;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.rj7-mode-button:hover {
+    opacity: .75;
+    transform: translateY(-2px);
+}
+
+.rj7-mode-button i {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   08. MODE MODAL
+   ========================================================= */
+
+.rj7-mode-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,.55);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+}
+
+.rj7-mode-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rj7-mode-panel {
+    position: relative;
+
+    width: min(700px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 65px 55px 55px;
+
+    background: #ffffff;
+
+    text-align: center;
+}
+
+.rj7-mode-close {
+    position: absolute;
+
+    top: 22px;
+    right: 25px;
+
+    width: 30px;
+    height: 30px;
+}
+
+.rj7-mode-close i {
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.rj7-mode-step-hidden {
+    display: none !important;
+}
+
+.rj7-mode-step h2,
+.rj7-mode-result h2 {
+    margin-bottom: 12px;
+
+    font-size: clamp(25px, 4vw, 40px);
+
+    font-weight: 400;
+
+    letter-spacing: -0.03em;
+}
+
+.rj7-mode-step p,
+.rj7-mode-result p {
+    margin-bottom: 30px;
+
+    color: #666666;
+
+    font-size: 13px;
+}
+
+.rj7-mode-options {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 8px;
+}
+
+.rj7-mode-options button {
+    padding: 17px;
+
+    border: 1px solid #dddddd;
+
+    font-size: 11px;
+
+    letter-spacing: 0.08em;
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease;
+}
+
+.rj7-mode-options button:hover,
+.rj7-mode-options button.active {
+    background: #111111;
+    color: #ffffff;
+
+    border-color: #111111;
+}
+
+.rj7-mode-products {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 30px;
+}
+
+.rj7-mode-product {
+    cursor: pointer;
+}
+
+.rj7-mode-product img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+
+    object-fit: cover;
+
+    margin-bottom: 12px;
+}
+
+.rj7-mode-product h3 {
+    font-size: 12px;
+
+    font-weight: 400;
+
+    margin-bottom: 4px;
+}
+
+.rj7-mode-product p {
+    margin: 0;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   09. FEATURED COLLECTION
+   ========================================================= */
+
+.featured,
+.rj7-new-arrivals {
+    padding: 100px 5vw;
+}
+
+.rj7-new-arrivals {
+    padding-top: 30px;
+}
+
+
+/* =========================================================
+   10. PRODUCT GRID
+   ========================================================= */
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 22px 12px;
+}
+
+
+/*
+   IMPORTANTE:
+   quatro produtos alinhados.
+*/
+
+.product-grid > * {
+    min-width: 0;
+}
+
+
+/* GENERIC PRODUCT CARD */
+
+.product-card,
+.product-item,
+.product {
+    position: relative;
+
+    min-width: 0;
+
+    background: #ffffff;
+
+    overflow: hidden;
+}
+
+
+/* PRODUCT IMAGE */
+
+.product-card img,
+.product-item img,
+.product img {
+    width: 100%;
+
+    aspect-ratio: 3 / 4;
+
+    object-fit: cover;
+
+    background: #f5f5f5;
+
+    transition:
+        transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.product-card:hover img,
+.product-item:hover img,
+.product:hover img {
+    transform: scale(1.025);
+}
+
+
+/* PRODUCT INFORMATION */
+
+.product-card h3,
+.product-item h3,
+.product h3 {
+    margin-top: 14px;
+
+    font-size: 13px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.01em;
+}
+
+.product-card p,
+.product-item p,
+.product p {
+    margin-top: 5px;
+
+    font-size: 12px;
+
+    color: #555555;
+}
+
+
+/* COLLECTION FOOTER */
+
+.rj7-collection-footer {
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 45px;
+}
+
+.rj7-collection-footer a {
+    padding-bottom: 5px;
+
+    border-bottom: 1px solid #111111;
+
+    font-size: 11px;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   11. BUILD YOUR LOOK
+   ========================================================= */
+
+.rj7-build-look {
+    padding: 120px 5vw;
+
+    background: #f7f7f7;
+}
+
+.rj7-build-heading {
+    max-width: 700px;
+
+    margin: 0 auto 55px;
+
+    text-align: center;
+}
+
+.rj7-build-heading h2 {
+    margin-bottom: 14px;
+
+    font-size: clamp(30px, 4vw, 48px);
+
+    font-weight: 400;
+
+    letter-spacing: -0.035em;
+}
+
+.rj7-build-heading p {
+    color: #666666;
+
+    font-size: 14px;
+
+    font-weight: 300;
+}
+
+.rj7-look-container {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+}
+
+.rj7-look-main {
+    min-height: 500px;
+
+    background: #ffffff;
+}
+
+.rj7-look-complements {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+.rj7-look-total {
+    margin-top: 25px;
+
+    text-align: center;
+
+    font-size: 15px;
+
+    font-weight: 500;
+}
+
+.rj7-build-button {
+    display: flex;
+
+    width: max-content;
+
+    margin: 30px auto 0;
+
+    padding: 15px 28px;
+
+    background: #111111;
+    color: #ffffff;
+
+    font-size: 10px;
+
+    letter-spacing: 0.15em;
+}
+
+
+/* =========================================================
+   12. FOOTER
+   ========================================================= */
+
+.footer {
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr;
+
+    gap: 60px;
+
+    padding: 80px 5vw 35px;
+
+    border-top: 1px solid #eeeeee;
+
+    background: #ffffff;
+}
+
+.footer-logo h2 {
+    margin-bottom: 12px;
+
+    font-size: 22px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.08em;
+}
+
+.footer-logo p {
+    max-width: 300px;
+
+    color: #777777;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+.footer h3 {
+    margin-bottom: 18px;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+}
+
+.footer-links {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.footer-links a {
+    width: max-content;
+
+    color: #555555;
+
+    font-size: 12px;
+
+    transition: color .2s ease;
+}
+
+.footer-links a:hover {
+    color: #111111;
+}
+
+.footer-social a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    margin-right: 7px;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+}
+
+.footer-copy {
+    grid-column: 1 / -1;
+
+    padding-top: 25px;
+
+    margin-top: 25px;
+
+    border-top: 1px solid #eeeeee;
+}
+
+.footer-copy p {
+    color: #888888;
+
+    font-size: 10px;
+
+    letter-spacing: 0.03em;
+}
+
+
+/* =========================================================
+   13. SIZE GUIDE
+   ========================================================= */
+
+#sizeGuideModal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 6000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,.5);
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+#sizeGuideModal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================================================
+   14. RJ7 AI
+   ========================================================= */
+
+#rj7AIPanel {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 7000;
+
+    width: min(390px, calc(100vw - 30px));
+
+    height: 600px;
+
+    max-height: calc(100vh - 50px);
+
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.16);
+
+    transform:
+        translateY(30px)
+        scale(.98);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease,
+        visibility .3s ease;
+}
+
+#rj7AIPanel.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.rj7-ai-message {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.rj7-ai-message-content {
+    max-width: 85%;
+
+    padding: 10px 13px;
+
+    background: #f4f4f4;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+.rj7-ai-message-user {
+    justify-content: flex-end;
+}
+
+.rj7-ai-message-user
+.rj7-ai-message-content {
+    background: #111111;
+    color: #ffffff;
+}
+
+.rj7-ai-message-avatar img {
+    width: 28px;
+    height: 28px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   15. RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .header {
+        height: 74px;
+
+        padding: 0 22px;
+    }
+
+    .logo img {
+        width: 68px;
+    }
+
+    .header-nav {
+        gap: 18px;
+    }
+
+    .rj7-experience-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .footer {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .footer-logo {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* =========================================================
+   16. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* HEADER */
+
+    .header {
+        height: 68px;
+
+        padding: 0 17px;
+    }
+
+    .logo img {
+        width: 67px;
+    }
+
+    .header-nav {
+        gap: 13px;
+    }
+
+    .header-icon,
+    .cart-button,
+    .menu-btn,
+    .notification-button {
+        width: 21px;
+        height: 21px;
+    }
+
+    .header-icon i,
+    .cart-button i,
+    .menu-btn i,
+    .notification-button i {
+        font-size: 13px;
+    }
+
+
+    /* HERO */
+
+    .home-banner,
+    .home-banner img {
+        min-height: 72vh;
+
+        height: 72vh;
+    }
+
+    .banner-content {
+        bottom: 42px;
+    }
+
+    .banner-content span {
+        font-size: 9px;
+
+        letter-spacing: .2em;
+    }
+
+    .banner-content h1 {
+        font-size: 38px;
+    }
+
+    .banner-content p {
+        font-size: 12px;
+    }
+
+
+    /* WORLD */
+
+    .rj7-world {
+        padding: 75px 17px 55px;
+    }
+
+    .rj7-world-heading {
+        margin-bottom: 35px;
+    }
+
+    .rj7-world-heading h2 {
+        font-size: 30px;
+    }
+
+    .rj7-experience-grid {
+        grid-template-columns: 1fr;
+
+        gap: 3px;
+    }
+
+    .rj7-experience-card {
+        min-height: 300px;
+    }
+
+
+    /* MODE */
+
+    .rj7-mode-section {
+        padding: 65px 20px 80px;
+    }
+
+    .rj7-mode-intro h2 {
+        font-size: 40px;
+    }
+
+    .rj7-mode-panel {
+        padding: 60px 20px 30px;
+    }
+
+    .rj7-mode-options {
+        grid-template-columns: 1fr;
+    }
+
+    .rj7-mode-products {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    /* PRODUCTS */
+
+    .featured,
+    .rj7-new-arrivals {
+        padding: 70px 17px;
+    }
+
+    .rj7-section-heading {
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+    .rj7-section-heading h2 {
+        font-size: 25px;
+    }
+
+    .rj7-section-heading > a {
+        font-size: 9px;
+    }
+
+    .product-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 30px 10px;
+    }
+
+    .product-card h3,
+    .product-item h3,
+    .product h3 {
+        font-size: 12px;
+    }
+
+    .product-card p,
+    .product-item p,
+    .product p {
+        font-size: 11px;
+    }
+
+
+    /* BUILD LOOK */
+
+    .rj7-build-look {
+        padding: 75px 17px;
+    }
+
+    .rj7-look-container {
+        grid-template-columns: 1fr;
+    }
+
+    .rj7-look-complements {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+        padding:
+            65px 20px
+            30px;
+    }
+
+    .footer-logo {
+        grid-column: auto;
+    }
+
+    .footer-copy {
+        grid-column: auto;
+    }
+
+
+    /* SIDE MENU */
+
+    .side-menu {
+        width: 100%;
+
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+
+    /* AI */
+
+    #rj7AIPanel {
+        right: 15px;
+        bottom: 15px;
+
+        width:
+            calc(100vw - 30px);
+
+        height:
+            calc(100vh - 30px);
+
+        max-height: none;
+    }
+
+}
+
+
+/* =========================================================
+   17. VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .header-nav {
+        gap: 10px;
+    }
+
+    .logo img {
+        width: 62px;
+    }
+
+    .banner-content h1 {
+        font-size: 32px;
+    }
+
+    .product-grid {
+        gap: 25px 8px;
+    }
+
+}
+
+
+/* =========================================================
+   18. ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible {
+    outline: 1px solid #111111;
+
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   19. REDUZIR MOVIMENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}
+/* =====================================================
+   RJ7 — CORREÇÃO DOS ÍCONES
+   ===================================================== */
+
+.header i,
+.header-nav i,
+.cart-button i,
+.menu-btn i,
+.notification-button i,
+.side-menu i,
+.footer-social i {
+    font-family: "Font Awesome 6 Free",
+                 "Font Awesome 6 Brands",
+                 sans-serif;
+
+    font-style: normal;
+}
+
+.header .fa-solid,
+.header-nav .fa-solid,
+.cart-button .fa-solid,
+.menu-btn .fa-solid,
+.side-menu .fa-solid {
+    font-weight: 900;
+}
+
+.header .fa-regular,
+.notification-button .fa-regular {
+    font-weight: 400;
+}
+
+.footer-social .fa-brands {
+    font-family: "Font Awesome 6 Brands";
+    font-weight: 400;
+}
+/* ======================================================
+   RJ7 SHOP — HEADER
+   ====================================================== */
+
+.header {
+    width: 100%;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 32px;
+
+    background: #fff;
+    border-bottom: 1px solid #eeeeee;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 64px;
+    height: auto;
+    display: block;
+}
+
+
+/* NAVEGAÇÃO */
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+
+/* LINKS */
+
+.shop-header-link {
+    color: #111;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .04em;
+}
+
+
+/* ÍCONES */
+
+.header-icon,
+.menu-btn {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #111;
+
+    border: 0;
+    background: transparent;
+
+    padding: 0;
+
+    cursor: pointer;
+}
+
+
+/* ÍCONES FINOS */
+
+.header-icon i,
+.menu-btn i {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+/* CARRINHO */
+
+.cart-button {
+    position: relative;
+}
+
+
+/* CONTADOR */
+
+#cartCount {
+    position: absolute;
+
+    top: -5px;
+    right: -7px;
+
+    min-width: 14px;
+    height: 14px;
+
+    padding: 0 3px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #111;
+    color: #fff;
+
+    font-size: 8px;
+    font-weight: 500;
+}
+
+
+/* MENU */
+
+.menu-btn {
+    cursor: pointer;
+}
+
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 768px) {
+
+    .header {
+        height: 66px;
+        padding: 0 18px;
+    }
+
+    .logo img {
+        width: 58px;
+    }
+
+    .header-nav {
+        gap: 17px;
+    }
+
+    .shop-header-link {
+        display: none;
+    }
+
+    .header-icon,
+    .menu-btn {
+        width: 26px;
+        height: 26px;
+    }
+
+    .header-icon i,
+    .menu-btn i {
+        font-size: 14px;
+    }
+
+}
+/* ======================================================
+   RJ7 SHOP — INTRO
+   ====================================================== */
+
+.shop-intro {
+    width: 100%;
+    text-align: center;
+
+    padding: 105px 24px 75px;
+
+    background: #fff;
+}
+
+
+/* LABEL */
+
+.shop-intro-label {
+    display: block;
+
+    margin-bottom: 20px;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    letter-spacing: .28em;
+
+    color: #111;
+}
+
+
+/* TÍTULO */
+
+.shop-intro h1 {
+    margin: 0;
+
+    font-size: clamp(38px, 6vw, 64px);
+
+    line-height: .95;
+
+    font-weight: 500;
+
+    letter-spacing: -.055em;
+
+    color: #111;
+}
+
+
+/* DESCRIÇÃO */
+
+.shop-intro p {
+    max-width: 470px;
+
+    margin: 24px auto 0;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    font-weight: 400;
+
+    color: #777;
+}
+
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 768px) {
+
+    .shop-intro {
+        padding: 75px 20px 55px;
+    }
+
+    .shop-intro-label {
+        margin-bottom: 16px;
+        font-size: 8px;
+    }
+
+    .shop-intro h1 {
+        font-size: 39px;
+        letter-spacing: -.045em;
+    }
+
+    .shop-intro p {
+        max-width: 330px;
+        margin-top: 20px;
+        font-size: 11px;
+        line-height: 1.7;
+    }
+
+}
+/* ======================================================
+   RJ7 SHOP — SEARCH
+   ====================================================== */
+
+.shop-search-section {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 0 28px 45px;
+}
+
+.shop-search {
+    position: relative;
+
+    width: 100%;
+}
+
+.shop-search > i {
+    position: absolute;
+
+    left: 18px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 12px;
+    color: #777;
+
+    pointer-events: none;
+}
+
+.shop-search input {
+    width: 100%;
+    height: 52px;
+
+    padding: 0 50px 0 44px;
+
+    border: 1px solid #dedede;
+    border-radius: 999px;
+
+    background: #fafafa;
+
+    color: #111;
+
+    font-size: 12px;
+
+    outline: none;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease;
+}
+
+.shop-search input::placeholder {
+    color: #999;
+}
+
+.shop-search input:focus {
+    border-color: #111;
+    background: #fff;
+}
+
+
+/* BOTÃO LIMPAR */
+
+.shop-search-clear {
+    position: absolute;
+
+    right: 14px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 28px;
+    height: 28px;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #777;
+
+    cursor: pointer;
+}
+
+.shop-search-clear:hover {
+    color: #111;
+}
+
+.shop-search-clear i {
+    font-size: 11px;
+}
+
+
+/* ======================================================
+   SUGESTÕES
+   ====================================================== */
+
+.shop-search {
+    z-index: 100;
+}
+
+.search-suggestions,
+.search-results,
+.autocomplete-results,
+.suggestions-list {
+    position: absolute;
+
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+
+    max-height: 360px;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, .09);
+
+    z-index: 3000;
+
+    scrollbar-width: thin;
+}
+
+
+/* ITEM */
+
+.search-suggestion,
+.search-result,
+.autocomplete-item,
+.suggestion-item {
+    min-height: 68px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 9px 14px;
+
+    border-bottom: 1px solid #eee;
+
+    background: #fff;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease;
+}
+
+.search-suggestion:first-child,
+.search-result:first-child,
+.autocomplete-item:first-child,
+.suggestion-item:first-child {
+    border-radius: 14px 14px 0 0;
+}
+
+.search-suggestion:last-child,
+.search-result:last-child,
+.autocomplete-item:last-child,
+.suggestion-item:last-child {
+    border-bottom: 0;
+    border-radius: 0 0 14px 14px;
+}
+
+.search-suggestion:hover,
+.search-result:hover,
+.autocomplete-item:hover,
+.suggestion-item:hover {
+    background: #f7f7f7;
+}
+
+
+/* IMAGEM DA SUGESTÃO */
+
+.search-suggestion img,
+.search-result img,
+.autocomplete-item img,
+.suggestion-item img {
+    width: 46px;
+    height: 56px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    background: #f5f5f5;
+
+    border-radius: 4px;
+}
+
+
+/* TEXTO */
+
+.search-suggestion strong,
+.search-result strong,
+.autocomplete-item strong,
+.suggestion-item strong {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    margin-bottom: 5px;
+}
+
+.search-suggestion span,
+.search-result span,
+.autocomplete-item span,
+.suggestion-item span {
+    display: block;
+
+    font-size: 10px;
+
+    color: #777;
+}
+
+
+/* ESCONDER LISTA VAZIA */
+
+.search-suggestions:empty,
+.search-results:empty,
+.autocomplete-results:empty,
+.suggestions-list:empty {
+    display: none;
+}
+
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 768px) {
+
+    .shop-search-section {
+        padding: 0 18px 35px;
+    }
+
+    .shop-search input {
+        height: 48px;
+
+        font-size: 11px;
+
+        padding-left: 42px;
+    }
+
+    .search-suggestions,
+    .search-results,
+    .autocomplete-results,
+    .suggestions-list {
+        border-radius: 12px;
+    }
+
+    .search-suggestion,
+    .search-result,
+    .autocomplete-item,
+    .suggestion-item {
+        min-height: 62px;
+
+        padding: 8px 11px;
+
+        gap: 11px;
+    }
+
+    .search-suggestion img,
+    .search-result img,
+    .autocomplete-item img,
+    .suggestion-item img {
+        width: 42px;
+        height: 50px;
+    }
+
+}
+/* ======================================================
+   RJ7 SHOP — PARTE 4
+   CATEGORIAS EXISTENTES
+   VISUAL PREMIUM / FINO / PILL
+====================================================== */
+
+
+/* ======================================================
+   CATEGORIAS PRINCIPAIS
+====================================================== */
+
+.category-filter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    padding: 3px 0;
+}
+
+.category-filter::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* BOTÕES EXISTENTES */
+
+.category-filter button {
+    flex: 0 0 auto;
+
+    height: 34px;
+
+    padding: 0 17px;
+
+    border: 1px solid #dedede;
+
+    border-radius: 999px;
+
+    background: #fff;
+
+    color: #111;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    letter-spacing: .04em;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+}
+
+
+/* ATIVO */
+
+.category-filter button.active {
+    background: #111;
+
+    color: #fff;
+
+    border-color: #111;
+}
+
+
+/* ======================================================
+   FILTROS DE CATEGORIA
+====================================================== */
+
+.rj7-filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+/* BOTÕES EXISTENTES DO FILTRO */
+
+.rj7-filter-options button {
+    min-height: 34px;
+
+    padding: 0 16px;
+
+    border: 1px solid #dedede;
+
+    border-radius: 999px;
+
+    background: #fff;
+
+    color: #111;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    letter-spacing: .03em;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+}
+
+
+/* ATIVO */
+
+.rj7-filter-options button.active {
+    background: #111;
+
+    color: #fff;
+
+    border-color: #111;
+}
+
+
+/* HOVER */
+
+.category-filter button:hover,
+.rj7-filter-options button:hover {
+    border-color: #111;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 768px) {
+
+    .category-filter {
+        gap: 7px;
+    }
+
+    .category-filter button {
+        height: 32px;
+
+        padding: 0 15px;
+
+        font-size: 9px;
+    }
+
+    .rj7-filter-options {
+        gap: 7px;
+    }
+
+    .rj7-filter-options button {
+        min-height: 32px;
+
+        padding: 0 14px;
+
+        font-size: 9px;
+    }
+
+}
+/* =========================================================
+   RJ7 SHOP — PARTE 5
+   FOOTER
+   PREMIUM / CLEAN / MINIMAL
+   ========================================================= */
+
+.footer {
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #e9e9e9;
+    padding: 65px 28px 25px;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+}
+
+/* BRAND */
+
+.footer-brand h3 {
+    margin: 0 0 14px;
+
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .12em;
+}
+
+.footer-brand p {
+    margin: 0;
+
+    font-size: 11px;
+    line-height: 1.7;
+    color: #777;
+}
+
+
+/* LINKS */
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11px;
+}
+
+.footer-links h4 {
+    margin: 0 0 7px;
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+}
+
+.footer-links a {
+    font-size: 11px;
+    color: #666;
+
+    transition: color .2s ease;
+}
+
+.footer-links a:hover {
+    color: #111;
+}
+
+
+/* SOCIAL */
+
+.footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-social h3 {
+    width: 100%;
+    margin: 0 0 4px;
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    color: #111;
+
+    font-size: 14px;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+}
+
+.footer-social a:hover {
+    transform: translateY(-2px);
+    opacity: .65;
+}
+
+
+/* COPYRIGHT */
+
+.footer-bottom {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 55px auto 0;
+    padding-top: 20px;
+
+    border-top: 1px solid #ededed;
+}
+
+.footer-bottom p {
+    margin: 0;
+
+    font-size: 9px;
+    color: #999;
+    letter-spacing: .03em;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .footer {
+        padding: 50px 18px 22px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 38px;
+    }
+
+    .footer-brand h3 {
+        font-size: 12px;
+    }
+
+    .footer-bottom {
+        margin-top: 42px;
+    }
+
+}
+/* =========================================================
+   RJ7 SHOP — PARTE 6
+   MENU LATERAL
+   ========================================================= */
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    width: min(390px, 100%);
+    height: 100dvh;
+
+    background: #fff;
+
+    z-index: 3000;
+
+    padding: 90px 32px 35px;
+
+    display: flex;
+    flex-direction: column;
+
+    transform: translateX(100%);
+    visibility: hidden;
+
+    transition:
+        transform .35s cubic-bezier(.22,.61,.36,1),
+        visibility .35s ease;
+
+    box-shadow: -15px 0 40px rgba(0,0,0,.08);
+}
+
+.side-menu.active {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+
+/* BOTÃO FECHAR */
+
+.close-menu {
+    position: absolute;
+
+    top: 25px;
+    right: 28px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    background: transparent;
+
+    color: #111;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+
+/* LINKS */
+
+.side-menu a {
+    width: 100%;
+
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    border-bottom: 1px solid #ededed;
+
+    color: #111;
+
+    font-size: 12px;
+    letter-spacing: .03em;
+
+    transition:
+        padding-left .2s ease,
+        opacity .2s ease;
+}
+
+.side-menu a:first-of-type {
+    border-top: 1px solid #ededed;
+}
+
+.side-menu a:hover {
+    padding-left: 6px;
+    opacity: .6;
+}
+
+
+/* ÍCONES */
+
+.side-menu a i {
+    width: 18px;
+
+    display: flex;
+    justify-content: center;
+
+    font-size: 13px;
+    font-weight: 400;
+}
+
+
+/* TEXTO */
+
+.side-menu a span {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .side-menu {
+        width: 100%;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .close-menu {
+        right: 20px;
+    }
+
+}
+/* =========================================================
+   RJ7 SHOP — PARTE 7
+   RJ7 AI — PREMIUM / MINIMAL
+   ========================================================= */
+
+.rj7-ai-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 28px 30px;
+}
+
+
+/* =========================================================
+   BOTÃO RJ7 AI
+   ========================================================= */
+
+.rj7-ai-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    height: 42px;
+    padding: 0 15px;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 999px;
+
+    background: #fff;
+    color: #111;
+
+    cursor: pointer;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease,
+        transform .2s ease;
+}
+
+.rj7-ai-button:hover {
+    border-color: #111;
+    transform: translateY(-1px);
+}
+
+
+/* LOGO PEQUENO */
+
+.rj7-ai-icon {
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.rj7-ai-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* TEXTO */
+
+.rj7-ai-button-name {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .12em;
+}
+
+
+/* =========================================================
+   PAINEL
+   ========================================================= */
+
+.rj7-ai-panel {
+    position: fixed;
+
+    right: 28px;
+    bottom: 28px;
+
+    width: min(420px, calc(100vw - 36px));
+    height: min(650px, calc(100dvh - 100px));
+
+    background: #fff;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 18px;
+
+    z-index: 4500;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.12);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(.98);
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+}
+
+.rj7-ai-panel.active,
+.rj7-ai-panel.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+.rj7-ai-header {
+    min-height: 70px;
+
+    padding: 12px 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #eee;
+}
+
+.rj7-ai-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.rj7-ai-avatar {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #eee;
+    border-radius: 50%;
+
+    overflow: hidden;
+}
+
+.rj7-ai-avatar img {
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+}
+
+.rj7-ai-brand strong {
+    display: block;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.rj7-ai-brand span {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 9px;
+    color: #888;
+}
+
+
+/* FECHAR */
+
+.rj7-ai-close {
+    width: 32px;
+    height: 32px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CONVERSA
+   ========================================================= */
+
+.rj7-ai-conversation {
+    flex: 1;
+
+    padding: 20px 16px;
+
+    overflow-y: auto;
+
+    background: #fafafa;
+}
+
+.rj7-ai-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+}
+
+.rj7-ai-message-avatar {
+    flex: 0 0 26px;
+
+    width: 26px;
+    height: 26px;
+
+    border-radius: 50%;
+
+    background: #fff;
+    border: 1px solid #eee;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.rj7-ai-message-avatar img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.rj7-ai-message-content {
+    max-width: 82%;
+
+    padding: 12px 14px;
+
+    background: #fff;
+
+    border: 1px solid #eee;
+    border-radius: 0 12px 12px 12px;
+}
+
+.rj7-ai-message-content p {
+    margin: 0 0 7px;
+
+    font-size: 11px;
+    line-height: 1.55;
+    color: #333;
+}
+
+.rj7-ai-message-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   SUGESTÕES
+   ========================================================= */
+
+.rj7-ai-quick-actions {
+    display: flex;
+    gap: 7px;
+
+    padding: 12px 14px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    border-top: 1px solid #eee;
+}
+
+.rj7-ai-quick-actions::-webkit-scrollbar {
+    display: none;
+}
+
+.rj7-ai-quick-actions button {
+    flex-shrink: 0;
+
+    padding: 8px 12px;
+
+    border: 1px solid #ddd;
+    border-radius: 999px;
+
+    background: #fff;
+
+    font-size: 9px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.rj7-ai-input-area {
+    min-height: 62px;
+
+    padding: 10px 12px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    border-top: 1px solid #eee;
+
+    background: #fff;
+}
+
+.rj7-ai-input-area input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 40px;
+
+    padding: 0 13px;
+
+    border: 1px solid #ddd;
+    border-radius: 999px;
+
+    outline: none;
+
+    font-size: 11px;
+
+    background: #fafafa;
+}
+
+.rj7-ai-input-area input:focus {
+    border-color: #111;
+    background: #fff;
+}
+
+.rj7-ai-input-area button {
+    flex: 0 0 38px;
+
+    width: 38px;
+    height: 38px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #111;
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .rj7-ai-section {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .rj7-ai-panel {
+        right: 10px;
+        bottom: 10px;
+
+        width: calc(100vw - 20px);
+        height: calc(100dvh - 80px);
+
+        border-radius: 16px;
+    }
+
+}
+/* =========================================================
+   RJ7 SHOP — PARTE 8
+   FILTROS — VISUAL PREMIUM
+   ========================================================= */
+
+
+/* =========================================================
+   BARRA DE FILTROS
+   ========================================================= */
+
+.rj7-filter-bar {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    padding: 18px 28px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-top: 1px solid #eee;
+}
+
+
+/* BOTÃO FILTROS */
+
+.rj7-filter-button {
+    height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding: 0 17px;
+
+    border: 1px solid #ddd;
+    border-radius: 999px;
+
+    background: #fff;
+    color: #111;
+
+    font-size: 11px;
+    letter-spacing: .04em;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+}
+
+.rj7-filter-button:hover {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+.rj7-filter-button i {
+    font-size: 11px;
+}
+
+
+/* LIMPAR */
+
+.rj7-clear-filters {
+    border: 0;
+    background: transparent;
+
+    color: #777;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    padding: 8px 4px;
+
+    transition: color .2s ease;
+}
+
+.rj7-clear-filters:hover {
+    color: #111;
+}
+
+
+/* =========================================================
+   PAINEL DE FILTROS — TELA INTEIRA
+   ========================================================= */
+
+.rj7-filters-panel {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    background: #fff;
+
+    z-index: 5000;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 0 7vw 70px;
+
+    transform: translateY(100%);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        transform .35s ease,
+        opacity .25s ease,
+        visibility .35s ease;
+}
+
+
+/* ABERTO */
+
+.rj7-filters-panel.active {
+    transform: translateY(0);
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* =========================================================
+   CABEÇALHO DO FILTRO
+   ========================================================= */
+
+.rj7-filters-header {
+    width: 100%;
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #eee;
+
+    position: sticky;
+    top: 0;
+
+    background: #fff;
+
+    z-index: 10;
+}
+
+
+/* TÍTULO */
+
+.rj7-filters-header h2 {
+    margin: 0;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+
+/* LOGO RJ7 NO TOPO */
+
+.rj7-filters-header::before {
+    content: "RJ7";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    letter-spacing: .18em;
+
+    color: #111;
+}
+
+
+/* BOTÃO FECHAR */
+
+.rj7-filters-header button {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #f5f5f5;
+    color: #111;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.rj7-filters-header button:hover {
+    background: #111;
+    color: #fff;
+
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   GRUPOS
+   ========================================================= */
+
+.rj7-filter-group {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 30px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+
+.rj7-filter-group h3 {
+    margin: 0 0 18px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   BOTÕES DOS FILTROS
+   ========================================================= */
+
+.rj7-filter-options {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+}
+
+
+/*
+   IMPORTANTE:
+   Os botões continuam arredondados,
+   não quadrados.
+*/
+
+.rj7-filter-options button {
+    min-height: 40px;
+
+    padding: 0 18px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 999px;
+
+    background: #fff;
+
+    color: #111;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+}
+
+
+/* ATIVO */
+
+.rj7-filter-options button.active {
+    background: #111;
+
+    color: #fff;
+
+    border-color: #111;
+}
+
+
+/* HOVER */
+
+.rj7-filter-options button:hover {
+    border-color: #111;
+}
+
+
+/* =========================================================
+   PREÇO
+   ========================================================= */
+
+.rj7-price-filter {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.rj7-price-filter input {
+    width: 100%;
+    max-width: 220px;
+
+    height: 44px;
+
+    padding: 0 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 0;
+
+    background: #fff;
+
+    color: #111;
+
+    font-size: 12px;
+
+    outline: none;
+}
+
+
+.rj7-price-filter input:focus {
+    border-color: #111;
+}
+
+
+.rj7-price-filter span {
+    color: #999;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   ORDENAÇÃO
+   ========================================================= */
+
+#sortProducts {
+    width: 100%;
+    max-width: 460px;
+
+    height: 44px;
+
+    padding: 0 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 0;
+
+    background: #fff;
+
+    color: #111;
+
+    font-size: 12px;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+
+#sortProducts:focus {
+    border-color: #111;
+}
+
+
+/* =========================================================
+   BOTÃO APLICAR
+   ========================================================= */
+
+.rj7-apply-filters {
+    display: block;
+
+    width: 100%;
+    max-width: 900px;
+
+    height: 52px;
+
+    margin: 35px auto 0;
+
+    border: 1px solid #111;
+
+    border-radius: 999px;
+
+    background: #111;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    letter-spacing: .1em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+
+.rj7-apply-filters:hover {
+    background: #fff;
+
+    color: #111;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .rj7-filter-bar {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+
+    .rj7-filters-panel {
+        padding-left: 20px;
+        padding-right: 20px;
+
+        padding-bottom: 50px;
+    }
+
+
+    .rj7-filters-header {
+        min-height: 68px;
+    }
+
+
+    .rj7-filters-header h2 {
+        font-size: 10px;
+    }
+
+
+    .rj7-filters-header::before {
+        font-size: 12px;
+    }
+
+
+    .rj7-filter-group {
+        padding: 25px 0;
+    }
+
+
+    .rj7-filter-options {
+        gap: 8px;
+    }
+
+
+    .rj7-filter-options button {
+        min-height: 38px;
+
+        padding: 0 15px;
+    }
+
+
+    .rj7-price-filter {
+        gap: 8px;
+    }
+
+
+    .rj7-price-filter input {
+        min-width: 0;
+        max-width: none;
+    }
+
+}
+
+
+/* =========================================================
+   ECRÃS MUITO PEQUENOS
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .rj7-filter-button {
+        height: 40px;
+
+        padding: 0 15px;
+    }
+
+
+    .rj7-filter-options button {
+        min-height: 36px;
+
+        padding: 0 13px;
+
+        font-size: 10px;
+    }
+
+
+    .rj7-filters-panel {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+}
+/* ======================================================
+   PARTE 9 — RJ7 COLOR MATCH / SHOP BY COLOR
+   ====================================================== */
+
+.rj7-color-match {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 55px 28px 65px;
+    border-top: 1px solid #eee;
+}
+
+.rj7-color-match-header {
+    margin-bottom: 28px;
+}
+
+.rj7-color-match-header p {
+    margin: 0 0 10px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .20em;
+}
+
+.rj7-color-match-header h2 {
+    margin: 0 0 8px;
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -.02em;
+}
+
+.rj7-color-match-header span {
+    display: block;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #777;
+}
+
+
+/* ======================================================
+   OPÇÕES DE COR
+   ====================================================== */
+
+.rj7-color-options {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    overflow-x: auto;
+    padding: 5px 2px 8px;
+    scrollbar-width: none;
+}
+
+.rj7-color-options::-webkit-scrollbar {
+    display: none;
+}
+
+.rj7-color-option {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 0;
+    border: 0;
+    background: transparent;
+
+    color: #111;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .05em;
+
+    cursor: pointer;
+}
+
+
+/* ======================================================
+   BOLINHAS
+   ====================================================== */
+
+.rj7-color-circle {
+    width: 15px;
+    height: 15px;
+
+    flex: 0 0 15px;
+
+    display: block;
+
+    border-radius: 50%;
+    border: 1px solid #ccc;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease;
+}
+
+.rj7-color-circle.black {
+    background: #111;
+    border-color: #111;
+}
+
+.rj7-color-circle.white {
+    background: #fff;
+}
+
+.rj7-color-circle.grey {
+    background: #999;
+    border-color: #999;
+}
+
+.rj7-color-circle.navy {
+    background: #182238;
+    border-color: #182238;
+}
+
+.rj7-color-circle.all {
+    background: linear-gradient(
+        135deg,
+        #111 0%,
+        #111 50%,
+        #fff 50%,
+        #fff 100%
+    );
+}
+
+
+/* ======================================================
+   ESTADO ATIVO
+   ====================================================== */
+
+.rj7-color-option.active {
+    font-weight: 600;
+}
+
+.rj7-color-option.active .rj7-color-circle {
+    transform: scale(1.12);
+    border-color: #111;
+}
+
+
+/* ======================================================
+   HOVER
+   ====================================================== */
+
+.rj7-color-option:hover .rj7-color-circle {
+    transform: scale(1.08);
+}
+
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 768px) {
+
+    .rj7-color-match {
+        padding: 45px 18px 55px;
+    }
+
+    .rj7-color-match-header h2 {
+        font-size: 22px;
+    }
+
+    .rj7-color-options {
+        gap: 20px;
+    }
+
+    .rj7-color-circle {
+        width: 14px;
+        height: 14px;
+        flex-basis: 14px;
+    }
+
+}
+/* ======================================================
+   RJ7 — BOTÕES ARREDONDADOS
+   Apenas acabamento visual
+====================================================== */
+
+/* Shop dos banners */
+.banner-content a {
+    border-radius: 999px;
+}
+
+/* RJ7 MODE */
+.rj7-mode-button {
+    border-radius: 999px;
+}
+
+/* Opções dentro do RJ7 MODE */
+.rj7-mode-options button {
+    border-radius: 999px;
+}
+
+/* BUILD MY LOOK */
+.rj7-build-button {
+    border-radius: 999px;
+}
+
+/* Botões/links de coleção */
+.rj7-collection-footer a {
+    border-radius: 999px;
+}
+/* ======================================================
+   RJ7 PRODUCT — PARTE 2
+   INFORMAÇÕES DO PRODUTO
+====================================================== */
+
+.rj7-product-heading {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+    padding: 55px 24px 30px;
+
+    text-align: center;
+}
+
+
+/* CATEGORIA */
+
+.rj7-product-heading #productCategory {
+    margin: 0 0 10px;
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+
+    color: #777;
+}
+
+
+/* NOME */
+
+.rj7-product-heading #productName {
+    margin: 0;
+
+    font-size: clamp(32px, 6vw, 52px);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+
+    color: #111;
+}
+
+
+/* PREÇO */
+
+.rj7-product-heading .rj7-product-price {
+    margin: 16px 0 0;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    color: #111;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .rj7-product-heading {
+        padding: 38px 18px 24px;
+    }
+
+    .rj7-product-heading #productCategory {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .rj7-product-heading #productName {
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+
+    .rj7-product-heading .rj7-product-price {
+        font-size: 17px;
+        margin-top: 12px;
+    }
+
+}
+/* ======================================================
+   RJ7 PRODUCT — PARTE 3
+   GALERIA DO PRODUTO
+====================================================== */
+
+.rj7-product-gallery {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 10px 24px 45px;
+}
+
+
+/* ÁREA PRINCIPAL DA GALERIA */
+
+.rj7-gallery {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    border-radius: 24px;
+    background: #f5f5f5;
+}
+
+
+/* TRACK DAS IMAGENS */
+
+.rj7-gallery-track {
+    width: 100%;
+
+    display: flex;
+    align-items: stretch;
+
+    transition: transform 0.35s ease;
+}
+
+
+/* IMAGENS GERADAS PELO JAVASCRIPT */
+
+.rj7-gallery-track img {
+    width: 100%;
+    min-width: 100%;
+    height: 620px;
+
+    display: block;
+
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+
+/* PONTOS DA GALERIA */
+
+.rj7-gallery-dots {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 16px;
+}
+
+
+/* CADA DOT */
+
+.rj7-gallery-dots button {
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #cfcfcf;
+
+    cursor: pointer;
+
+    transition:
+        width 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* DOT ATIVO */
+
+.rj7-gallery-dots button.active {
+    width: 22px;
+    border-radius: 999px;
+
+    background: #111;
+}
+
+
+/* TABLET */
+
+@media (max-width: 800px) {
+
+    .rj7-product-gallery {
+        padding: 8px 18px 38px;
+    }
+
+    .rj7-gallery {
+        border-radius: 20px;
+    }
+
+    .rj7-gallery-track img {
+        height: 500px;
+    }
+
+}
+
+
+/* TELEMÓVEL */
+
+@media (max-width: 600px) {
+
+    .rj7-product-gallery {
+        padding: 5px 14px 32px;
+    }
+
+    .rj7-gallery {
+        border-radius: 18px;
+    }
+
+    .rj7-gallery-track img {
+        height: 430px;
+    }
+
+    .rj7-gallery-dots {
+        margin-top: 13px;
+        gap: 6px;
+    }
+
+    .rj7-gallery-dots button {
+        width: 6px;
+        height: 6px;
+    }
+
+    .rj7-gallery-dots button.active {
+        width: 18px;
+    }
+
+}
+/* ======================================================
+   RJ7 PRODUCT — PARTE 4
+   ÁREA DE COMPRA
+   CORES + TAMANHOS
+====================================================== */
+
+.rj7-product-buy {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px 24px 55px;
+}
+
+
+/* ======================================================
+   CORES
+====================================================== */
+
+.rj7-color-heading,
+.rj7-size-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+.rj7-color-heading strong,
+.rj7-size-heading strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+}
+
+
+/* CONTAINER DAS CORES */
+
+.rj7-colors {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-bottom: 32px;
+}
+
+
+/* BOTÕES DE COR CRIADOS PELO JAVASCRIPT */
+
+.rj7-colors button {
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 50%;
+
+    background: #fff;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.rj7-colors button:hover {
+    transform: scale(1.08);
+}
+
+.rj7-colors button.active,
+.rj7-colors button.selected {
+    border: 2px solid #111;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 4px #111;
+}
+
+
+/* ======================================================
+   TAMANHOS
+====================================================== */
+
+.rj7-size-heading {
+    margin-bottom: 14px;
+}
+
+
+/* GUIA DE TAMANHOS */
+
+.rj7-size-guide {
+    border: 0;
+    background: transparent;
+
+    padding: 5px 0;
+
+    color: #555;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    cursor: pointer;
+}
+
+
+/* TAMANHOS */
+
+.rj7-sizes {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+
+    margin-bottom: 30px;
+}
+
+
+/* BOTÕES DE TAMANHO */
+
+.rj7-sizes button {
+    min-height: 46px;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 12px;
+
+    background: #fff;
+    color: #111;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.rj7-sizes button:hover {
+    border-color: #111;
+}
+
+.rj7-sizes button.active,
+.rj7-sizes button.selected {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .rj7-product-buy {
+        padding: 5px 16px 45px;
+    }
+
+    .rj7-colors {
+        gap: 10px;
+        margin-bottom: 28px;
+    }
+
+    .rj7-colors button {
+        width: 30px;
+        height: 30px;
+    }
+
+    .rj7-sizes {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .rj7-sizes button {
+        min-height: 44px;
+        border-radius: 10px;
+    }
+
+}
+/* ======================================================
+   RJ7 PRODUCT — PARTE 5
+   GUIA DE TAMANHOS
+====================================================== */
+
+.rj7-size-guide-modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    backdrop-filter: blur(6px);
+}
+
+
+/* MODAL ABERTO */
+
+.rj7-size-guide-modal.active,
+.rj7-size-guide-modal[aria-hidden="false"] {
+    display: flex;
+}
+
+
+/* CAIXA */
+
+.rj7-size-guide-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 620px;
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 36px 28px;
+
+    background: #fff;
+
+    border-radius: 24px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+
+/* BOTÃO FECHAR */
+
+.rj7-size-guide-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #f3f3f3;
+    color: #111;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.rj7-size-guide-close:hover {
+    background: #111;
+    color: #fff;
+}
+
+
+/* LABEL */
+
+.rj7-size-guide-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+
+    color: #777;
+}
+
+
+/* TÍTULO */
+
+.rj7-size-guide-box h2 {
+    margin: 0;
+
+    font-size: 28px;
+    line-height: 1.1;
+
+    color: #111;
+}
+
+
+/* DESCRIÇÃO */
+
+.rj7-size-guide-description {
+    margin: 10px 0 25px;
+
+    color: #666;
+    font-size: 14px;
+}
+
+
+/* TABELA */
+
+.rj7-size-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.rj7-size-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    font-size: 13px;
+}
+
+.rj7-size-table th,
+.rj7-size-table td {
+    padding: 13px 10px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.rj7-size-table th {
+    font-weight: 600;
+    color: #111;
+}
+
+.rj7-size-table td {
+    color: #555;
+}
+
+
+/* NOTA */
+
+.rj7-size-guide-note {
+    margin: 20px 0 0;
+
+    font-size: 12px;
+    line-height: 1.5;
+
+    color: #888;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .rj7-size-guide-modal {
+        padding: 14px;
+    }
+
+    .rj7-size-guide-box {
+        padding: 32px 18px 24px;
+
+        border-radius: 20px;
+    }
+
+    .rj7-size-guide-box h2 {
+        font-size: 24px;
+    }
+
+    .rj7-size-table {
+        font-size: 12px;
+    }
+
+    .rj7-size-table th,
+    .rj7-size-table td {
+        padding: 11px 7px;
+    }
+
+}
+/* ======================================================
+   RJ7 PRODUCT — PARTE 6
+   QUANTIDADE + AÇÕES DE COMPRA
+====================================================== */
+
+/* QUANTIDADE */
+
+.quantity-box {
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+
+    margin: 0 0 28px;
+
+    border: 1px solid #dedede;
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    background: #fff;
+}
+
+
+.quantity-box button {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    border: 0;
+
+    background: transparent;
+    color: #111;
+
+    font-size: 18px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+
+.quantity-box button:hover {
+    background: #f2f2f2;
+}
+
+
+.quantity-box #quantity {
+    min-width: 38px;
+
+    text-align: center;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #111;
+}
+
+
+/* ======================================================
+   BOTÕES DE COMPRA
+====================================================== */
+
+.rj7-product-actions {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* ADICIONAR AO CARRINHO */
+
+.rj7-add-cart {
+    width: 100%;
+    min-height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 24px;
+
+    border: 1px solid #111;
+    border-radius: 999px;
+
+    background: #111;
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.rj7-add-cart:hover {
+    background: #292929;
+
+    transform: translateY(-1px);
+}
+
+
+/* FAVORITO */
+
+.rj7-favorite {
+    width: 100%;
+    min-height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 24px;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 999px;
+
+    background: #fff;
+    color: #111;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.rj7-favorite:hover {
+    background: #f5f5f5;
+    border-color: #111;
+
+    transform: translateY(-1px);
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .quantity-box {
+        margin-bottom: 24px;
+    }
+
+    .quantity-box button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .rj7-add-cart {
+        min-height: 52px;
+    }
+
+    .rj7-favorite {
+        min-height: 50px;
+    }
+
+}
+/* ======================================================
+   RJ7 PRODUCT — PARTE 7
+   AVALIAÇÕES DO PRODUTO
+====================================================== */
+
+.rj7-reviews {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+
+    border-top: 1px solid #eeeeee;
+}
+
+
+/* ======================================================
+   CABEÇALHO
+====================================================== */
+
+.rj7-reviews-header {
+    text-align: center;
+
+    margin-bottom: 42px;
+}
+
+
+.rj7-reviews-label {
+    margin: 0 0 8px;
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+
+    color: #777;
+}
+
+
+.rj7-reviews-header h2 {
+    margin: 0 0 18px;
+
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -1px;
+
+    color: #111;
+}
+
+
+/* ======================================================
+   RESUMO DA AVALIAÇÃO
+====================================================== */
+
+.rj7-rating-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.rj7-rating-summary strong {
+    font-size: 34px;
+    line-height: 1;
+    font-weight: 600;
+
+    color: #111;
+}
+
+
+.rj7-review-stars {
+    font-size: 21px;
+    letter-spacing: 3px;
+
+    color: #111;
+}
+
+
+.rj7-rating-summary span {
+    font-size: 12px;
+
+    color: #777;
+}
+
+
+/* ======================================================
+   FORMULÁRIO
+====================================================== */
+
+.rj7-review-form-container {
+    width: 100%;
+
+    padding: 28px;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 22px;
+
+    background: #fafafa;
+}
+
+
+.rj7-review-form-container h3 {
+    margin: 0 0 18px;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    color: #111;
+}
+
+
+/* SELEÇÃO DE ESTRELAS */
+
+.rj7-rating-selector {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    margin-bottom: 18px;
+}
+
+
+.rj7-rating-selector button {
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    color: #999;
+
+    font-size: 24px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.rj7-rating-selector button:hover {
+    color: #111;
+
+    transform: scale(1.1);
+}
+
+
+.rj7-rating-selector button.active {
+    color: #111;
+}
+
+
+/* COMENTÁRIO */
+
+#reviewComment {
+    width: 100%;
+    min-height: 120px;
+
+    padding: 15px;
+
+    resize: vertical;
+
+    border: 1px solid #dddddd;
+    border-radius: 14px;
+
+    background: #fff;
+    color: #111;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition: border-color 0.2s ease;
+}
+
+
+#reviewComment:focus {
+    border-color: #111;
+}
+
+
+#reviewComment::placeholder {
+    color: #999;
+}
+
+
+/* ENVIAR */
+
+.rj7-submit-review {
+    width: 100%;
+
+    min-height: 48px;
+
+    margin-top: 12px;
+
+    border: 0;
+    border-radius: 999px;
+
+    background: #111;
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.rj7-submit-review:hover {
+    background: #292929;
+
+    transform: translateY(-1px);
+}
+
+
+/* ======================================================
+   LISTA DE AVALIAÇÕES
+====================================================== */
+
+.rj7-reviews-list {
+    width: 100%;
+
+    margin-top: 35px;
+}
+
+
+.rj7-reviews-loading {
+    margin: 0;
+
+    padding: 25px 0;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: #888;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .rj7-reviews {
+        padding: 45px 16px 60px;
+    }
+
+    .rj7-review-form-container {
+        padding: 22px 18px;
+
+        border-radius: 18px;
+    }
+
+    .rj7-rating-summary strong {
+        font-size: 30px;
+    }
+
+    .rj7-review-stars {
+        font-size: 19px;
+    }
+
+    .rj7-rating-selector button {
+        width: 32px;
+        height: 32px;
+    }
+
+}
+/* ======================================================
+   RJ7 CART — PARTE 1
+   CABEÇALHO DO CARRINHO
+====================================================== */
+
+.cart-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 55px 24px 80px;
+}
+
+.cart-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.cart-label {
+    margin: 0 0 10px;
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+
+    color: #777;
+}
+
+.cart-header h1 {
+    margin: 0;
+
+    font-size: clamp(32px, 6vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    font-weight: 700;
+
+    color: #111;
+}
+
+.cart-continue {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 18px;
+
+    color: #555;
+    font-size: 13px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.cart-continue:hover {
+    color: #111;
+}
+
+@media (max-width: 600px) {
+
+    .cart-section {
+        padding: 38px 16px 60px;
+    }
+
+    .cart-header {
+        margin-bottom: 35px;
+    }
+
+    .cart-header h1 {
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+
+}
+/* ======================================================
+   RJ7 CART — PARTE 4
+   RESUMO DA COMPRA
+====================================================== */
+
+.cart-summary {
+    width: 100%;
+    max-width: 520px;
+    margin: 45px auto 0;
+    padding: 28px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.cart-summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.cart-summary-row span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+.cart-summary-row h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #111;
+    text-align: right;
+}
+
+.checkout-button {
+    width: 100%;
+    min-height: 56px;
+    border: 1px solid #111;
+    border-radius: 0;
+    background: #111;
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 16px 20px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.2s ease;
+}
+
+.checkout-button:hover {
+    background: #fff;
+    color: #111;
+}
+
+.checkout-button:active {
+    transform: scale(0.98);
+}
+
+.checkout-button i {
+    font-size: 13px;
+    transition: transform 0.25s ease;
+}
+
+.checkout-button:hover i {
+    transform: translateX(4px);
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .cart-summary {
+        max-width: none;
+        margin-top: 35px;
+        padding: 24px 18px;
+    }
+
+    .cart-summary-row h2 {
+        font-size: 18px;
+    }
+
+    .checkout-button {
+        min-height: 54px;
+    }
+
+}
+/* ======================================================
+   RJ7 CHECKOUT — PARTE 1
+   ESTRUTURA PRINCIPAL
+====================================================== */
+
+.checkout-section {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 70px 24px 90px;
+}
+
+.checkout-section > h1 {
+    margin: 0 0 40px;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.8px;
+    color: #111;
+    text-align: center;
+}
+
+#checkoutForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+/* ======================================================
+   CAMPOS
+====================================================== */
+
+#checkoutForm input {
+    width: 100%;
+    height: 56px;
+    padding: 0 17px;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 0;
+
+    background: #fff;
+    color: #111;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#checkoutForm input::placeholder {
+    color: #888;
+}
+
+#checkoutForm input:focus {
+    border-color: #111;
+    box-shadow: 0 0 0 1px #111;
+}
+
+
+/* ======================================================
+   ITENS DA COMPRA
+====================================================== */
+
+#checkoutItems {
+    width: 100%;
+    margin-top: 12px;
+}
+
+
+/* ======================================================
+   TOTAL
+====================================================== */
+
+#checkoutTotal {
+    margin: 12px 0 8px;
+
+    font-size: 21px;
+    font-weight: 600;
+    color: #111;
+
+    text-align: right;
+}
+
+
+/* ======================================================
+   BOTÃO CONTINUAR
+====================================================== */
+
+#checkoutForm button[type="submit"] {
+    width: 100%;
+    height: 56px;
+
+    margin-top: 12px;
+
+    border: 1px solid #111;
+    border-radius: 0;
+
+    background: #111;
+    color: #fff;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.2s ease;
+}
+
+#checkoutForm button[type="submit"]:hover {
+    background: #fff;
+    color: #111;
+}
+
+#checkoutForm button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .checkout-section {
+        padding: 50px 18px 70px;
+    }
+
+    .checkout-section > h1 {
+        font-size: 27px;
+        margin-bottom: 32px;
+    }
+
+    #checkoutForm input {
+        height: 54px;
+    }
+
+    #checkoutTotal {
+        font-size: 19px;
+    }
+
+    #checkoutForm button[type="submit"] {
+        height: 54px;
+    }
+
+}
+/* ======================================================
+   RJ7 CHECKOUT — PARTE 2
+   PRODUTOS DA COMPRA
+====================================================== */
+
+#checkoutItems {
+    width: 100%;
+    margin-top: 18px;
+    padding: 22px 0;
+
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+/* Área interna dos itens */
+
+#checkoutItems > * {
+    width: 100%;
+}
+
+
+/* ======================================================
+   CARTÕES / ITENS GERADOS PELO JAVASCRIPT
+====================================================== */
+
+#checkoutItems .checkout-item,
+#checkoutItems .cart-item {
+    width: 100%;
+    min-height: 90px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+#checkoutItems .checkout-item:last-child,
+#checkoutItems .cart-item:last-child {
+    border-bottom: none;
+}
+
+
+/* ======================================================
+   IMAGENS DOS PRODUTOS
+====================================================== */
+
+#checkoutItems img {
+    width: 78px;
+    height: 92px;
+
+    object-fit: cover;
+    display: block;
+
+    flex-shrink: 0;
+}
+
+
+/* ======================================================
+   INFORMAÇÕES DO PRODUTO
+====================================================== */
+
+#checkoutItems .checkout-item-info,
+#checkoutItems .cart-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+#checkoutItems h3,
+#checkoutItems h4,
+#checkoutItems .product-name {
+    margin: 0 0 6px;
+
+    color: #111;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#checkoutItems p {
+    margin: 3px 0;
+
+    color: #777;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* ======================================================
+   PREÇO
+====================================================== */
+
+#checkoutItems .price,
+#checkoutItems .product-price {
+    color: #111;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    #checkoutItems {
+        margin-top: 14px;
+        padding: 18px 0;
+    }
+
+    #checkoutItems img {
+        width: 68px;
+        height: 82px;
+    }
+
+    #checkoutItems .checkout-item,
+    #checkoutItems .cart-item {
+        gap: 12px;
+    }
+
+    #checkoutItems h3,
+    #checkoutItems h4,
+    #checkoutItems .product-name {
+        font-size: 13px;
+    }
+
+    #checkoutItems .price,
+    #checkoutItems .product-price {
+        font-size: 13px;
+    }
+
+}
+/* ======================================================
+   RJ7 CHECKOUT — PARTE 3
+   TOTAL + CONTINUAR
+====================================================== */
+
+#checkoutTotal {
+    width: 100%;
+
+    margin: 24px 0 4px;
+    padding: 20px 0;
+
+    border-top: 1px solid #111;
+
+    color: #111;
+    font-size: 20px;
+    font-weight: 600;
+
+    text-align: right;
+}
+
+
+/* ======================================================
+   BOTÃO
+====================================================== */
+
+#checkoutForm button[type="submit"] {
+    width: 100%;
+    height: 56px;
+
+    margin-top: 14px;
+    padding: 0 22px;
+
+    border: 1px solid #111;
+    border-radius: 0;
+
+    background: #111;
+    color: #fff;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+#checkoutForm button[type="submit"]:hover {
+    background: #fff;
+    color: #111;
+}
+
+#checkoutForm button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    #checkoutTotal {
+        padding: 18px 0;
+        font-size: 18px;
+    }
+
+    #checkoutForm button[type="submit"] {
+        height: 54px;
+    }
+
+}
+/* ======================================================
+   RJ7 PAYMENT — PARTE 1
+   ESTRUTURA PRINCIPAL
+====================================================== */
+
+.rj7-payment-page {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.rj7-payment-section {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 70px 24px 90px;
+}
+
+
+/* ======================================================
+   CABEÇALHO
+====================================================== */
+
+.rj7-payment-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.rj7-payment-header p {
+    margin: 0 0 10px;
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    color: #777;
+}
+
+.rj7-payment-header h1 {
+    margin: 0 0 12px;
+
+    font-size: 32px;
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -0.7px;
+
+    color: #111;
+}
+
+.rj7-payment-header span {
+    display: block;
+
+    color: #777;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* ======================================================
+   RESUMO DO PEDIDO
+====================================================== */
+
+.rj7-payment-summary {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    padding: 22px;
+
+    background: #f7f7f7;
+    border: 1px solid #e8e8e8;
+    border-radius: 16px;
+
+    margin-bottom: 28px;
+}
+
+.rj7-payment-summary > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.rj7-payment-summary > div:last-child {
+    text-align: right;
+}
+
+.rj7-payment-summary span {
+    font-size: 11px;
+    color: #777;
+}
+
+.rj7-payment-summary strong {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .rj7-payment-section {
+        padding: 50px 18px 70px;
+    }
+
+    .rj7-payment-header h1 {
+        font-size: 28px;
+    }
+
+    .rj7-payment-summary {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+}
+/* ======================================================
+   RJ7 PAYMENT — PARTE 2
+   MÉTODO DE PAGAMENTO
+====================================================== */
+
+.rj7-payment-method {
+    width: 100%;
+    margin-bottom: 22px;
+}
+
+.rj7-payment-method h2 {
+    margin: 0 0 14px;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+}
+
+
+/* ======================================================
+   CARTÃO VISA
+====================================================== */
+
+.rj7-visa-payment {
+    width: 100%;
+    min-height: 76px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 16px 18px;
+
+    border: 1px solid #dedede;
+    border-radius: 16px;
+
+    background: #fff;
+    color: #111;
+
+    font-family: inherit;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.rj7-visa-payment:hover {
+    border-color: #111;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+}
+
+.rj7-visa-payment:active {
+    transform: scale(0.99);
+}
+
+
+/* ======================================================
+   ÍCONE VISA
+====================================================== */
+
+.rj7-visa-icon {
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f2f2f2;
+
+    font-size: 21px;
+}
+
+
+/* ======================================================
+   INFORMAÇÕES
+====================================================== */
+
+.rj7-visa-payment > span:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.rj7-visa-payment strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+}
+
+.rj7-visa-payment small {
+    font-size: 12px;
+    font-weight: 400;
+    color: #777;
+    line-height: 1.4;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .rj7-payment-method h2 {
+        font-size: 15px;
+    }
+
+    .rj7-visa-payment {
+        min-height: 72px;
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .rj7-visa-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 11px;
+    }
+
+}
+/* ======================================================
+   RJ7 PAYMENT — PARTE 3
+   ÁREA DE PAGAMENTO SEGURO
+====================================================== */
+
+.rj7-visa-payment-area {
+    width: 100%;
+
+    margin-top: 18px;
+    padding: 22px;
+
+    background: #f8f8f8;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+
+    animation: rj7PaymentAppear 0.25s ease;
+}
+
+
+/* ======================================================
+   MENSAGEM DE SEGURANÇA
+====================================================== */
+
+.rj7-payment-secure {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    margin-bottom: 20px;
+}
+
+.rj7-payment-secure > span {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
+
+    font-size: 18px;
+}
+
+.rj7-payment-secure > div {
+    flex: 1;
+}
+
+.rj7-payment-secure strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #111;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.rj7-payment-secure p {
+    margin: 0;
+
+    color: #777;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* ======================================================
+   BOTÃO CONTINUAR
+====================================================== */
+
+.rj7-continue-payment {
+    width: 100%;
+    min-height: 54px;
+
+    padding: 15px 20px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: #111;
+    color: #fff;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.rj7-continue-payment:hover {
+    background: #222;
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+}
+
+.rj7-continue-payment:active {
+    transform: scale(0.98);
+}
+
+
+/* ======================================================
+   VOLTAR AO CHECKOUT
+====================================================== */
+
+.rj7-payment-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 28px;
+
+    color: #555;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.rj7-payment-back:hover {
+    color: #111;
+}
+
+
+/* ======================================================
+   ANIMAÇÃO
+====================================================== */
+
+@keyframes rj7PaymentAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .rj7-visa-payment-area {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .rj7-payment-secure {
+        gap: 11px;
+    }
+
+    .rj7-continue-payment {
+        min-height: 52px;
+        border-radius: 13px;
+    }
+
+}
+/* ======================================================
+   RJ7 — NOTIFICATIONS
+   PARTE 1 — PÁGINA + CABEÇALHO
+====================================================== */
+
+.notifications-page {
+    width: 100%;
+    min-height: 70vh;
+    padding: 70px 20px 100px;
+}
+
+.notifications-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* CABEÇALHO */
+
+.notifications-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 45px;
+}
+
+.notifications-label {
+    display: block;
+    margin-bottom: 10px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.notifications-header h1 {
+    margin: 0;
+
+    font-size: clamp(34px, 6vw, 58px);
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+/* BOTÃO — NÃO QUADRADO */
+
+.notifications-read-all {
+    border: 1px solid #111;
+    background: transparent;
+
+    padding: 13px 22px;
+
+    border-radius: 999px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.notifications-read-all:hover {
+    background: #111;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .notifications-page {
+        padding: 50px 16px 80px;
+    }
+
+    .notifications-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 22px;
+        margin-bottom: 32px;
+    }
+
+    .notifications-header h1 {
+        font-size: 38px;
+    }
+
+    .notifications-read-all {
+        padding: 12px 18px;
+        font-size: 12px;
+    }
+
+}
+/* ======================================================
+   RJ7 — NOTIFICATIONS
+   PARTE 2 — CARTÕES DE NOTIFICAÇÃO
+====================================================== */
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+/* CARTÃO */
+
+.notification-item {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 20px 22px;
+
+    background: #fff;
+    border: 1px solid #e8e8e8;
+
+    border-radius: 18px;
+
+    transition:
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.notification-item:hover {
+    border-color: #d5d5d5;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ÍCONE */
+
+.notification-icon {
+    width: 46px;
+    height: 46px;
+
+    flex: 0 0 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f3f3f3;
+
+    font-size: 17px;
+}
+
+
+/* CONTEÚDO */
+
+.notification-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.notification-content h3 {
+    margin: 0 0 5px;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.notification-content p {
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    color: #666;
+}
+
+
+/* DATA */
+
+.notification-time {
+    flex-shrink: 0;
+
+    font-size: 11px;
+    color: #999;
+}
+
+
+/* NOTIFICAÇÃO NÃO LIDA */
+
+.notification-item.unread {
+    background: #fafafa;
+    border-color: #dcdcdc;
+}
+
+.notification-item.unread .notification-content h3 {
+    font-weight: 800;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .notification-item {
+        align-items: flex-start;
+        padding: 17px;
+        gap: 14px;
+        border-radius: 16px;
+    }
+
+    .notification-icon {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+        font-size: 15px;
+    }
+
+    .notification-content h3 {
+        font-size: 14px;
+    }
+
+    .notification-content p {
+        font-size: 12px;
+    }
+
+    .notification-time {
+        display: none;
+    }
+
+}
+/* ======================================================
+   RJ7 — MEUS ENDEREÇOS
+   PÁGINA PREMIUM
+====================================================== */
+
+.dashboard-page {
+    width: 100%;
+    min-height: 78vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 80px 20px 110px;
+
+    box-sizing: border-box;
+}
+
+
+/* ======================================================
+   CARTÃO PRINCIPAL
+====================================================== */
+
+.dashboard-card {
+    width: 100%;
+    max-width: 650px;
+
+    padding: 52px 48px;
+
+    background: #ffffff;
+
+    border: 1px solid #e9e9e9;
+    border-radius: 26px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.06);
+
+    box-sizing: border-box;
+}
+
+
+/* ======================================================
+   TOPO
+====================================================== */
+
+.profile-top {
+    text-align: center;
+
+    margin-bottom: 38px;
+}
+
+
+/* ÍCONE */
+
+.profile-top > i {
+    display: flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    height: 64px;
+
+    margin: 0 auto 22px !important;
+
+    border-radius: 50%;
+
+    background: #f7f7f7;
+
+    color: #111 !important;
+
+    font-size: 22px !important;
+
+    box-shadow:
+        inset 0 0 0 1px #eeeeee;
+}
+
+
+/* TÍTULO */
+
+.profile-top h2 {
+    margin: 0 0 11px;
+
+    color: #111;
+
+    font-size: 30px;
+    font-weight: 600;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.8px;
+}
+
+
+/* DESCRIÇÃO */
+
+.profile-top p {
+    max-width: 420px;
+
+    margin: 0 auto;
+
+    color: #777;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    line-height: 1.7;
+}
+
+
+/* ======================================================
+   FORMULÁRIO
+====================================================== */
+
+#address-form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 13px;
+}
+
+
+/* ======================================================
+   CAMPOS
+====================================================== */
+
+#address-form .input-box {
+    width: 100%;
+}
+
+#address-form .input-box input {
+    width: 100%;
+    height: 56px;
+
+    box-sizing: border-box;
+
+    padding: 0 18px;
+
+    border: 1px solid #dedede;
+    border-radius: 14px;
+
+    outline: none;
+
+    background: #fafafa;
+
+    color: #111;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+#address-form .input-box input::placeholder {
+    color: #999;
+}
+
+
+/* FOCO */
+
+#address-form .input-box input:focus {
+    background: #ffffff;
+
+    border-color: #111;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 0, 0, 0.045);
+}
+
+
+/* ======================================================
+   BOTÃO
+====================================================== */
+
+#address-form .btn {
+    width: 100%;
+    min-height: 54px;
+
+    margin-top: 8px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: #111;
+
+    color: #fff;
+
+    padding: 15px 24px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+#address-form .btn:hover {
+    background: #222;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+
+#address-form .btn:active {
+    transform: translateY(0);
+
+    box-shadow: none;
+}
+
+
+#address-form .btn:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* ======================================================
+   LISTA DE ENDEREÇOS
+====================================================== */
+
+#addresses-list {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+
+    margin-top: 42px;
+}
+
+
+/* ======================================================
+   CARTÃO DE ENDEREÇO
+====================================================== */
+
+.address-card {
+    position: relative;
+
+    width: 100%;
+
+    padding: 22px;
+
+    box-sizing: border-box;
+
+    background: #fafafa;
+
+    border: 1px solid #e8e8e8;
+    border-radius: 18px;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.address-card:hover {
+    background: #ffffff;
+
+    border-color: #d8d8d8;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.055);
+}
+
+
+/* ======================================================
+   NOME
+====================================================== */
+
+.address-card h3 {
+    margin: 0 0 10px;
+
+    color: #111;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    letter-spacing: -0.2px;
+}
+
+
+/* ======================================================
+   INFORMAÇÕES
+====================================================== */
+
+.address-card p {
+    margin: 5px 0;
+
+    color: #666;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+}
+
+
+/* ======================================================
+   BOTÕES DOS ENDEREÇOS
+====================================================== */
+
+.address-card button {
+    margin-top: 15px;
+
+    padding: 9px 17px;
+
+    border: 1px solid #dedede;
+    border-radius: 999px;
+
+    background: #ffffff;
+
+    color: #111;
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.04em;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.address-card button:hover {
+    background: #111;
+
+    color: #fff;
+
+    border-color: #111;
+
+    transform: translateY(-1px);
+}
+
+
+/* ======================================================
+   RESPONSIVO — TELEMÓVEL
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .dashboard-page {
+        min-height: 75vh;
+
+        padding: 45px 16px 75px;
+    }
+
+
+    .dashboard-card {
+        padding: 34px 20px;
+
+        border-radius: 21px;
+    }
+
+
+    .profile-top {
+        margin-bottom: 30px;
+    }
+
+
+    .profile-top > i {
+        width: 58px;
+        height: 58px;
+
+        margin-bottom: 18px !important;
+
+        font-size: 20px !important;
+    }
+
+
+    .profile-top h2 {
+        font-size: 26px;
+
+        letter-spacing: -0.6px;
+    }
+
+
+    .profile-top p {
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+
+    #address-form {
+        gap: 11px;
+    }
+
+
+    #address-form .input-box input {
+        height: 53px;
+
+        padding: 0 16px;
+
+        border-radius: 13px;
+
+        font-size: 13px;
+    }
+
+
+    #address-form .btn {
+        min-height: 51px;
+
+        margin-top: 7px;
+
+        font-size: 11px;
+    }
+
+
+    #addresses-list {
+        margin-top: 34px;
+
+        gap: 12px;
+    }
+
+
+    .address-card {
+        padding: 18px;
+
+        border-radius: 16px;
+    }
+
+
+    .address-card h3 {
+        font-size: 15px;
+    }
+
+
+    .address-card p {
+        font-size: 12px;
+    }
+
+}
+
+
+/* ======================================================
+   TELEMÓVEIS MUITO PEQUENOS
+====================================================== */
+
+@media (max-width: 380px) {
+
+    .dashboard-page {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+
+    .dashboard-card {
+        padding: 30px 16px;
+    }
+
+
+    .profile-top h2 {
+        font-size: 24px;
+    }
+
+}
+/* ======================================================
+   RJ7 — LOGIN
+   PARTE 1 — PÁGINA + CARTÃO
+====================================================== */
+
+.account-page {
+    width: 100%;
+    min-height: 72vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 70px 20px 100px;
+
+    box-sizing: border-box;
+}
+
+.account-box {
+    width: 100%;
+    max-width: 440px;
+
+    padding: 42px 38px;
+
+    background: #fff;
+
+    border: 1px solid #e7e7e7;
+    border-radius: 24px;
+
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
+
+    box-sizing: border-box;
+}
+
+
+/* ======================================================
+   LOGO DO LOGIN
+====================================================== */
+
+.login-logo {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 25px;
+}
+
+.login-logo img {
+    width: 62px;
+    height: 62px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* ======================================================
+   TÍTULO
+====================================================== */
+
+.account-box h1 {
+    margin: 0 0 30px;
+
+    text-align: center;
+
+    font-size: 34px;
+    line-height: 1;
+
+    letter-spacing: -1px;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .account-page {
+        padding: 45px 16px 70px;
+    }
+
+    .account-box {
+        padding: 34px 20px;
+
+        border-radius: 20px;
+    }
+
+    .account-box h1 {
+        font-size: 30px;
+    }
+
+}
+/* ======================================================
+   RJ7 — LOGIN
+   PARTE 2 — CAMPOS + BOTÃO
+====================================================== */
+
+.account-box form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+/* ======================================================
+   CAMPO
+====================================================== */
+
+.account-box .input-box {
+    width: 100%;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    padding: 0 17px;
+
+    background: #fafafa;
+
+    border: 1px solid #dedede;
+    border-radius: 14px;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.account-box .input-box:focus-within {
+    background: #fff;
+
+    border-color: #111;
+
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ÍCONE */
+
+.account-box .input-box i {
+    flex-shrink: 0;
+
+    width: 20px;
+
+    margin-right: 11px;
+
+    color: #777;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+/* INPUT */
+
+.account-box .input-box input {
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #111;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.account-box .input-box input::placeholder {
+    color: #999;
+}
+
+
+/* ======================================================
+   BOTÃO ENTRAR
+====================================================== */
+
+.account-box .login-btn {
+    width: 100%;
+    min-height: 54px;
+
+    margin-top: 6px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: #111;
+    color: #fff;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.account-box .login-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+.account-box .login-btn:active {
+    transform: translateY(0);
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .account-box .input-box {
+        height: 52px;
+        border-radius: 13px;
+    }
+
+    .account-box .login-btn {
+        min-height: 52px;
+    }
+
+}
+/* ======================================================
+   RJ7 — REGISTER
+   PARTE 1 — CAMPOS + BOTÃO
+====================================================== */
+
+.account-box .register-btn {
+    width: 100%;
+    min-height: 54px;
+
+    margin-top: 6px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: #111;
+    color: #fff;
+
+    padding: 14px 24px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.account-box .register-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+.account-box .register-btn:active {
+    transform: translateY(0);
+}
+
+
+/* ======================================================
+   TEXTO INFERIOR
+====================================================== */
+
+.account-box > p {
+    margin: 24px 0 0;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.account-box > p a {
+    color: #111;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: opacity 0.2s ease;
+}
+
+.account-box > p a:hover {
+    opacity: 0.55;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .account-box .register-btn {
+        min-height: 52px;
+    }
+
+    .account-box > p {
+        font-size: 12px;
+    }
+
+}
+/* ======================================================
+   RJ7 — MINHA CONTA
+   PARTE 1 — PERFIL + CARTÃO
+====================================================== */
+
+.dashboard-card {
+    width: 100%;
+    max-width: 620px;
+
+    box-sizing: border-box;
+
+    padding: 45px 40px;
+
+    background: #fff;
+
+    border: 1px solid #e7e7e7;
+    border-radius: 24px;
+
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ======================================================
+   PERFIL
+====================================================== */
+
+.dashboard-card .profile-top {
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+.dashboard-card .profile-avatar {
+    display: block;
+
+    width: 92px;
+    height: 92px;
+
+    margin: 0 auto 18px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 1px solid #e5e5e5;
+
+    background: #f5f5f5;
+}
+
+.dashboard-card .profile-top h2 {
+    margin: 0 0 7px;
+
+    font-size: 27px;
+    font-weight: 700;
+
+    letter-spacing: -0.6px;
+}
+
+.dashboard-card .profile-top p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .dashboard-card {
+        padding: 34px 20px;
+
+        border-radius: 20px;
+    }
+
+    .dashboard-card .profile-avatar {
+        width: 82px;
+        height: 82px;
+    }
+
+    .dashboard-card .profile-top h2 {
+        font-size: 24px;
+    }
+
+}
+/* ======================================================
+   RJ7 — MINHA CONTA
+   PARTE 2 — MENU DA CONTA
+====================================================== */
+
+.dashboard-menu {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.dashboard-menu a {
+    width: 100%;
+    min-height: 56px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 0 18px;
+
+    background: #fafafa;
+
+    border: 1px solid #e7e7e7;
+    border-radius: 16px;
+
+    color: #111;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.dashboard-menu a i {
+    width: 20px;
+
+    text-align: center;
+
+    font-size: 15px;
+
+    color: #555;
+
+    transition: color 0.25s ease;
+}
+
+.dashboard-menu a:hover {
+    background: #fff;
+
+    border-color: #d5d5d5;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.06);
+}
+
+.dashboard-menu a:hover i {
+    color: #111;
+}
+
+
+/* TERMINAR SESSÃO */
+
+.dashboard-menu a#logout-btn {
+    margin-top: 8px;
+
+    color: #777;
+
+    background: #fff;
+}
+
+.dashboard-menu a#logout-btn:hover {
+    color: #111;
+
+    border-color: #ccc;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .dashboard-menu {
+        gap: 9px;
+    }
+
+    .dashboard-menu a {
+        min-height: 53px;
+
+        border-radius: 14px;
+
+        font-size: 13px;
+    }
+
+}
+/* ======================================================
+   RJ7 — EDITAR PERFIL
+   PARTE 3 — FORMULÁRIO
+====================================================== */
+
+#edit-profile-form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+/* ======================================================
+   CAMPOS
+====================================================== */
+
+#edit-profile-form .input-box {
+    width: 100%;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    background: #fafafa;
+
+    border: 1px solid #dedede;
+    border-radius: 14px;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+#edit-profile-form .input-box:focus-within {
+    background: #fff;
+
+    border-color: #111;
+
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+
+#edit-profile-form .input-box input {
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    padding: 0 17px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #111;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+#edit-profile-form .input-box input::placeholder {
+    color: #999;
+}
+
+
+/* CAMPO DESATIVADO */
+
+#edit-profile-form .input-box input:disabled {
+    color: #999;
+
+    cursor: not-allowed;
+}
+
+
+/* ======================================================
+   BOTÃO
+====================================================== */
+
+#edit-profile-form .btn {
+    width: 100%;
+    min-height: 54px;
+
+    margin-top: 6px;
+
+    padding: 14px 24px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: #111;
+    color: #fff;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        opacity 0.25s ease;
+}
+
+#edit-profile-form .btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+#edit-profile-form .btn:active {
+    transform: translateY(0);
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    #edit-profile-form .input-box {
+        height: 52px;
+
+        border-radius: 13px;
+    }
+
+    #edit-profile-form .btn {
+        min-height: 52px;
+    }
+
+}
+/* ======================================================
+   RJ7 — FAVORITOS
+   PARTE 1 — PÁGINA + CABEÇALHO
+====================================================== */
+
+.rj7-favorites-page {
+    width: 100%;
+    max-width: 1280px;
+
+    margin: 0 auto;
+
+    padding: 70px 24px 90px;
+
+    box-sizing: border-box;
+}
+
+
+/* ======================================================
+   CABEÇALHO
+====================================================== */
+
+.rj7-favorites-heading {
+    margin-bottom: 45px;
+}
+
+.rj7-favorites-heading p {
+    margin: 0 0 10px;
+
+    color: #777;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.rj7-favorites-heading h1 {
+    margin: 0 0 12px;
+
+    color: #111;
+
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+
+    letter-spacing: -1.5px;
+}
+
+.rj7-favorites-heading span {
+    display: inline-block;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* ======================================================
+   ÁREA DOS FAVORITOS
+====================================================== */
+
+.rj7-favorites-list {
+    width: 100%;
+}
+
+
+/* ======================================================
+   MENSAGEM DE CARREGAMENTO
+====================================================== */
+
+.rj7-favorites-loading {
+    margin: 50px 0;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .rj7-favorites-page {
+        padding: 50px 16px 70px;
+    }
+
+    .rj7-favorites-heading {
+        margin-bottom: 32px;
+    }
+
+    .rj7-favorites-heading h1 {
+        font-size: 34px;
+
+        letter-spacing: -1px;
+    }
+
+}
+/* ======================================================
+   RJ7 — FAVORITOS
+   PARTE 2 — GRELHA + CARTÕES
+====================================================== */
+
+.rj7-favorites-list {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 24px;
+
+    align-items: start;
+}
+
+
+/* ======================================================
+   CARTÃO DO FAVORITO
+====================================================== */
+
+.rj7-favorites-list .product-card {
+    width: 100%;
+
+    overflow: hidden;
+
+    background: #fff;
+
+    border: 1px solid #e8e8e8;
+    border-radius: 20px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.rj7-favorites-list .product-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ======================================================
+   IMAGEM
+====================================================== */
+
+.rj7-favorites-list .product-card img {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+    background: #f5f5f5;
+}
+
+
+/* ======================================================
+   INFORMAÇÕES
+====================================================== */
+
+.rj7-favorites-list .product-info {
+    padding: 17px 17px 19px;
+}
+
+.rj7-favorites-list .product-info h3 {
+    margin: 0 0 7px;
+
+    color: #111;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.rj7-favorites-list .product-info p {
+    margin: 0;
+
+    color: #555;
+
+    font-size: 14px;
+}
+
+
+/* ======================================================
+   BOTÃO FAVORITO
+====================================================== */
+
+.rj7-favorites-list button,
+.rj7-favorites-list .favorite-button {
+    border-radius: 999px;
+}
+
+
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 900px) {
+
+    .rj7-favorites-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        gap: 18px;
+    }
+
+}
+
+
+/* ======================================================
+   TELEMÓVEL
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .rj7-favorites-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+    }
+
+    .rj7-favorites-list .product-card {
+        border-radius: 16px;
+    }
+
+    .rj7-favorites-list .product-info {
+        padding: 13px 12px 15px;
+    }
+
+    .rj7-favorites-list .product-info h3 {
+        font-size: 13px;
+    }
+
+    .rj7-favorites-list .product-info p {
+        font-size: 12px;
+    }
+
+}
+/* ======================================================
+   RJ7 — FAVORITOS
+   PARTE 3 — ESTADOS
+====================================================== */
+
+.rj7-favorites-loading,
+.rj7-favorites-empty {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    padding: 70px 24px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 14px;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 24px;
+
+    background: #fafafa;
+}
+
+
+/* ======================================================
+   ÍCONE / ELEMENTOS DO ESTADO VAZIO
+====================================================== */
+
+.rj7-favorites-empty i {
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-size: 38px;
+
+    color: #111;
+}
+
+
+.rj7-favorites-empty h2 {
+    margin: 0 0 10px;
+
+    color: #111;
+
+    font-size: 22px;
+
+    font-weight: 600;
+}
+
+
+.rj7-favorites-empty p {
+    margin: 0 0 24px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* ======================================================
+   BOTÃO — IR PARA A LOJA
+====================================================== */
+
+.rj7-favorites-empty a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 0 26px;
+
+    border-radius: 999px;
+
+    background: #111;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.rj7-favorites-empty a:hover {
+    transform: translateY(-2px);
+
+    opacity: 0.85;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .rj7-favorites-loading,
+    .rj7-favorites-empty {
+        padding: 55px 18px;
+
+        border-radius: 18px;
+    }
+
+    .rj7-favorites-empty h2 {
+        font-size: 19px;
+    }
+
+}
+/* ======================================================
+   RJ7 — ORDERS
+   PARTE 1 — PÁGINA E CARTÃO PRINCIPAL
+====================================================== */
+
+.dashboard-page {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 70px 20px 100px;
+
+    background: #fff;
+}
+
+
+/* ======================================================
+   CARTÃO PRINCIPAL
+====================================================== */
+
+.dashboard-card {
+    width: 100%;
+    max-width: 850px;
+
+    padding: 45px;
+
+    background: #fff;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ======================================================
+   TOPO DA PÁGINA
+====================================================== */
+
+.profile-top {
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+
+.profile-top h2 {
+    margin: 0 0 10px;
+
+    color: #111;
+
+    font-size: 28px;
+
+    font-weight: 600;
+
+    letter-spacing: -0.5px;
+}
+
+
+.profile-top p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* ======================================================
+   LISTA DE ENCOMENDAS
+====================================================== */
+
+#orders-list {
+    width: 100%;
+}
+
+
+/* ======================================================
+   ESTADO SEM ENCOMENDAS
+====================================================== */
+
+#orders-list .dashboard-menu {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+#orders-list .dashboard-menu a {
+    display: flex;
+
+    align-items: center;
+    gap: 15px;
+
+    width: 100%;
+
+    min-height: 64px;
+
+    padding: 16px 20px;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 18px;
+
+    background: #fafafa;
+
+    color: #222;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+#orders-list .dashboard-menu a:hover {
+    transform: translateY(-2px);
+
+    background: #fff;
+
+    border-color: #ccc;
+}
+
+
+#orders-list .dashboard-menu a i {
+    width: 22px;
+
+    text-align: center;
+
+    color: #111;
+
+    font-size: 17px;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .dashboard-page {
+        padding: 40px 15px 70px;
+    }
+
+    .dashboard-card {
+        padding: 28px 18px;
+
+        border-radius: 22px;
+    }
+
+    .profile-top h2 {
+        font-size: 23px;
+    }
+
+    #orders-list .dashboard-menu a {
+        min-height: 58px;
+
+        padding: 14px 16px;
+
+        border-radius: 16px;
+    }
+
+}
+/* ======================================================
+   RJ7 — DEFINIÇÕES
+   PARTE 1 — CARTÃO + CABEÇALHO
+====================================================== */
+
+.settings-menu {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.settings-menu a {
+    width: 100%;
+    min-height: 58px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 0 20px;
+
+    background: #fafafa;
+
+    border: 1px solid #e6e6e6;
+
+    border-radius: 18px;
+
+    color: #111;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.settings-menu a i {
+    width: 22px;
+
+    text-align: center;
+
+    color: #555;
+
+    font-size: 16px;
+}
+
+
+.settings-menu a:hover {
+    transform: translateY(-2px);
+
+    background: #fff;
+
+    border-color: #d2d2d2;
+
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+
+.settings-menu a:last-child {
+    margin-top: 8px;
+
+    color: #777;
+}
+
+
+.settings-menu a:last-child:hover {
+    color: #111;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .settings-menu {
+        gap: 10px;
+    }
+
+    .settings-menu a {
+        min-height: 54px;
+
+        padding: 0 16px;
+
+        border-radius: 15px;
+
+        font-size: 13px;
+    }
+
+}
+/* =========================================================
+   RJ7 — AJUSTE GLOBAL PARA ECRÃS PEQUENOS
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+
+    main,
+    section {
+        max-width: 100%;
+    }
+
+
+    /* Grelhas de produtos */
+
+    .product-grid {
+        width: calc(100% - 20px);
+
+        margin-left: auto;
+        margin-right: auto;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 24px 9px;
+    }
+
+
+    /* Evita que qualquer elemento interno
+       empurre a página para os lados */
+
+    .product-grid > * {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+
+    /* Imagens */
+
+    .product-card img,
+    .product-item img,
+    .product img {
+        max-width: 100%;
+    }
+
+}
+/* =========================================================
+   RJ7 VOID — FUTURISTIC INTRO
+   ========================================================= */
+
+.rj7-intro {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    background: #050505;
+
+    overflow: hidden;
+
+    opacity: 1;
+
+    animation:
+        rj7IntroExit 1.2s cubic-bezier(.77,0,.18,1) 4.8s forwards;
+}
+
+
+/* =========================================================
+   CAMADA CENTRAL
+   ========================================================= */
+
+.rj7-intro-core {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    perspective: 900px;
+}
+
+
+/* =========================================================
+   LINHA DE ENERGIA
+   ========================================================= */
+
+.rj7-intro-line {
+    position: absolute;
+
+    width: 0;
+    height: 1px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.9),
+        0 0 25px rgba(255,255,255,.45),
+        0 0 70px rgba(255,255,255,.18);
+
+    animation:
+        rj7LineOpen 1.4s cubic-bezier(.16,1,.3,1) .35s forwards;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.rj7-intro-logo {
+    position: relative;
+
+    z-index: 2;
+
+    width: 82px;
+
+    opacity: 0;
+
+    transform:
+        scale(.55)
+        translateZ(-180px);
+
+    filter:
+        blur(10px)
+        brightness(.65);
+
+    animation:
+        rj7LogoEnter 1.5s cubic-bezier(.16,1,.3,1) 1.1s forwards;
+}
+
+
+.rj7-intro-logo img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   BRILHO QUE ATRAVESSA O LOGO
+   ========================================================= */
+
+.rj7-intro-logo::after {
+    content: "";
+
+    position: absolute;
+
+    top: -30%;
+    left: -100%;
+
+    width: 45%;
+    height: 160%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.9),
+            transparent
+        );
+
+    transform: skewX(-18deg);
+
+    opacity: 0;
+
+    animation:
+        rj7LogoScan 1.1s ease 2.55s forwards;
+}
+
+
+/* =========================================================
+   RJ7 SYSTEM
+   ========================================================= */
+
+.rj7-intro-system {
+    margin-top: 24px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 500;
+
+    letter-spacing: .42em;
+
+    color: rgba(255,255,255,.55);
+
+    text-indent: .42em;
+
+    opacity: 0;
+
+    transform:
+        translateY(10px);
+
+    animation:
+        rj7SystemEnter .9s ease 2.25s forwards;
+}
+
+
+/* =========================================================
+   FIRST MOVE
+   ========================================================= */
+
+.rj7-intro-title {
+    margin-top: 10px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: .32em;
+
+    color: #ffffff;
+
+    text-indent: .32em;
+
+    opacity: 0;
+
+    transform:
+        translateY(10px);
+
+    animation:
+        rj7TitleEnter .9s cubic-bezier(.16,1,.3,1) 2.55s forwards;
+}
+
+
+/* =========================================================
+   AURA CENTRAL
+   ========================================================= */
+
+.rj7-intro-core::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.08) 0%,
+            rgba(255,255,255,.025) 28%,
+            transparent 70%
+        );
+
+    filter: blur(12px);
+
+    opacity: 0;
+
+    animation:
+        rj7Aura 2.4s ease 1.3s forwards;
+}
+
+
+/* =========================================================
+   PEQUENO PULSO
+   ========================================================= */
+
+.rj7-intro-core::after {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 12px #ffffff,
+        0 0 35px rgba(255,255,255,.8);
+
+    opacity: 0;
+
+    animation:
+        rj7Pulse 1.2s ease 3.35s forwards;
+}
+
+
+/* =========================================================
+   ANIMAÇÕES
+   ========================================================= */
+
+@keyframes rj7LineOpen {
+
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    100% {
+        width: 150px;
+        opacity: .75;
+    }
+
+}
+
+
+@keyframes rj7LogoEnter {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(.55)
+            translateZ(-180px);
+
+        filter:
+            blur(10px)
+            brightness(.65);
+    }
+
+    55% {
+        opacity: 1;
+
+        filter:
+            blur(1px)
+            brightness(1.15);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateZ(0);
+
+        filter:
+            blur(0)
+            brightness(1);
+    }
+
+}
+
+
+@keyframes rj7LogoScan {
+
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 170%;
+        opacity: 0;
+    }
+
+}
+
+
+@keyframes rj7SystemEnter {
+
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes rj7TitleEnter {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateY(10px)
+            scale(.96);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+@keyframes rj7Aura {
+
+    0% {
+        opacity: 0;
+        transform: scale(.5);
+    }
+
+    45% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: .65;
+        transform: scale(1.15);
+    }
+
+}
+
+
+@keyframes rj7Pulse {
+
+    0% {
+        opacity: 0;
+        transform: scale(.5);
+    }
+
+    35% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(7);
+    }
+
+}
+
+
+/* =========================================================
+   SAÍDA DA INTRO
+   ========================================================= */
+
+@keyframes rj7IntroExit {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.015);
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: scale(1.04);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .rj7-intro-logo {
+        width: 70px;
+    }
+
+    .rj7-intro-system {
+        margin-top: 21px;
+
+        font-size: 7px;
+
+        letter-spacing: .36em;
+
+        text-indent: .36em;
+    }
+
+    .rj7-intro-title {
+        font-size: 9px;
+
+        letter-spacing: .28em;
+
+        text-indent: .28em;
+    }
+
+    .rj7-intro-core::before {
+        width: 150px;
+        height: 150px;
+    }
+
+    @keyframes rj7LineOpen {
+
+        0% {
+            width: 0;
+            opacity: 0;
+        }
+
+        25% {
+            opacity: 1;
+        }
+
+        100% {
+            width: 125px;
+            opacity: .75;
+        }
+
+    }
+
+}
+/* =========================================================
+   RJ7 VOID — SISTEMA DE TEMA
+   A intro acompanha o tema do dispositivo
+   ========================================================= */
+
+
+/* =========================================================
+   MODO ESCURO
+========================================================= */
+
+@media (prefers-color-scheme: dark) {
+
+    .rj7-intro {
+
+        background: #050505;
+
+        color: #ffffff;
+    }
+
+
+    .rj7-intro-line {
+
+        background: #ffffff;
+
+        box-shadow:
+            0 0 8px rgba(255,255,255,.95),
+            0 0 25px rgba(255,255,255,.5),
+            0 0 70px rgba(255,255,255,.2);
+    }
+
+
+    .rj7-intro-logo {
+
+        filter:
+            blur(10px)
+            brightness(.65);
+    }
+
+
+    .rj7-intro-system {
+
+        color:
+            rgba(255,255,255,.55);
+    }
+
+
+    .rj7-intro-title {
+
+        color: #ffffff;
+    }
+
+
+    .rj7-intro-core::before {
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(255,255,255,.08) 0%,
+                rgba(255,255,255,.025) 28%,
+                transparent 70%
+            );
+    }
+
+
+    .rj7-intro-core::after {
+
+        background: #ffffff;
+
+        box-shadow:
+            0 0 12px #ffffff,
+            0 0 35px rgba(255,255,255,.8);
+    }
+
+}
+
+
+/* =========================================================
+   MODO CLARO
+========================================================= */
+
+@media (prefers-color-scheme: light) {
+
+    .rj7-intro {
+
+        background: #ffffff;
+
+        color: #050505;
+    }
+
+
+    .rj7-intro-line {
+
+        background: #050505;
+
+        box-shadow:
+            0 0 8px rgba(0,0,0,.35),
+            0 0 25px rgba(0,0,0,.15),
+            0 0 70px rgba(0,0,0,.06);
+    }
+
+
+    .rj7-intro-logo {
+
+        filter:
+            blur(10px)
+            brightness(.25);
+    }
+
+
+    .rj7-intro-system {
+
+        color:
+            rgba(0,0,0,.55);
+    }
+
+
+    .rj7-intro-title {
+
+        color: #050505;
+    }
+
+
+    .rj7-intro-core::before {
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(0,0,0,.07) 0%,
+                rgba(0,0,0,.025) 28%,
+                transparent 70%
+            );
+    }
+
+
+    .rj7-intro-core::after {
+
+        background: #050505;
+
+        box-shadow:
+            0 0 12px rgba(0,0,0,.35),
+            0 0 35px rgba(0,0,0,.15);
+    }
+
+}
+/* =========================================================
+   RJ7 INTRO — LOGO ADAPTÁVEL AO MODO DO TELEFONE
+   ========================================================= */
+
+/* MODO CLARO */
+.rj7-intro-logo img {
+    filter: none;
+    transition: filter 0.35s ease;
+}
+
+
+/* MODO ESCURO */
+@media (prefers-color-scheme: dark) {
+
+    .rj7-intro-logo img {
+        filter: invert(1);
+    }
+
+}
+/* =========================================================
+   RJ7 — BUILD YOUR LOOK
+   CSS DA PÁGINA REAL
+   ========================================================= */
+
+
+/* =========================================================
+   PÁGINA
+   ========================================================= */
+
+.rj7-build-page {
+    width: 100%;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.rj7-build-header {
+    width: 100%;
+    height: 68px;
+
+    padding: 0 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #fff;
+
+    border-bottom: 1px solid #e8e8e8;
+
+    box-sizing: border-box;
+}
+
+
+.rj7-build-header .rj7-logo {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+
+.rj7-build-header .rj7-logo img {
+    width: 42px;
+    height: auto;
+
+    display: block;
+}
+
+
+.rj7-shop-link {
+    color: #111;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.rj7-build-hero {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 75px 22px 55px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+}
+
+
+.rj7-build-hero span {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: #777;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+.rj7-build-hero h1 {
+    margin: 0;
+
+    color: #111;
+
+    font-size: clamp(42px, 9vw, 82px);
+
+    line-height: .92;
+
+    font-weight: 700;
+
+    letter-spacing: -3px;
+}
+
+
+.rj7-build-hero p {
+    max-width: 520px;
+
+    margin: 25px auto 0;
+
+    color: #666;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   BOTÕES DE ESTILO
+   ========================================================= */
+
+.rj7-build-styles {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 10px 22px 65px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    box-sizing: border-box;
+}
+
+
+.rj7-build-style {
+    min-height: 75px;
+
+    padding: 15px;
+
+    border: 1px solid #dedede;
+
+    background: #fff;
+
+    color: #111;
+
+    font-family: inherit;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        .25s ease;
+}
+
+
+.rj7-build-style:hover {
+    border-color: #111;
+
+    transform: translateY(-2px);
+}
+
+
+.rj7-build-style.active {
+    background: #111;
+
+    color: #fff;
+
+    border-color: #111;
+}
+
+
+/* =========================================================
+   RESULTADOS
+   ========================================================= */
+
+.rj7-build-results {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 0 22px 60px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   NOVA ÁREA VISUAL
+   ========================================================= */
+
+.rj7-byl-gallery-section {
+    width: 100%;
+
+    background: #f5f5f5;
+
+    padding:
+        85px 22px
+        100px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TÍTULO DA NOVA ÁREA
+   ========================================================= */
+
+.rj7-byl-heading {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto 45px;
+}
+
+
+.rj7-byl-heading span {
+    display: block;
+
+    margin-bottom: 16px;
+
+    color: #777;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+.rj7-byl-heading h1 {
+    margin: 0;
+
+    color: #111;
+
+    font-size: clamp(48px, 9vw, 100px);
+
+    line-height: .85;
+
+    letter-spacing: -5px;
+
+    font-weight: 700;
+}
+
+
+.rj7-byl-heading p {
+    max-width: 430px;
+
+    margin: 25px 0 0;
+
+    color: #666;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   GRID REAL DOS PRODUTOS
+   ========================================================= */
+
+.rj7-byl-products-grid {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   CARTÃO CRIADO PELO JAVASCRIPT
+   ========================================================= */
+
+.rj7-byl-product-card {
+    position: relative;
+
+    min-width: 0;
+
+    background: #fff;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.rj7-byl-product-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, .08);
+}
+
+
+/* =========================================================
+   IMAGEM
+   ========================================================= */
+
+.rj7-byl-product-image {
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    background: #eee;
+}
+
+
+.rj7-byl-product-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform .5s ease;
+}
+
+
+.rj7-byl-product-card:hover
+.rj7-byl-product-image img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================================
+   INFORMAÇÕES
+   ========================================================= */
+
+.rj7-byl-product-info {
+    padding: 17px;
+
+    background: #fff;
+}
+
+
+.rj7-byl-product-info h3 {
+    margin: 0;
+
+    color: #111;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+.rj7-byl-product-info p {
+    margin: 7px 0 0;
+
+    color: #666;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   GALERIA DO CARTÃO
+   ========================================================= */
+
+.rj7-byl-gallery {
+    display: flex;
+
+    gap: 6px;
+
+    padding: 8px;
+
+    background: #fff;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+
+.rj7-byl-gallery::-webkit-scrollbar {
+    display: none;
+}
+
+
+.rj7-byl-gallery img {
+    flex: 0 0 52px;
+
+    width: 52px;
+    height: 62px;
+
+    object-fit: cover;
+
+    border: 1px solid #ddd;
+}
+
+
+/* =========================================================
+   BOTÃO GALERIA
+   ========================================================= */
+
+.rj7-byl-gallery-button {
+    position: absolute;
+
+    left: 12px;
+    bottom: 12px;
+
+    padding: 9px 12px;
+
+    border: 0;
+
+    background: rgba(255,255,255,.95);
+
+    color: #111;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .rj7-build-header {
+        height: 62px;
+
+        padding:
+            0 17px;
+    }
+
+
+    .rj7-build-header .rj7-logo img {
+        width: 39px;
+    }
+
+
+    .rj7-build-hero {
+        padding:
+            60px 18px
+            45px;
+    }
+
+
+    .rj7-build-hero h1 {
+        font-size: 43px;
+
+        letter-spacing: -2.5px;
+    }
+
+
+    .rj7-build-hero p {
+        font-size: 12px;
+    }
+
+
+    .rj7-build-styles {
+        padding:
+            10px 17px
+            55px;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 8px;
+    }
+
+
+    .rj7-build-style {
+        min-height: 65px;
+
+        font-size: 9px;
+    }
+
+
+    .rj7-build-results {
+        padding:
+            0 17px
+            50px;
+    }
+
+
+    .rj7-byl-gallery-section {
+        padding:
+            65px 17px
+            75px;
+    }
+
+
+    .rj7-byl-heading {
+        margin-bottom: 32px;
+    }
+
+
+    .rj7-byl-heading h1 {
+        font-size: 52px;
+
+        letter-spacing: -3px;
+    }
+
+
+    .rj7-byl-heading p {
+        font-size: 12px;
+    }
+
+
+    .rj7-byl-products-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+    }
+
+
+    .rj7-byl-product-info {
+        padding:
+            12px 10px
+            14px;
+    }
+
+
+    .rj7-byl-product-info h3 {
+        font-size: 11px;
+    }
+
+
+    .rj7-byl-product-info p {
+        font-size: 10px;
+    }
+
+
+    .rj7-byl-gallery {
+        padding: 6px;
+    }
+
+
+    .rj7-byl-gallery img {
+        flex-basis: 42px;
+
+        width: 42px;
+        height: 50px;
+    }
+
+}
+
+
+/* =========================================================
+   TELEFONES PEQUENOS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .rj7-byl-products-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .rj7-byl-heading h1 {
+        font-size: 44px;
+    }
+
+}
+/* ======================================================
+   RJ7 BUILD YOUR LOOK — CARTÕES
+   NÃO ALTERA OS CARTÕES DA SHOP NORMAL
+   ====================================================== */
+
+#rj7BuildResults {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 18px 60px;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+
+    box-sizing: border-box;
+}
+
+
+/* ======================================================
+   CADA PRODUTO
+   ====================================================== */
+
+#rj7BuildResults > * {
+    position: relative;
+
+    min-width: 0;
+
+    background: #fff;
+
+    overflow: hidden;
+
+    border-radius: 2px;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+#rj7BuildResults > *:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, .10);
+}
+
+
+/* ======================================================
+   IMAGEM DO PRODUTO
+   ====================================================== */
+
+#rj7BuildResults > * img {
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 4 / 5;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #f1f1f1;
+}
+
+
+/* ======================================================
+   INFORMAÇÕES
+   ====================================================== */
+
+#rj7BuildResults > * h3 {
+    margin: 0;
+
+    padding: 14px 12px 4px;
+
+    color: #111;
+
+    font-size: 13px;
+
+    line-height: 1.35;
+
+    font-weight: 600;
+}
+
+
+#rj7BuildResults > * p {
+    margin: 0;
+
+    padding: 0 12px 15px;
+
+    color: #666;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+/* ======================================================
+   ÁREA NOVA DOS CARTÕES
+   ====================================================== */
+
+.rj7-byl-products-grid {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+.rj7-byl-products-grid > * {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #fff;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.rj7-byl-products-grid > *:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, .10);
+}
+
+
+.rj7-byl-products-grid > * img {
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #eee;
+}
+
+
+.rj7-byl-products-grid > * h3 {
+    margin: 0;
+
+    padding: 14px 12px 4px;
+
+    font-size: 13px;
+
+    line-height: 1.35;
+
+    font-weight: 600;
+}
+
+
+.rj7-byl-products-grid > * p {
+    margin: 0;
+
+    padding: 0 12px 15px;
+
+    color: #666;
+
+    font-size: 12px;
+}
+
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 600px) {
+
+    #rj7BuildResults {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+
+        padding:
+            15px 12px 50px;
+    }
+
+
+    #rj7BuildResults > * h3 {
+        padding:
+            11px 9px 3px;
+
+        font-size: 11px;
+    }
+
+
+    #rj7BuildResults > * p {
+        padding:
+            0 9px 12px;
+
+        font-size: 10px;
+    }
+
+
+    .rj7-byl-products-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+    }
+
+
+    .rj7-byl-products-grid > * h3 {
+        padding:
+            11px 9px 3px;
+
+        font-size: 11px;
+    }
+
+
+    .rj7-byl-products-grid > * p {
+        padding:
+            0 9px 12px;
+
+        font-size: 10px;
+    }
+
+}
+/* ======================================================
+   RJ7 — BOLA FLUTUANTE DA CONTA
+   ====================================================== */
+
+.rj7-floating-account {
+    position: fixed;
+
+    right: 18px;
+    bottom: 22px;
+
+    width: 56px;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.16);
+
+    z-index: 99999;
+
+    overflow: hidden;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* LOGO */
+
+.rj7-floating-account img {
+    width: 65%;
+    height: 65%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* EFEITO AO TOCAR */
+
+.rj7-floating-account:active {
+    transform: scale(0.92);
+}
+
+
+/* HOVER */
+
+.rj7-floating-account:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.20);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .rj7-floating-account {
+        width: 52px;
+        height: 52px;
+
+        right: 14px;
+        bottom: 18px;
+    }
+
+}
+/* ======================================================
+   RJ7 — AS MINHAS ENCOMENDAS
+====================================================== */
+
+#orders-list {
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+
+    margin-top: 35px;
+}
+
+
+/* ======================================================
+   CARTÃO
+====================================================== */
+
+.order-card {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 24px;
+
+    background: #fff;
+
+    border: 1px solid #e7e7e7;
+
+    border-radius: 20px;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.order-card:hover {
+
+    transform: translateY(-2px);
+
+    border-color: #d5d5d5;
+
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ======================================================
+   TOPO
+====================================================== */
+
+.order-card-top {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+.order-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #999;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.7px;
+}
+
+
+.order-main h3 {
+
+    margin: 0;
+
+    color: #111;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    word-break: break-all;
+}
+
+
+/* ======================================================
+   ESTADO
+====================================================== */
+
+.order-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+
+    padding: 8px 12px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+.order-status i {
+
+    font-size: 10px;
+}
+
+
+/* ======================================================
+   ESTADOS
+====================================================== */
+
+.order-status.pending {
+
+    background: #f3f3f3;
+
+    color: #555;
+}
+
+
+.order-status.processing {
+
+    background: #eeeeee;
+
+    color: #222;
+}
+
+
+.order-status.shipped {
+
+    background: #e9e9e9;
+
+    color: #111;
+}
+
+
+.order-status.delivered {
+
+    background: #111;
+
+    color: #fff;
+}
+
+
+.order-status.cancelled {
+
+    background: #f2f2f2;
+
+    color: #777;
+}
+
+
+/* ======================================================
+   INFORMAÇÕES
+====================================================== */
+
+.order-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+
+    padding: 6px 0;
+}
+
+
+/* ======================================================
+   LINHA DE INFORMAÇÃO
+====================================================== */
+
+.order-info-row {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #f1f1f1;
+}
+
+
+.order-info-row:last-child {
+
+    border-bottom: none;
+}
+
+
+/* ======================================================
+   ÍCONE
+====================================================== */
+
+.order-info-row > i {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 20px;
+
+    margin-top: 3px;
+
+    color: #111;
+
+    font-size: 14px;
+}
+
+
+/* ======================================================
+   TEXTO
+====================================================== */
+
+.order-info-row > div {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.order-info-label {
+
+    color: #999;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.4px;
+
+    text-transform: uppercase;
+}
+
+
+.order-info-row strong {
+
+    color: #222;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* ======================================================
+   TOTAL
+====================================================== */
+
+.order-card-bottom {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e9e9e9;
+}
+
+
+.order-card-bottom span {
+
+    color: #777;
+
+    font-size: 12px;
+
+    font-weight: 500;
+}
+
+
+.order-card-bottom strong {
+
+    color: #111;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* ======================================================
+   LOADING
+====================================================== */
+
+.orders-loading {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 55px 20px;
+
+    text-align: center;
+
+    color: #777;
+}
+
+
+.orders-loading i {
+
+    margin-bottom: 15px;
+
+    color: #111;
+
+    font-size: 25px;
+}
+
+
+.orders-loading p {
+
+    margin: 0;
+
+    font-size: 13px;
+}
+
+
+/* ======================================================
+   VAZIO / ERRO
+====================================================== */
+
+.orders-empty {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 55px 25px;
+
+    background: #fafafa;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 20px;
+
+    text-align: center;
+}
+
+
+.orders-empty > i {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 62px;
+
+    height: 62px;
+
+    margin-bottom: 18px;
+
+    border-radius: 50%;
+
+    background: #f0f0f0;
+
+    color: #111;
+
+    font-size: 22px;
+}
+
+
+.orders-empty h3 {
+
+    margin: 0 0 8px;
+
+    color: #111;
+
+    font-size: 18px;
+}
+
+
+.orders-empty p {
+
+    max-width: 340px;
+
+    margin: 0;
+
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    #orders-list {
+
+        gap: 14px;
+
+        margin-top: 28px;
+    }
+
+
+    .order-card {
+
+        padding: 19px;
+
+        border-radius: 17px;
+    }
+
+
+    .order-card-top {
+
+        gap: 10px;
+
+        padding-bottom: 17px;
+    }
+
+
+    .order-label {
+
+        font-size: 8px;
+
+        letter-spacing: 1.4px;
+    }
+
+
+    .order-main h3 {
+
+        font-size: 14px;
+    }
+
+
+    .order-status {
+
+        padding: 7px 9px;
+
+        gap: 5px;
+
+        font-size: 9px;
+    }
+
+
+    .order-status i {
+
+        font-size: 8px;
+    }
+
+
+    .order-info-row {
+
+        gap: 11px;
+
+        padding: 12px 0;
+    }
+
+
+    .order-info-row > i {
+
+        width: 18px;
+
+        font-size: 13px;
+    }
+
+
+    .order-info-label {
+
+        font-size: 9px;
+    }
+
+
+    .order-info-row strong {
+
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+
+
+    .order-card-bottom {
+
+        padding-top: 17px;
+    }
+
+
+    .order-card-bottom span {
+
+        font-size: 11px;
+    }
+
+
+    .order-card-bottom strong {
+
+        font-size: 16px;
+    }
+
+
+    .orders-empty {
+
+        padding: 45px 20px;
+
+        border-radius: 17px;
+    }
+
+
+    .orders-empty h3 {
+
+        font-size: 16px;
+    }
+
+
+    .orders-empty p {
+
+        font-size: 12px;
+    }
+
+}
+/* =========================================
+   RJ7 — NOTIFICAÇÕES
+========================================= */
+
+#rj7Notifications {
+    position: fixed;
+    top: 90px;
+    right: 24px;
+    z-index: 99999;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    width: min(360px, calc(100vw - 32px));
+
+    pointer-events: none;
+}
+
+.rj7-notification {
+    background: #111;
+    color: #fff;
+
+    padding: 15px 18px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+
+    letter-spacing: 0.1px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    opacity: 0;
+    transform: translateY(-8px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.rj7-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Telemóvel */
+@media (max-width: 600px) {
+
+    #rj7Notifications {
+        top: 82px;
+        left: 16px;
+        right: 16px;
+
+        width: auto;
+    }
+
+    .rj7-notification {
+        width: 100%;
+        box-sizing: border-box;
+
+        padding: 14px 16px;
+
+        font-size: 13px;
+        border-radius: 7px;
+    }
+}
