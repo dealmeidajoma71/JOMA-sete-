@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Produto | RIGHTJOMA7</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<!-- ======================================================
+     RJ7 PRODUCT — HEADER
+====================================================== -->
+
+<header class="header">
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <a href="../index.html">
+
+            <img
+                src="../images/logo/logo-rj7.png"
+                alt="RJ7"
+            >
+
+        </a>
+
+    </div>
+
+
+    <!-- NAVEGAÇÃO -->
+
+    <nav class="header-nav">
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
+        <!-- LOJA -->
+
+        <a
+            href="shop.html"
+            class="shop-header-link"
+        >
+            Loja
+        </a>
+
+
+        <!-- FAVORITOS -->
+
+        <a
+            href="favorites.html"
+            class="header-icon favorite-button"
+            aria-label="Favoritos"
+        >
+
+            <i class="fa-regular fa-heart"></i>
+
+        </a>
+
+
+        <!-- CARRINHO -->
+
+        <a
+            href="cart.html"
+            class="header-icon cart-button"
+            aria-label="Carrinho"
+        >
+
+            <i class="fa-solid fa-bag-shopping"></i>
+
+            <span id="cartCount">
+                0
+            </span>
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="rj7-product-page">
+
+
+    <!-- ======================================
+         INFORMAÇÕES DO PRODUTO
+    ======================================= -->
+
+    <section class="rj7-product-heading">
+
+        <p id="productCategory">
+            RIGHTJOMA7
+        </p>
+
+
+        <h1 id="productName">
+            Produto
+        </h1>
+
+
+        <p
+            id="productPrice"
+            class="rj7-product-price"
+        >
+            0 Kz
+        </p>
+
+    </section>
+
+
+
+    <!-- ======================================
+         GALERIA DO PRODUTO
+    ======================================= -->
+
+    <section class="rj7-product-gallery">
+
+    <div
+        class="rj7-gallery"
+        id="productGallery"
+    >
+
+        <div
+            class="rj7-gallery-track"
+            id="productGalleryTrack"
+        >
+        </div>
+
+    </div>
+
+
+    <div
+        class="rj7-gallery-dots"
+        id="productGalleryDots"
+    >
+    </div>
+
+</section>
+
+
+
+    <!-- ======================================
+         ÁREA DE COMPRA
+    ======================================= -->
+
+    <section class="rj7-product-buy">
+
+
+<!-- CORES -->
+
+<div class="rj7-color-heading">
+
+    <strong>
+        Cor
+    </strong>
+
+</div>
+
+
+<div
+    id="productColors"
+    class="rj7-colors"
+>
+</div>
+
+
+<!-- TAMANHOS -->
+
+<div class="rj7-size-heading">
+
+    <strong>
+        Selecionar tamanho
+    </strong>
+
+    <button
+        type="button"
+        id="sizeGuideButton"
+        class="rj7-size-guide"
+    >
+        Guia de tamanhos
+    </button>
+
+</div>
+
+
+<div
+    id="productSizes"
+    class="rj7-sizes"
+>
+</div>
+
+<!-- ==========================================
+     GUIA DE TAMANHOS
+========================================== -->
+
+<div
+    id="sizeGuideModal"
+    class="rj7-size-guide-modal"
+    aria-hidden="true"
+>
+
+    <div class="rj7-size-guide-box">
+
+        <button
+            type="button"
+            id="closeSizeGuide"
+            class="rj7-size-guide-close"
+            aria-label="Fechar"
+        >
+            ×
+        </button>
+
+        <span class="rj7-size-guide-label">
+            RIGHTJOMA7
+        </span>
+
+        <h2>
+            Guia de tamanhos
+        </h2>
+
+        <p class="rj7-size-guide-description">
+            Encontra o tamanho ideal para ti.
+        </p>
+
+        <div class="rj7-size-table-wrapper">
+
+            <table class="rj7-size-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Tamanho</th>
+                        <th>Peito</th>
+                        <th>Comprimento</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>XS</td>
+                        <td>88–92 cm</td>
+                        <td>64–68 cm</td>
+                    </tr>
+
+                    <tr>
+                        <td>S</td>
+                        <td>92–96 cm</td>
+                        <td>68–70 cm</td>
+                    </tr>
+
+                    <tr>
+                        <td>M</td>
+                        <td>96–102 cm</td>
+                        <td>70–72 cm</td>
+                    </tr>
+
+                    <tr>
+                        <td>L</td>
+                        <td>102–108 cm</td>
+                        <td>72–74 cm</td>
+                    </tr>
+
+                    <tr>
+                        <td>XL</td>
+                        <td>108–114 cm</td>
+                        <td>74–76 cm</td>
+                    </tr>
+
+                    <tr>
+                        <td>XXL</td>
+                        <td>114–122 cm</td>
+                        <td>76–78 cm</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p class="rj7-size-guide-note">
+            As medidas podem variar ligeiramente dependendo do modelo da peça.
+        </p>
+
+    </div>
+
+</div>
+
+        <!-- QUANTIDADE -->
+
+        <div class="quantity-box">
+
+            <button
+                id="minusQuantity"
+                type="button"
+            >
+                −
+            </button>
+
+
+            <span id="quantity">
+                1
+            </span>
+
+
+            <button
+                id="plusQuantity"
+                type="button"
+            >
+                +
+            </button>
+
+        </div>
+
+
+
+        <!-- BOTÕES -->
+
+        <div class="rj7-product-actions">
+
+
+            <button
+                id="addProductCart"
+                class="rj7-add-cart"
+                type="button"
+            >
+                Adicionar ao carrinho
+            </button>
+
+
+
+            <button
+                id="addProductFavorite"
+                class="rj7-favorite"
+                type="button"
+            >
+                ♡ Favorito
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+<!-- ==========================================
+     AVALIAÇÕES DO PRODUTO
+========================================== -->
+
+<section class="rj7-reviews">
+
+    <div class="rj7-reviews-header">
+
+        <p class="rj7-reviews-label">
+            OPINIÕES
+        </p>
+
+        <h2>
+            Avaliações
+        </h2>
+
+        <div class="rj7-rating-summary">
+
+            <strong id="reviewsAverage">
+                0,0
+            </strong>
+
+            <div
+                id="reviewsStars"
+                class="rj7-review-stars"
+            >
+                ☆☆☆☆☆
+            </div>
+
+            <span id="reviewsCount">
+                0 avaliações
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- FORMULÁRIO -->
+
+    <div
+        id="reviewFormContainer"
+        class="rj7-review-form-container"
+    >
+
+        <h3>
+            Avaliar este produto
+        </h3>
+
+
+        <div
+            id="reviewRating"
+            class="rj7-rating-selector"
+        >
+
+            <button
+                type="button"
+                data-rating="1"
+            >
+                ☆
+            </button>
+
+            <button
+                type="button"
+                data-rating="2"
+            >
+                ☆
+            </button>
+
+            <button
+                type="button"
+                data-rating="3"
+            >
+                ☆
+            </button>
+
+            <button
+                type="button"
+                data-rating="4"
+            >
+                ☆
+            </button>
+
+            <button
+                type="button"
+                data-rating="5"
+            >
+                ☆
+            </button>
+
+        </div>
+
+
+        <textarea
+            id="reviewComment"
+            placeholder="Escreve a tua opinião sobre este produto..."
+            maxlength="500"
+        ></textarea>
+
+
+        <button
+            id="submitReview"
+            type="button"
+            class="rj7-submit-review"
+        >
+            Enviar avaliação
+        </button>
+
+    </div>
+
+
+    <!-- LISTA DE AVALIAÇÕES -->
+
+    <div
+        id="reviewsList"
+        class="rj7-reviews-list"
+    >
+
+        <p class="rj7-reviews-loading">
+            A carregar avaliações...
+        </p>
+
+    </div>
+
+</section>
+</main>
+
+
+
+<script
+    type="module"
+    src="../js/script.js"
+></script>
+<script type="module" src="../js/account-floating-button.js"></script>
+
+</body>
+
+</html>
