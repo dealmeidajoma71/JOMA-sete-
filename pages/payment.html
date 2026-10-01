@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pagamento | RIGHTJOMA7</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="logo">
+
+        <img
+            src="../images/logo/logo-rj7.png"
+            alt="RJ7"
+        >
+
+    </div>
+
+</header>
+
+
+
+<main class="rj7-payment-page">
+
+
+    <section class="rj7-payment-section">
+
+
+        <div class="rj7-payment-header">
+
+            <p>
+                RIGHTJOMA7
+            </p>
+
+            <h1>
+                Pagamento
+            </h1>
+
+            <span>
+                Finaliza a tua compra com segurança.
+            </span>
+
+        </div>
+
+
+
+        <!-- ======================================
+             RESUMO DO PEDIDO
+        ======================================= -->
+
+        <div
+            id="paymentOrderSummary"
+            class="rj7-payment-summary"
+        >
+
+            <div>
+
+                <span>
+                    Pedido
+                </span>
+
+                <strong id="paymentOrderId">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="paymentTotal">
+                    0 Kz
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ======================================
+             MÉTODOS DE PAGAMENTO
+        ======================================= -->
+
+        <div class="rj7-payment-method">
+
+
+            <h2>
+                Método de pagamento
+            </h2>
+
+
+
+            <!-- ==================================
+                 VISA
+            =================================== -->
+
+            <button
+                type="button"
+                id="visaPaymentButton"
+                class="rj7-visa-payment"
+            >
+
+                <span class="rj7-visa-icon">
+                    💳
+                </span>
+
+                <span>
+
+                    <strong>
+                        Cartão Visa
+                    </strong>
+
+                    <small>
+                        Pagamento seguro por cartão
+                    </small>
+
+                </span>
+
+            </button>
+
+
+
+            <!-- ==================================
+                 BINANCE PAY
+            =================================== -->
+
+            <button
+                type="button"
+                id="binancePaymentButton"
+                class="rj7-binance-payment"
+            >
+
+                <span class="rj7-binance-icon">
+                    ₿
+                </span>
+
+                <span>
+
+                    <strong>
+                        Binance Pay
+                    </strong>
+
+                    <small>
+                        Paga com Binance Pay
+                    </small>
+
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- ======================================
+             ÁREA VISA
+        ======================================= -->
+
+        <div
+            id="visaPaymentArea"
+            class="rj7-visa-payment-area"
+            hidden
+        >
+
+            <div class="rj7-payment-secure">
+
+                <span>
+                    🔒
+                </span>
+
+                <div>
+
+                    <strong>
+                        Pagamento seguro
+                    </strong>
+
+                    <p>
+                        Serás encaminhado para o sistema
+                        seguro de pagamento.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="continueVisaPayment"
+                class="rj7-continue-payment"
+            >
+
+                Continuar para pagamento
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ======================================
+             ÁREA BINANCE PAY
+        ======================================= -->
+
+        <div
+            id="binancePaymentArea"
+            class="rj7-binance-payment-area"
+            hidden
+        >
+
+            <div class="rj7-payment-secure">
+
+                <span>
+                    🔒
+                </span>
+
+                <div>
+
+                    <strong>
+                        Binance Pay
+                    </strong>
+
+                    <p>
+                        Pagamento digital através da
+                        Binance Pay.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 BINANCE CHECKOUT
+            =================================== -->
+
+            <div
+                id="binanceCheckoutContainer"
+                class="rj7-binance-checkout-container"
+            >
+
+                <div class="rj7-binance-placeholder">
+
+                    <strong>
+                        Binance Pay
+                    </strong>
+
+                    <p>
+                        Pagamento seguro através da Binance Pay.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <button
+                type="button"
+                id="continueBinancePayment"
+                class="rj7-continue-payment"
+            >
+
+                Continuar com Binance Pay
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ======================================
+             VOLTAR
+        ======================================= -->
+
+        <a
+            href="checkout.html"
+            class="rj7-payment-back"
+        >
+
+            ← Voltar ao checkout
+
+        </a>
+
+
+    </section>
+
+</main>
+
+
+
+<script type="module">
+
+import { supabase } from "../js/supabase.js";
+
+
+// ==========================================
+// RJ7 — PAGAMENTO
+// ==========================================
+
+
+// ==========================================
+// NOTIFICAÇÕES
+// ==========================================
+
+function rj7Notify(message) {
+
+    let container =
+        document.getElementById(
+            "rj7Notifications"
+        );
+
+
+    if (!container) {
+
+        container =
+            document.createElement("div");
+
+        container.id =
+            "rj7Notifications";
+
+        document.body.appendChild(
+            container
+        );
+
+    }
+
+
+    const notification =
+        document.createElement("div");
+
+
+    notification.className =
+        "rj7-notification";
+
+
+    notification.textContent =
+        message;
+
+
+    container.appendChild(
+        notification
+    );
+
+
+    requestAnimationFrame(() => {
+
+        notification.classList.add(
+            "show"
+        );
+
+    });
+
+
+    setTimeout(() => {
+
+        notification.classList.remove(
+            "show"
+        );
+
+
+        setTimeout(() => {
+
+            notification.remove();
+
+        }, 250);
+
+    }, 3000);
+
+}
+
+
+
+// ==========================================
+// PEDIDO ATUAL
+// ==========================================
+
+const currentOrder =
+    JSON.parse(
+        localStorage.getItem(
+            "RJ7_currentOrder"
+        )
+    );
+
+
+
+// ==========================================
+// ELEMENTOS DO PEDIDO
+// ==========================================
+
+const paymentOrderId =
+    document.getElementById(
+        "paymentOrderId"
+    );
+
+
+const paymentTotal =
+    document.getElementById(
+        "paymentTotal"
+    );
+
+
+
+// ==========================================
+// MÉTODOS DE PAGAMENTO
+// ==========================================
+
+const visaPaymentButton =
+    document.getElementById(
+        "visaPaymentButton"
+    );
+
+
+const binancePaymentButton =
+    document.getElementById(
+        "binancePaymentButton"
+    );
+
+
+
+// ==========================================
+// ÁREAS DE PAGAMENTO
+// ==========================================
+
+const visaPaymentArea =
+    document.getElementById(
+        "visaPaymentArea"
+    );
+
+
+const binancePaymentArea =
+    document.getElementById(
+        "binancePaymentArea"
+    );
+
+
+
+// ==========================================
+// BOTÕES DE CONTINUAÇÃO
+// ==========================================
+
+const continueVisaPayment =
+    document.getElementById(
+        "continueVisaPayment"
+    );
+
+
+const continueBinancePayment =
+    document.getElementById(
+        "continueBinancePayment"
+    );
+
+
+
+// ==========================================
+// VERIFICAR PEDIDO
+// ==========================================
+
+if (!currentOrder) {
+
+    rj7Notify(
+        "Não foi encontrado nenhum pedido."
+    );
+
+
+    setTimeout(() => {
+
+        window.location.href =
+            "cart.html";
+
+    }, 1200);
+
+}
+
+
+
+// ==========================================
+// MOSTRAR PEDIDO
+// ==========================================
+
+if (currentOrder) {
+
+    if (paymentOrderId) {
+
+        paymentOrderId.textContent =
+            currentOrder.id;
+
+    }
+
+
+    if (paymentTotal) {
+
+        paymentTotal.textContent =
+            Number(
+                currentOrder.total
+            ).toLocaleString(
+                "pt-PT"
+            ) + " Kz";
+
+    }
+
+}
+
+
+
+// ==========================================
+// SELECIONAR VISA
+// ==========================================
+
+if (visaPaymentButton) {
+
+    visaPaymentButton.addEventListener(
+        "click",
+        function () {
+
+            if (visaPaymentArea) {
+
+                visaPaymentArea.hidden =
+                    false;
+
+            }
+
+
+            if (binancePaymentArea) {
+
+                binancePaymentArea.hidden =
+                    true;
+
+            }
+
+        }
+    );
+
+}
+
+
+
+// ==========================================
+// SELECIONAR BINANCE PAY
+// ==========================================
+
+if (binancePaymentButton) {
+
+    binancePaymentButton.addEventListener(
+        "click",
+        function () {
+
+            if (binancePaymentArea) {
+
+                binancePaymentArea.hidden =
+                    false;
+
+            }
+
+
+            if (visaPaymentArea) {
+
+                visaPaymentArea.hidden =
+                    true;
+
+            }
+
+        }
+    );
+
+}
+
+
+
+// ==========================================
+// CONTINUAR PARA VISA
+// ==========================================
+
+if (continueVisaPayment) {
+
+    continueVisaPayment.addEventListener(
+        "click",
+        function () {
+
+            rj7Notify(
+                "O pagamento Visa ainda não está disponível."
+            );
+
+        }
+    );
+
+}
+
+
+
+// ==========================================
+// BINANCE PAY
+// CRIAR PEDIDO E ABRIR CHECKOUT
+// ==========================================
+
+if (continueBinancePayment) {
+
+    continueBinancePayment.addEventListener(
+        "click",
+        async function () {
+
+            // --------------------------------------
+            // VERIFICAR PEDIDO
+            // --------------------------------------
+
+            if (!currentOrder?.id) {
+
+                rj7Notify(
+                    "Não foi encontrado nenhum pedido."
+                );
+
+                return;
+
+            }
+
+
+            // --------------------------------------
+            // BLOQUEAR BOTÃO
+            // --------------------------------------
+
+            continueBinancePayment.disabled =
+                true;
+
+            continueBinancePayment.textContent =
+                "A preparar pagamento...";
+
+
+            try {
+
+                console.log(
+                    "RJ7 BINANCE PAY — a iniciar pagamento:",
+                    currentOrder.id
+                );
+
+
+                // ----------------------------------
+                // VERIFICAR SESSÃO
+                // ----------------------------------
+
+                const {
+                    data: sessionData,
+                    error: sessionError
+                } =
+                    await supabase.auth.getSession();
+
+
+                if (
+                    sessionError ||
+                    !sessionData?.session?.access_token
+                ) {
+
+                    console.error(
+                        "RJ7 BINANCE PAY — sessão não encontrada:",
+                        sessionError
+                    );
+
+
+                    rj7Notify(
+                        "A tua sessão expirou. Inicia sessão novamente."
+                    );
+
+
+                    return;
+
+                }
+
+
+
+                // ----------------------------------
+                // CHAMAR EDGE FUNCTION
+                // ----------------------------------
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabase.functions.invoke(
+                        "binance-pay-create-order",
+                        {
+                            body: {
+                                orderId:
+                                    currentOrder.id
+                            }
+                        }
+                    );
+
+
+                console.log(
+                    "RJ7 BINANCE PAY — resposta completa:",
+                    data
+                );
+
+
+
+                // ----------------------------------
+                // ERRO DA EDGE FUNCTION
+                // ----------------------------------
+
+                if (error) {
+
+                    console.error(
+                        "RJ7 BINANCE PAY — erro da Edge Function:",
+                        error
+                    );
+
+
+                    rj7Notify(
+                        "Não foi possível iniciar o pagamento."
+                    );
+
+
+                    return;
+
+                }
+
+
+
+                // ----------------------------------
+                // VERIFICAR SUCESSO
+                // ----------------------------------
+
+                if (!data?.success) {
+
+                    console.error(
+                        "RJ7 BINANCE PAY — pagamento não criado:",
+                        data
+                    );
+
+
+                    rj7Notify(
+                        data?.message ||
+                        "Não foi possível preparar o pagamento."
+                    );
+
+
+                    return;
+
+                }
+
+
+
+                // ----------------------------------
+                // VERIFICAR CHECKOUT URL
+                // ----------------------------------
+
+                if (!data?.checkoutUrl) {
+
+                    console.error(
+                        "RJ7 BINANCE PAY — checkoutUrl não recebido:",
+                        data
+                    );
+
+
+                    rj7Notify(
+                        "A Binance criou o pagamento, mas não foi recebido o endereço de pagamento."
+                    );
+
+
+                    return;
+
+                }
+
+
+
+                // ----------------------------------
+                // GUARDAR INFORMAÇÕES DO PAGAMENTO
+                // ----------------------------------
+
+                try {
+
+                    localStorage.setItem(
+                        "RJ7_binancePayment",
+                        JSON.stringify({
+
+                            orderId:
+                                currentOrder.id,
+
+                            merchantTradeNo:
+                                data.merchantTradeNo ||
+                                null,
+
+                            prepayId:
+                                data.prepayId ||
+                                null,
+
+                            checkoutUrl:
+                                data.checkoutUrl ||
+                                null,
+
+                            createdAt:
+                                Date.now()
+
+                        })
+                    );
+
+                } catch (storageError) {
+
+                    console.warn(
+                        "RJ7 BINANCE PAY — não foi possível guardar dados locais:",
+                        storageError
+                    );
+
+                }
+
+
+
+                // ----------------------------------
+                // LOGS
+                // ----------------------------------
+
+                console.log(
+                    "RJ7 BINANCE PAY — pagamento criado."
+                );
+
+
+                console.log(
+                    "RJ7 BINANCE PAY — merchantTradeNo:",
+                    data.merchantTradeNo
+                );
+
+
+                console.log(
+                    "RJ7 BINANCE PAY — prepayId:",
+                    data.prepayId
+                );
+
+
+                console.log(
+                    "RJ7 BINANCE PAY — checkoutUrl:",
+                    data.checkoutUrl
+                );
+
+
+
+                // ----------------------------------
+                // NOTIFICAÇÃO
+                // ----------------------------------
+
+                rj7Notify(
+                    "Pagamento preparado. A abrir Binance Pay..."
+                );
+
+
+
+                // ----------------------------------
+                // ABRIR CHECKOUT BINANCE
+                // ----------------------------------
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        data.checkoutUrl;
+
+                }, 700);
+
+
+            } catch (error) {
+
+                console.error(
+                    "RJ7 BINANCE PAY — erro inesperado:",
+                    error
+                );
+
+
+                rj7Notify(
+                    "Ocorreu um erro ao preparar o pagamento."
+                );
+
+
+            } finally {
+
+                continueBinancePayment.disabled =
+                    false;
+
+                continueBinancePayment.textContent =
+                    "Continuar com Binance Pay";
+
+            }
+
+        }
+    );
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
