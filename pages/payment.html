@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pagamento | RIGHTJOMA7</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+        .payment-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px 100px;
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .payment-header h1 {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        .payment-header p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .payment-card {
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+
+        .payment-card h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 22px;
+        }
+
+        .order-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .order-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .order-row span:first-child {
+            color: #777;
+        }
+
+        .order-row span:last-child {
+            font-weight: 500;
+            color: #111;
+            text-align: right;
+        }
+
+        .order-total {
+            border-top: 1px solid #eee;
+            padding-top: 18px;
+            margin-top: 8px;
+        }
+
+        .order-total span:last-child {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .payment-method {
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .payment-method-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .payment-method-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            color: #111;
+            font-size: 19px;
+        }
+
+        .payment-method-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .payment-method-description {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .payment-button {
+            border: none;
+            border-radius: 8px;
+            padding: 12px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity .2s ease, transform .2s ease;
+            background: #111;
+            color: #fff;
+        }
+
+        .payment-button:hover {
+            opacity: .9;
+        }
+
+        .payment-button:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        .payment-button.binance-button {
+            background: #f0b90b;
+            color: #111;
+        }
+
+        .payment-button.binance-button:hover {
+            opacity: .92;
+        }
+
+        .payment-unavailable {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .binance-payment-area {
+            display: none;
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid #eee;
+        }
+
+        .binance-payment-area.active {
+            display: block;
+        }
+
+        .binance-payment-info {
+            background: #fafafa;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .payment-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #111;
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        .payment-back:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .payment-page {
+                padding: 35px 16px 70px;
+            }
+
+            .payment-header h1 {
+                font-size: 27px;
+            }
+
+            .payment-card {
+                padding: 20px;
+                border-radius: 12px;
+            }
+
+            .payment-method {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .payment-button {
+                width: 100%;
+            }
+
+            .order-row {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="payment-page">
+
+        <a href="cart.html" class="payment-back">
+            <i class="fa-solid fa-arrow-left"></i>
+            Voltar ao carrinho
+        </a>
+
+        <header class="payment-header">
+            <h1>Pagamento</h1>
+            <p>Escolhe o método de pagamento para concluir a tua encomenda.</p>
+        </header>
+
+        <section class="payment-card">
+            <h2>Resumo da encomenda</h2>
+
+            <div class="order-summary">
+
+                <div class="order-row">
+                    <span>Pedido</span>
+                    <span id="paymentOrderId">—</span>
+                </div>
+
+                <div class="order-row">
+                    <span>Cliente</span>
+                    <span id="paymentCustomerName">—</span>
+                </div>
+
+                <div class="order-row">
+                    <span>Telefone</span>
+                    <span id="paymentCustomerPhone">—</span>
+                </div>
+
+                <div class="order-row">
+                    <span>Endereço</span>
+                    <span id="paymentCustomerAddress">—</span>
+                </div>
+
+                <div class="order-row order-total">
+                    <span>Total</span>
+                    <span id="paymentTotal">0 Kz</span>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="payment-card">
+
+            <h2>Método de pagamento</h2>
+
+            <div class="payment-methods">
+
+                <!-- VISA -->
+                <div class="payment-method">
+
+                    <div class="payment-method-info">
+
+                        <div class="payment-method-icon">
+                            <i class="fa-brands fa-cc-visa"></i>
+                        </div>
+
+                        <div>
+                            <div class="payment-method-title">
+                                Cartão Visa
+                            </div>
+
+                            <div class="payment-method-description">
+                                Pagamento com cartão bancário
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <span class="payment-unavailable">
+                        Brevemente
+                    </span>
+
+                </div>
+
+
+                <!-- BINANCE PAY -->
+                <div class="payment-method">
+
+                    <div class="payment-method-info">
+
+                        <div class="payment-method-icon">
+                            <i class="fa-brands fa-bitcoin"></i>
+                        </div>
+
+                        <div>
+                            <div class="payment-method-title">
+                                Binance Pay
+                            </div>
+
+                            <div class="payment-method-description">
+                                Pagamento rápido e seguro através da Binance Pay
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="payment-button binance-button"
+                        id="continueBinancePayment"
+                    >
+                        Pagar com Binance Pay
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- BINANCE PAYMENT AREA -->
+            <div
+                class="binance-payment-area"
+                id="binancePaymentArea"
+            >
+
+                <div class="binance-payment-info">
+                    Serás redirecionado para o checkout seguro da Binance Pay
+                    para concluir o pagamento da tua encomenda.
+                </div>
+
+                <div id="binanceCheckoutContainer"></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- NOTIFICATIONS -->
+    <div id="rj7Notifications"></div>
+
+
+    <script type="module">
+
+        import { supabase } from "../js/supabase.js";
+
+
+        /* ================================
+           RJ7 NOTIFICATIONS
+        ================================= */
+
+        function rj7Notify(message) {
+
+            let container =
+                document.getElementById("rj7Notifications");
+
+            if (!container) {
+
+                container = document.createElement("div");
+
+                container.id = "rj7Notifications";
+
+                document.body.appendChild(container);
+
+            }
+
+            const notification =
+                document.createElement("div");
+
+            notification.className =
+                "rj7-notification";
+
+            notification.textContent =
+                message;
+
+            container.appendChild(notification);
+
+            requestAnimationFrame(() => {
+
+                notification.classList.add("show");
+
+            });
+
+            setTimeout(() => {
+
+                notification.classList.remove("show");
+
+                setTimeout(() => {
+
+                    notification.remove();
+
+                }, 250);
+
+            }, 3000);
+        }
+
+
+        /* ================================
+           CURRENT ORDER
+        ================================= */
+
+        const currentOrder =
+            JSON.parse(
+                localStorage.getItem("RJ7_currentOrder")
+            );
+
+
+        if (!currentOrder || !currentOrder.id) {
+
+            rj7Notify(
+                "Não foi possível encontrar a encomenda."
+            );
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "cart.html";
+
+            }, 2000);
+
+        }
+
+
+        /* ================================
+           PAYMENT SUMMARY
+        ================================= */
+
+        function renderPaymentSummary() {
+
+            if (!currentOrder) return;
+
+            const orderId =
+                document.getElementById(
+                    "paymentOrderId"
+                );
+
+            const customerName =
+                document.getElementById(
+                    "paymentCustomerName"
+                );
+
+            const customerPhone =
+                document.getElementById(
+                    "paymentCustomerPhone"
+                );
+
+            const customerAddress =
+                document.getElementById(
+                    "paymentCustomerAddress"
+                );
+
+            const total =
+                document.getElementById(
+                    "paymentTotal"
+                );
+
+
+            if (orderId) {
+
+                orderId.textContent =
+                    currentOrder.id;
+
+            }
+
+
+            if (customerName) {
+
+                customerName.textContent =
+                    currentOrder.customer_name ||
+                    "—";
+
+            }
+
+
+            if (customerPhone) {
+
+                customerPhone.textContent =
+                    currentOrder.customer_phone ||
+                    "—";
+
+            }
+
+
+            if (customerAddress) {
+
+                customerAddress.textContent =
+                    currentOrder.customer_address ||
+                    "—";
+
+            }
+
+
+            if (total) {
+
+                total.textContent =
+                    `${Number(
+                        currentOrder.total || 0
+                    ).toLocaleString("pt-PT")} Kz`;
+
+            }
+
+        }
+
+
+        renderPaymentSummary();
+
+
+        /* ================================
+           BINANCE PAY
+        ================================= */
+
+        const binanceButton =
+            document.getElementById(
+                "continueBinancePayment"
+            );
+
+        const binanceArea =
+            document.getElementById(
+                "binancePaymentArea"
+            );
+
+
+        if (binanceButton) {
+
+            binanceButton.addEventListener(
+                "click",
+                continueBinancePayment
+            );
+
+        }
+
+
+        async function continueBinancePayment() {
+
+            if (!currentOrder || !currentOrder.id) {
+
+                rj7Notify(
+                    "Não foi possível encontrar a encomenda."
+                );
+
+                return;
+
+            }
+
+
+            binanceButton.disabled = true;
+
+            binanceButton.textContent =
+                "A preparar pagamento...";
+
+
+            try {
+
+                /* ================================
+                   SESSION
+                ================================= */
+
+                const {
+                    data: sessionData,
+                    error: sessionError
+                } = await supabase.auth.getSession();
+
+
+                if (sessionError) {
+
+                    console.error(
+                        "RJ7 BINANCE PAY — erro ao obter sessão:",
+                        sessionError
+                    );
+
+                    throw new Error(
+                        "Não foi possível validar a sessão."
+                    );
+
+                }
+
+
+                const session =
+                    sessionData?.session;
+
+
+                if (!session?.user) {
+
+                    rj7Notify(
+                        "Inicia sessão antes de finalizar a compra."
+                    );
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "login.html";
+
+                    }, 2000);
+
+                    return;
+
+                }
+
+
+                console.log(
+                    "RJ7 BINANCE PAY — sessão validada."
+                );
+
+
+                /* ================================
+                   CREATE BINANCE ORDER
+                ================================= */
+
+                console.log(
+                    "RJ7 BINANCE PAY — a criar pagamento..."
+                );
+
+
+                const {
+                    data,
+                    error
+                } = await supabase.functions.invoke(
+                    "binance-pay-create-order",
+                    {
+                        body: {
+                            orderId:
+                                currentOrder.id
+                        }
+                    }
+                );
+
+
+                if (error) {
+
+                    console.error(
+                        "RJ7 BINANCE PAY — erro da Edge Function:",
+                        error
+                    );
+
+                    throw new Error(
+                        error.message ||
+                        "Não foi possível criar o pagamento."
+                    );
+
+                }
+
+
+                console.log(
+                    "RJ7 BINANCE PAY — resposta:",
+                    data
+                );
+
+
+                if (!data?.success) {
+
+                    throw new Error(
+                        data?.message ||
+                        "Não foi possível criar o pagamento."
+                    );
+
+                }
+
+
+                if (!data?.checkoutUrl) {
+
+                    throw new Error(
+                        "A Binance não devolveu o checkoutUrl."
+                    );
+
+                }
+
+
+                /* ================================
+                   SAVE BINANCE PAYMENT
+                ================================= */
+
+                const binancePayment = {
+
+                    orderId:
+                        currentOrder.id,
+
+                    merchantTradeNo:
+                        data.merchantTradeNo ||
+                        null,
+
+                    prepayId:
+                        data.prepayId ||
+                        null,
+
+                    checkoutUrl:
+                        data.checkoutUrl,
+
+                    qrcodeLink:
+                        data.qrcodeLink ||
+                        null,
+
+                    qrContent:
+                        data.qrContent ||
+                        null,
+
+                    deeplink:
+                        data.deeplink ||
+                        null,
+
+                    universalUrl:
+                        data.universalUrl ||
+                        null,
+
+                    totalKz:
+                        data.totalKz ||
+                        currentOrder.total,
+
+                    totalUsdt:
+                        data.totalUsdt ||
+                        null,
+
+                    createdAt:
+                        Date.now()
+
+                };
+
+
+                localStorage.setItem(
+                    "RJ7_binancePayment",
+                    JSON.stringify(
+                        binancePayment
+                    )
+                );
+
+
+                console.log(
+                    "RJ7 BINANCE PAY — pagamento guardado localmente:",
+                    binancePayment
+                );
+
+
+                rj7Notify(
+                    "A abrir o checkout da Binance Pay..."
+                );
+
+
+                /* ================================
+                   REAL BINANCE CHECKOUT
+                ================================= */
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        data.checkoutUrl;
+
+                }, 700);
+
+            } catch (error) {
+
+                console.error(
+                    "RJ7 BINANCE PAY — erro:",
+                    error
+                );
+
+                rj7Notify(
+                    error?.message ||
+                    "Não foi possível iniciar o pagamento."
+                );
+
+
+                binanceButton.disabled =
+                    false;
+
+                binanceButton.textContent =
+                    "Pagar com Binance Pay";
+
+            }
+
+        }
+
+    </script>
+
+
+    <style>
+
+        #rj7Notifications {
+            position: fixed;
+            top: 90px;
+            right: 24px;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: min(360px, calc(100vw - 32px));
+            pointer-events: none;
+        }
+
+        .rj7-notification {
+            background: #111;
+            color: #fff;
+            padding: 15px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4;
+            letter-spacing: 0.1px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.18);
+            border: 1px solid rgba(255,255,255,.08);
+            opacity: 0;
+            transform: translateY(-8px);
+            transition:
+                opacity .25s ease,
+                transform .25s ease;
+        }
+
+        .rj7-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+
+            #rj7Notifications {
+                top: 82px;
+                left: 16px;
+                right: 16px;
+                width: auto;
+            }
+
+            .rj7-notification{
+                width: 100%;
+                box-sizing: border-box;
+                padding: 14px 16px;
+                font-size: 13px;
+                border-radius: 7px;
+            }
+
+        }
+
+    </style>
+
+</body>
+</html>
