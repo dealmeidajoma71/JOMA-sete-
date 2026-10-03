@@ -180,6 +180,27 @@ if (
     );
 
 }
+function validateRJ7Phone(countryCode, phone) {
+
+    const number = phone.replace(/\D/g, "");
+
+    // 🇦🇴 Angola — +244
+    // Número nacional: 9 dígitos e começa por 9
+    if (countryCode === "+244") {
+
+        return /^9\d{8}$/.test(number);
+    }
+
+    // 🇳🇦 Namíbia — +264
+    // Números de comunicações eletrónicas:
+    // 81, 82, 83, 84, 85 ou 86 + 7 dígitos
+    if (countryCode === "+264") {
+
+        return /^(81|82|83|84|85|86)\d{7}$/.test(number);
+    }
+
+    return false;
+}
 const form = document.querySelector("form");
 function rj7RegisterSuccess() {
     const overlay = document.createElement("div");
@@ -283,7 +304,10 @@ if (!form) {
                 .getElementById("phone")
                 ?.value
                 .trim();
-
+const phoneCountry =
+    document
+        .getElementById("phone_country")
+        ?.value;
 
         const password =
             document
@@ -316,7 +340,29 @@ if (!form) {
             return;
 
         }
+if (!validateRJ7Phone(phoneCountry, phone)) {
 
+    if (phoneCountry === "+244") {
+
+        rj7Notify(
+            "Introduz um número de Angola válido. Exemplo: 923456789."
+        );
+
+    } else if (phoneCountry === "+264") {
+
+        rj7Notify(
+            "Introduz um número da Namíbia válido. Exemplo: 851234567."
+        );
+
+    } else {
+
+        rj7Notify(
+            "Seleciona um país válido."
+        );
+    }
+
+    return;
+}
 
         // ==========================================
         // VALIDAR PALAVRAS-PASSE
