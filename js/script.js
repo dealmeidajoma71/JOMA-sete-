@@ -6709,6 +6709,7 @@ if (
     );
 
 }
+
 function validateRJ7CheckoutPhone(countryCode, phone) {
 
     const number =
@@ -6725,6 +6726,148 @@ function validateRJ7CheckoutPhone(countryCode, phone) {
     }
 
     return false;
+}
+
+// ======================================================
+// LOCALIZAÇÃO DE ENTREGA — PROVÍNCIA E CIDADE
+// ======================================================
+
+const deliveryLocations = {
+
+    AO: {
+        "Luanda": [
+            "Talatona",
+            "Kilamba",
+            "Viana"
+        ],
+
+        "Benguela": [
+            "Benguela",
+            "Lobito",
+            "Catumbela"
+        ],
+
+        "Huíla": [
+            "Lubango",
+            "Humpata",
+            "Chibia"
+        ],
+
+        "Cunene": [
+            "Ondjiva"
+        ]
+    },
+
+    NA: {
+        "Khomas": [
+            "Windhoek",
+            "Katutura",
+            "Kleine Kuppe"
+        ],
+
+        "Erongo": [
+            "Walvis Bay",
+            "Swakopmund",
+            "Henties Bay"
+        ],
+
+        "Oshana": [
+            "Oshakati",
+            "Ongwediva",
+            "Ondangwa"
+        ]
+    }
+
+};
+
+const deliveryProvinceSelect =
+    document.getElementById("deliveryProvince");
+
+const deliveryCitySelect =
+    document.getElementById("deliveryCity");
+
+if (
+    deliveryCountrySelect &&
+    deliveryProvinceSelect &&
+    deliveryCitySelect
+) {
+
+    deliveryCountrySelect.addEventListener(
+        "change",
+        function () {
+
+            deliveryProvinceSelect.innerHTML =
+                '<option value="">Província / Região</option>';
+
+            deliveryCitySelect.innerHTML =
+                '<option value="">Cidade / Zona de entrega</option>';
+
+            deliveryCitySelect.disabled = true;
+
+            const locations =
+                deliveryLocations[this.value];
+
+            if (!locations) {
+                deliveryProvinceSelect.disabled = true;
+                return;
+            }
+
+            deliveryProvinceSelect.disabled = false;
+
+            Object.keys(locations).forEach(
+                function (province) {
+
+                    const option =
+                        document.createElement("option");
+
+                    option.value = province;
+                    option.textContent = province;
+
+                    deliveryProvinceSelect.appendChild(
+                        option
+                    );
+                }
+            );
+        }
+    );
+
+    deliveryProvinceSelect.addEventListener(
+        "change",
+        function () {
+
+            deliveryCitySelect.innerHTML =
+                '<option value="">Cidade / Zona de entrega</option>';
+
+            deliveryCitySelect.disabled = true;
+
+            const locations =
+                deliveryLocations[
+                    deliveryCountrySelect.value
+                ];
+
+            if (!locations || !locations[this.value]) {
+                return;
+            }
+
+            locations[this.value].forEach(
+                function (city) {
+
+                    const option =
+                        document.createElement("option");
+
+                    option.value = city;
+                    option.textContent = city;
+
+                    deliveryCitySelect.appendChild(
+                        option
+                    );
+                }
+            );
+
+            deliveryCitySelect.disabled = false;
+        }
+    );
+
 }
 // ======================================================
 // ENVIAR CHECKOUT
