@@ -10330,3 +10330,73 @@ a:focus-visible {
         font-size: 13px;
     }
 }
+
+/* =========================================
+   RJ7 — CRIAR CONTA
+   TELEFONE + PALAVRA-PASSE
+========================================= */
+
+.account-box .phone-box {
+    gap: 0;
+}
+
+.account-box .phone-box select {
+    flex-shrink: 0;
+    height: 100%;
+    padding: 0 4px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #333;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.account-box .phone-box input {
+    min-width: 0;
+    margin-left: 5px;
+}
+
+.account-box .password-box {
+    gap: 0;
+}
+
+.account-box .password-box input {
+    min-width: 0;
+}
+
+.account-box .password-action {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 3px;
+    padding: 0;
+
+    border: none;
+    background: transparent;
+
+    color: #777;
+    font-size: 13px;
+
+    cursor: pointer;
+    border-radius: 50%;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.account-box .password-action:hover {
+    color: #111;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.account-box .password-action:focus-visible {
+    outline: 2px solid #111;
+    outline-offset: 2px;
+}
