@@ -497,7 +497,7 @@ const deliveryCountry =
             if (customerName) {
 
                 customerName.textContent =
-                    currentOrder.customer_name ||
+                    currentOrder.customerName ||
                     "—";
 
             }
@@ -505,20 +505,20 @@ const deliveryCountry =
 
             if (customerPhone) {
 
-                customerPhone.textContent =
-                    currentOrder.customer_phone ||
-                    "—";
+    customerPhone.textContent =
+        currentOrder.customerPhone ||
+        "—";
 
-            }
+}
 
 
             if (customerAddress) {
 
-                customerAddress.textContent =
-                    currentOrder.customer_address ||
-                    "—";
+    customerAddress.textContent =
+        currentOrder.customerAddress ||
+        "—";
 
-            }
+}
 
 
             if (total) {
