@@ -6837,7 +6837,7 @@ if (!validateRJ7CheckoutPhone(
     } else if (deliveryCountry === "NA") {
 
         rj7Notify(
-            "Introduz um número da Namíbia válido. Exemplo: 851234567."
+            "Introduz um número da Namíbia válido. Exemplo: 8××××××××."
         );
 
     } else {
