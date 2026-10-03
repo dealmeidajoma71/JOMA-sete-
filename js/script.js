@@ -6749,8 +6749,25 @@ setTimeout(() => {
                 document.getElementById(
                     "customerAddress"
                 )?.value.trim();
+const deliveryCountry =
+    document.getElementById("deliveryCountry")?.value;
+if (!deliveryCountry) {
 
+    rj7Notify(
+        "Seleciona o país de entrega."
+    );
 
+    return;
+}
+let fullCustomerPhone = customerPhone;
+
+if (deliveryCountry === "AO") {
+    fullCustomerPhone = "+244" + customerPhone.replace(/\D/g, "");
+}
+
+if (deliveryCountry === "NA") {
+    fullCustomerPhone = "+264" + customerPhone.replace(/\D/g, "");
+}
             if (
                 !customerName ||
                 !customerPhone ||
@@ -6833,7 +6850,9 @@ setTimeout(() => {
                             customerName,
 
                         customer_phone:
-                            customerPhone,
+    fullCustomerPhone,
+    deliveryCountry:
+    deliveryCountry,
 
                         customer_address:
                             customerAddress,
