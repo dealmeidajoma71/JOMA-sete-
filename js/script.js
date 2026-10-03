@@ -6943,10 +6943,21 @@ setTimeout(() => {
                 )?.value.trim();
 
 
-            const customerAddress =
-                document.getElementById(
-                    "customerAddress"
-                )?.value.trim();
+            const deliveryProvince =
+    document.getElementById("deliveryProvince")?.value;
+
+const deliveryCity =
+    document.getElementById("deliveryCity")?.value;
+
+if (!deliveryProvince || !deliveryCity) {
+    rj7Notify(
+        "Seleciona a província/região e a cidade/zona de entrega."
+    );
+    return;
+}
+
+const customerAddress =
+    `${deliveryProvince} — ${deliveryCity}`;
 const deliveryCountry =
     document.getElementById("deliveryCountry")?.value;
 if (!deliveryCountry) {
@@ -6993,6 +7004,7 @@ if (!validateRJ7CheckoutPhone(
 
     return;
 }
+
             if (
                 !customerName ||
                 !customerPhone ||
