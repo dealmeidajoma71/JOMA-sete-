@@ -434,7 +434,8 @@
                 localStorage.getItem("RJ7_currentOrder")
             );
 
-
+const deliveryCountry =
+    currentOrder?.deliveryCountry || "";
         if (!currentOrder || !currentOrder.id) {
 
             rj7Notify(
