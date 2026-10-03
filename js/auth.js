@@ -54,6 +54,132 @@ function rj7Notify(message) {
 
     }, 3000);
 }
+const passwordInput = document.getElementById("password");
+const togglePassword = document.getElementById("toggle-password");
+const clearPassword = document.getElementById("clear-password");
+
+const confirmPasswordInput =
+    document.getElementById("confirm_password");
+
+const toggleConfirmPassword =
+    document.getElementById("toggle-confirm-password");
+
+const clearConfirmPassword =
+    document.getElementById("clear-confirm-password");
+
+
+if (passwordInput && togglePassword) {
+
+    togglePassword.addEventListener("click", () => {
+
+        const isPassword =
+            passwordInput.type === "password";
+
+        passwordInput.type =
+            isPassword ? "text" : "password";
+
+        const icon =
+            togglePassword.querySelector("i");
+
+        if (icon) {
+
+            icon.classList.toggle(
+                "fa-eye",
+                !isPassword
+            );
+
+            icon.classList.toggle(
+                "fa-eye-slash",
+                isPassword
+            );
+
+        }
+
+        togglePassword.setAttribute(
+            "aria-label",
+            isPassword
+                ? "Ocultar palavra-passe"
+                : "Mostrar palavra-passe"
+        );
+
+    });
+
+}
+
+
+if (passwordInput && clearPassword) {
+
+    clearPassword.addEventListener("click", () => {
+
+        passwordInput.value = "";
+        passwordInput.focus();
+
+    });
+
+}
+
+
+if (
+    confirmPasswordInput &&
+    toggleConfirmPassword
+) {
+
+    toggleConfirmPassword.addEventListener(
+        "click",
+        () => {
+
+            const isPassword =
+                confirmPasswordInput.type === "password";
+
+            confirmPasswordInput.type =
+                isPassword ? "text" : "password";
+
+            const icon =
+                toggleConfirmPassword.querySelector("i");
+
+            if (icon) {
+
+                icon.classList.toggle(
+                    "fa-eye",
+                    !isPassword
+                );
+
+                icon.classList.toggle(
+                    "fa-eye-slash",
+                    isPassword
+                );
+
+            }
+
+            toggleConfirmPassword.setAttribute(
+                "aria-label",
+                isPassword
+                    ? "Ocultar palavra-passe"
+                    : "Mostrar palavra-passe"
+            );
+
+        }
+    );
+
+}
+
+
+if (
+    confirmPasswordInput &&
+    clearConfirmPassword
+) {
+
+    clearConfirmPassword.addEventListener(
+        "click",
+        () => {
+
+            confirmPasswordInput.value = "";
+            confirmPasswordInput.focus();
+
+        }
+    );
+
+}
 const form = document.querySelector("form");
 function rj7RegisterSuccess() {
     const overlay = document.createElement("div");
