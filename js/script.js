@@ -6851,9 +6851,7 @@ if (deliveryCountry === "NA") {
 
                         customer_phone:
     fullCustomerPhone,
-    deliveryCountry:
-    deliveryCountry,
-
+    
                         customer_address:
                             customerAddress,
 
