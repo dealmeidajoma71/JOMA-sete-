@@ -370,17 +370,13 @@ if (!form) {
             }
 
 
-            console.log(
-                "RJ7 LOGIN — sessão criada com sucesso."
-            );
+            console.log("RJ7 LOGIN — sessão criada com sucesso.");
 
+rj7Notify("Login realizado com sucesso!");
 
-            // ======================================
-            // DASHBOARD
-            // ======================================
-
-            window.location.href =
-                "dashboard.html";
+setTimeout(() => {
+    window.location.href = "dashboard.html";
+}, 800);
 
 
         } catch (error) {
