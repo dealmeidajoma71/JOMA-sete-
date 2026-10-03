@@ -6709,7 +6709,23 @@ if (
     );
 
 }
+function validateRJ7CheckoutPhone(countryCode, phone) {
 
+    const number =
+        phone.replace(/\D/g, "");
+
+    // 🇦🇴 Angola
+    if (countryCode === "AO") {
+        return /^9\d{8}$/.test(number);
+    }
+
+    // 🇳🇦 Namíbia
+    if (countryCode === "NA") {
+        return /^(81|82|83|84|85|86)\d{7}$/.test(number);
+    }
+
+    return false;
+}
 // ======================================================
 // ENVIAR CHECKOUT
 // ======================================================
@@ -6806,6 +6822,33 @@ if (deliveryCountry === "AO") {
 
 if (deliveryCountry === "NA") {
     fullCustomerPhone = "+264" + customerPhone.replace(/\D/g, "");
+}
+if (!validateRJ7CheckoutPhone(
+    deliveryCountry,
+    customerPhone
+)) {
+
+    if (deliveryCountry === "AO") {
+
+        rj7Notify(
+            "Introduz um número de Angola válido. Exemplo: 923456789."
+        );
+
+    } else if (deliveryCountry === "NA") {
+
+        rj7Notify(
+            "Introduz um número da Namíbia válido. Exemplo: 851234567."
+        );
+
+    } else {
+
+        rj7Notify(
+            "Seleciona um país válido."
+        );
+
+    }
+
+    return;
 }
             if (
                 !customerName ||
