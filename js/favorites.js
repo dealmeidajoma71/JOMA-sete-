@@ -83,7 +83,20 @@ function getImagePath(product) {
         return "";
     }
 
-    return "../" + product.image_url;
+    const imageUrl =
+        product.image_url.trim();
+
+    // URL completa do Supabase ou outro servidor
+    if (
+        imageUrl.startsWith("http://") ||
+        imageUrl.startsWith("https://") ||
+        imageUrl.startsWith("data:")
+    ) {
+        return imageUrl;
+    }
+
+    // Caminho local do site
+    return "../" + imageUrl;
 
 }
 
