@@ -345,13 +345,13 @@ if (!validateRJ7Phone(phoneCountry, phone)) {
     if (phoneCountry === "+244") {
 
         rj7Notify(
-            "Introduz um número de Angola válido. Exemplo: 923456789."
+            "Introduz um número de Angola válido. Exemplo: 9××××××××."
         );
 
     } else if (phoneCountry === "+264") {
 
         rj7Notify(
-            "Introduz um número da Namíbia válido. Exemplo: 851234567."
+            "Introduz um número da Namíbia válido. Exemplo: 8××××××××."
         );
 
     } else {
