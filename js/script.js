@@ -6669,7 +6669,46 @@ function renderCheckout() {
         total.toLocaleString("pt-PT") +
         " Kz";
 }
+// ======================================================
+// PAÍS DE ENTREGA — CÓDIGO DO TELEFONE
+// ======================================================
 
+const deliveryCountrySelect =
+    document.getElementById("deliveryCountry");
+
+const customerPhoneInput =
+    document.getElementById("customerPhone");
+
+if (
+    deliveryCountrySelect &&
+    customerPhoneInput
+) {
+
+    deliveryCountrySelect.addEventListener(
+        "change",
+        function () {
+
+            if (this.value === "AO") {
+
+                customerPhoneInput.placeholder =
+                    "Telefone (+244)";
+
+            } else if (this.value === "NA") {
+
+                customerPhoneInput.placeholder =
+                    "Telefone (+264)";
+
+            } else {
+
+                customerPhoneInput.placeholder =
+                    "Telefone";
+
+            }
+
+        }
+    );
+
+}
 
 // ======================================================
 // ENVIAR CHECKOUT
