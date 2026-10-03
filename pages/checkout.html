@@ -70,11 +70,26 @@ required>
 
 
 
-<input 
-type="text" 
-id="customerAddress"
-placeholder="Endereço de entrega"
-required>
+<select
+    id="deliveryProvince"
+    required
+>
+    <option value="">Província / Região</option>
+</select>
+
+<select
+    id="deliveryCity"
+    required
+    disabled
+>
+    <option value="">Cidade / Zona de entrega</option>
+</select>
+
+<input
+    type="hidden"
+    id="customerAddress"
+    value=""
+>
 
 
 
