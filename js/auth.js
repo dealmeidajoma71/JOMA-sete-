@@ -55,7 +55,76 @@ function rj7Notify(message) {
     }, 3000);
 }
 const form = document.querySelector("form");
+function rj7RegisterSuccess() {
+    const overlay = document.createElement("div");
 
+    overlay.style.position = "fixed";
+    overlay.style.inset = "0";
+    overlay.style.zIndex = "100000";
+    overlay.style.display = "flex";
+    overlay.style.alignItems = "center";
+    overlay.style.justifyContent = "center";
+    overlay.style.padding = "20px";
+    overlay.style.background = "rgba(0, 0, 0, 0.45)";
+
+    const box = document.createElement("div");
+
+    box.style.width = "100%";
+    box.style.maxWidth = "380px";
+    box.style.padding = "28px";
+    box.style.boxSizing = "border-box";
+    box.style.background = "#fff";
+    box.style.borderRadius = "16px";
+    box.style.textAlign = "center";
+    box.style.boxShadow = "0 20px 60px rgba(0, 0, 0, 0.20)";
+
+    box.innerHTML = `
+        <h2 style="
+            margin: 0 0 12px;
+            color: #111;
+            font-size: 21px;
+        ">
+            Conta criada com sucesso!
+        </h2>
+
+        <p style="
+            margin: 0 0 24px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        ">
+            Enviámos um e-mail de confirmação para o teu endereço.
+            Abre o teu e-mail e clica no link para confirmar a tua conta.
+        </p>
+
+        <button
+            type="button"
+            id="rj7RegisterSuccessOk"
+            style="
+                width: 100%;
+                min-height: 48px;
+                border: none;
+                border-radius: 999px;
+                background: #111;
+                color: #fff;
+                font-size: 14px;
+                font-weight: 700;
+                cursor: pointer;
+            "
+        >
+            OK
+        </button>
+    `;
+
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+
+    document
+        .getElementById("rj7RegisterSuccessOk")
+        ?.addEventListener("click", () => {
+            window.location.href = "login.html";
+        });
+}
 if (!form) {
 
     console.error(
@@ -232,13 +301,7 @@ if (!form) {
             // SUCESSO
             // ======================================
 
-            rj7Notify(
-                "Conta criada com sucesso!"
-            );
-
-
-            window.location.href =
-                "login.html";
+            rj7RegisterSuccess();
 
 
         } catch (error) {
