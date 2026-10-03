@@ -71,8 +71,14 @@ Criar Conta
 
 </div>
 
-<div class="input-box">
+<div class="input-box phone-box">
+
     <i class="fa-solid fa-phone"></i>
+
+    <select id="phone_country" aria-label="País">
+        <option value="+244">🇦🇴 +244</option>
+        <option value="+264">🇳🇦 +264</option>
+    </select>
 
     <input
         type="tel"
@@ -80,28 +86,70 @@ Criar Conta
         placeholder="Telefone"
         required
     >
-</div>
-
-<div class="input-box">
-
-<i class="fa-solid fa-lock"></i>
-
-<input
-    type="password"
-    id="password"
-    placeholder="Palavra-passe"
-    required
->
 
 </div>
 
+<div class="input-box password-box">
+
+    <i class="fa-solid fa-lock"></i>
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Palavra-passe"
+        required
+    >
+
+    <button
+        type="button"
+        id="toggle-password"
+        class="password-action"
+        aria-label="Mostrar palavra-passe"
+    >
+        <i class="fa-solid fa-eye"></i>
+    </button>
+
+    <button
+        type="button"
+        id="clear-password"
+        class="password-action"
+        aria-label="Limpar palavra-passe"
+    >
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+
+</div>
 
 
-<div class="input-box">
 
-<i class="fa-solid fa-lock"></i>
+<div class="input-box password-box">
 
-<input type="password" id="confirm_password" placeholder="Confirmar palavra-passe" required>
+    <i class="fa-solid fa-lock"></i>
+
+    <input
+        type="password"
+        id="confirm_password"
+        placeholder="Confirmar palavra-passe"
+        required
+    >
+
+    <button
+        type="button"
+        id="toggle-confirm-password"
+        class="password-action"
+        aria-label="Mostrar palavra-passe"
+    >
+        <i class="fa-solid fa-eye"></i>
+    </button>
+
+    <button
+        type="button"
+        id="clear-confirm-password"
+        class="password-action"
+        aria-label="Limpar palavra-passe"
+    >
+        <i class="fa-solid fa-xmark"></i>
+    </button>
 
 </div>
 
