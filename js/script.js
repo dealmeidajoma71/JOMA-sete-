@@ -4815,12 +4815,10 @@ async function loadProductImages() {
                 error
             );
 
-            // Usar a imagem principal existente
-            // caso não existam imagens na galeria.
-
+            // Usar a imagem principal do produto
             productImages = [
-                selectedProduct.image
-            ];
+                selectedProduct.image_url
+            ].filter(Boolean);
 
             renderProductGallery();
 
@@ -4828,11 +4826,16 @@ async function loadProductImages() {
         }
 
 
-        productImages =
-            (images || []).map(
-                image =>
-                    image.image_url
-            );
+        // --------------------------------------------------
+        // IMAGEM PRINCIPAL + IMAGENS DA GALERIA
+        // --------------------------------------------------
+
+        productImages = [
+            selectedProduct.image_url,
+            ...(images || []).map(
+                image => image.image_url
+            )
+        ].filter(Boolean);
 
 
         // --------------------------------------------------
@@ -4842,8 +4845,8 @@ async function loadProductImages() {
         if (!productImages.length) {
 
             productImages = [
-                selectedProduct.image
-            ];
+                selectedProduct.image_url
+            ].filter(Boolean);
 
         }
 
@@ -4860,8 +4863,8 @@ async function loadProductImages() {
 
 
         productImages = [
-            selectedProduct.image
-        ];
+            selectedProduct.image_url
+        ].filter(Boolean);
 
 
         renderProductGallery();
