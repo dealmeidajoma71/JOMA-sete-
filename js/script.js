@@ -593,8 +593,36 @@ function renderFeaturedProducts() {
     // LIMITAR PRODUTOS NA HOME
     // --------------------------------------------------
 
-    const featuredProducts =
-        products.slice(0, 4);
+    // --------------------------------------------------
+// ESCOLHER 4 PRODUTOS ALEATORIAMENTE NA HOME
+// --------------------------------------------------
+
+const shuffledProducts =
+    [...products];
+
+for (
+    let i = shuffledProducts.length - 1;
+    i > 0;
+    i--
+) {
+
+    const randomIndex =
+        Math.floor(
+            Math.random() * (i + 1)
+        );
+
+    [
+        shuffledProducts[i],
+        shuffledProducts[randomIndex]
+    ] = [
+        shuffledProducts[randomIndex],
+        shuffledProducts[i]
+    ];
+}
+
+
+const featuredProducts =
+    shuffledProducts.slice(0, 4);
 
 
     // --------------------------------------------------
