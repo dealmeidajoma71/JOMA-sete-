@@ -476,12 +476,13 @@ function updateCartCount() {
 }
 
 
+// ======================================================
+//  CAMINHO DAS IMAGENS
+// ======================================================
+
 function getImagePath(product) {
 
-    const image =
-        product?.image ||
-        product?.image_url ||
-        "";
+    const image = product?.image || "";
 
     if (
         image.startsWith("http://") ||
@@ -490,12 +491,9 @@ function getImagePath(product) {
         return image;
     }
 
-    const currentPath =
-        window.location.pathname;
+    const currentPath = window.location.pathname;
 
-    if (
-        currentPath.includes("/pages/")
-    ) {
+    if (currentPath.includes("/pages/")) {
         return "../" + image;
     }
 
@@ -1064,44 +1062,39 @@ document.addEventListener(
     function (event) {
 
         const card =
-    event.target.closest(
-        ".product-card"
-    );
+            event.target.closest(
+                ".product-card"
+            );
 
-if (!card) return;
+        if (!card) return;
 
-const id =
-    card.dataset.id;
+        const id =
+            card.dataset.id;
 
+        const product =
+            products.find(
+                item => String(item.id) === String(id)
+            );
 
+        if (!product) {
 
-const product =
-    products.find(
-        item => String(item.id) === String(id)
-    );
+            console.error(
+                "RJ7 — produto não encontrado:",
+                id
+            );
 
+            return;
+        }
 
-if (!product) {
+        localStorage.setItem(
+            "RJ7_selectedProduct",
+            JSON.stringify(product)
+        );
 
-    console.error(
-        "RJ7 — produto não encontrado:",
-        id
-    );
-
-    return;
-}
-
-
-localStorage.setItem(
-    "RJ7_selectedProduct",
-    JSON.stringify(product)
-);
-
-
-window.location.href =
-    window.location.pathname.includes("/pages/")
-        ? "product.html"
-        : "pages/product.html";
+        window.location.href =
+            window.location.pathname.includes("/pages/")
+                ? "product.html"
+                : "pages/product.html";
 
     }
 );
@@ -4832,12 +4825,9 @@ async function loadProductImages() {
         // IMAGEM PRINCIPAL + IMAGENS DA GALERIA
         // --------------------------------------------------
 
-        productImages = [
-            selectedProduct.image_url,
-            ...(images || []).map(
-                image => image.image_url
-            )
-        ].filter(Boolean);
+        productImages = (images || []).map(
+    image => image.image_url
+);
 
 
         // --------------------------------------------------
@@ -4847,7 +4837,7 @@ async function loadProductImages() {
         if (!productImages.length) {
 
             productImages = [
-                selectedProduct.image_url
+                selectedProduct.image
             ].filter(Boolean);
 
         }
@@ -4865,7 +4855,7 @@ async function loadProductImages() {
 
 
         productImages = [
-            selectedProduct.image_url
+            selectedProduct.image
         ].filter(Boolean);
 
 
