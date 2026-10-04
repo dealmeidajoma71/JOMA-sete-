@@ -476,13 +476,12 @@ function updateCartCount() {
 }
 
 
-// ======================================================
-// 4. CAMINHO DAS IMAGENS
-// ======================================================
-
 function getImagePath(product) {
 
-    const image = product?.image || "";
+    const image =
+        product?.image ||
+        product?.image_url ||
+        "";
 
     if (
         image.startsWith("http://") ||
@@ -491,9 +490,12 @@ function getImagePath(product) {
         return image;
     }
 
-    const currentPath = window.location.pathname;
+    const currentPath =
+        window.location.pathname;
 
-    if (currentPath.includes("/pages/")) {
+    if (
+        currentPath.includes("/pages/")
+    ) {
         return "../" + image;
     }
 
