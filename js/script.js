@@ -326,7 +326,7 @@ renderRJ7Carousel(
         renderFeaturedProducts();
 
         updateCartCount();
-loadHomeContent();
+
     } catch (error) {
 
         console.error(
@@ -7698,7 +7698,7 @@ async function loadAllProductVariants() {
 // ======================================================
 
 loadProducts().then(loadAllProductVariants);
-
+loadHomeContent();
 loadProductReviews();
 
 initRJ7CartUser().then(() => {
