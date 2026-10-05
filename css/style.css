@@ -10445,137 +10445,211 @@ a:focus-visible {
 }
 
 /* ======================================================
-   RJ7 — LOGO ART / DRAWING ANIMATION
+   RJ7 — LOGO ART / PROCESSING ANIMATION
 ====================================================== */
 
 .rj7-logo-art {
     width: 100%;
-    padding: 130px 24px 150px;
+    padding: 110px 24px 125px;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     overflow: hidden;
     background: #fff;
 }
 
+
 .rj7-logo-art-stage {
     position: relative;
+
     width: min(820px, 90vw);
+
     aspect-ratio: 1 / 1;
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 
-/* LOGO FINAL */
+/* ======================================================
+   LOGO FINAL
+====================================================== */
 
 .rj7-logo-art-image {
     position: absolute;
+
     width: 100%;
     height: 100%;
+
     object-fit: contain;
 
     opacity: 0;
 
     animation:
-        rj7LogoReveal 0.35s ease forwards;
+        rj7FinalLogo 0.35s ease forwards;
 
-    animation-delay: 1.25s;
+    animation-delay: 2.15s;
 }
 
 
-/* SVG DA LINHA */
+/* ======================================================
+   LINHA DE PROCESSAMENTO
+====================================================== */
 
 .rj7-logo-drawing {
     position: absolute;
+
     inset: 0;
 
     width: 100%;
     height: 100%;
 
     overflow: visible;
+
+    opacity: 1;
+
+    animation:
+        rj7LineDisappear 0.25s ease forwards;
+
+    animation-delay: 2.15s;
 }
 
 
-/* LINHA */
+/* ======================================================
+   A LINHA QUE VIAJA PELO LOGO
+====================================================== */
 
 .rj7-draw-line {
+
     fill: none;
 
     stroke: #111;
 
-    stroke-width: 7;
+    stroke-width: 8;
 
     stroke-linecap: round;
     stroke-linejoin: round;
 
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
+    /*
+       Pequeno trecho visível.
+       O resto fica transparente.
+    */
+
+    stroke-dasharray: 0.075 0.925;
+
+    stroke-dashoffset: 0;
+
+    /*
+       A linha fica constantemente a correr.
+    */
 
     animation:
-        rj7DrawLogo 0.75s cubic-bezier(.55, .05, .2, .95)
-        forwards;
+        rj7ProcessingLine
+        0.72s
+        linear
+        infinite;
 }
 
 
-/* SEGUNDO TRAÇO */
+/* ======================================================
+   SEGUNDO PERCURSO
+====================================================== */
 
 .rj7-draw-2 {
-    animation-delay: 0.38s;
+
+    animation-delay: 0.12s;
 }
 
 
-/* TERCEIRO TRAÇO */
+/* ======================================================
+   TERCEIRO PERCURSO
+====================================================== */
 
 .rj7-draw-3 {
-    animation-delay: 0.68s;
+
+    animation-delay: 0.24s;
 }
 
 
-/* DESENHO */
+/* ======================================================
+   MOVIMENTO DA LINHA
+====================================================== */
 
-@keyframes rj7DrawLogo {
+@keyframes rj7ProcessingLine {
 
     from {
-        stroke-dashoffset: 1;
-    }
-
-    to {
         stroke-dashoffset: 0;
     }
 
+    to {
+        stroke-dashoffset: -1;
+    }
+
 }
 
 
-/* APARECIMENTO DO LOGO REAL */
+/* ======================================================
+   LOGO FINAL
+====================================================== */
 
-@keyframes rj7LogoReveal {
+@keyframes rj7FinalLogo {
 
     from {
         opacity: 0;
+        transform: scale(0.985);
     }
 
     to {
         opacity: 1;
+        transform: scale(1);
     }
 
 }
 
 
-/* MOBILE */
+/* ======================================================
+   DESAPARECER A LINHA
+====================================================== */
+
+@keyframes rj7LineDisappear {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
 
 @media (max-width: 600px) {
 
     .rj7-logo-art {
-        padding: 90px 18px 110px;
+
+        padding:
+            75px
+            18px
+            95px;
     }
 
+
     .rj7-logo-art-stage {
+
         width: 94vw;
     }
 
+
     .rj7-draw-line {
+
         stroke-width: 6;
     }
 
