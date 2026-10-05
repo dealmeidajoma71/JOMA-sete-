@@ -10489,9 +10489,9 @@ a:focus-visible {
     opacity: 0;
 
     animation:
-        rj7FinalLogo 0.35s ease forwards;
+    rj7FinalLogo 0.35s ease forwards;
 
-    animation-delay: 2.15s;
+animation-delay: 120s;
 }
 
 
@@ -10512,9 +10512,9 @@ a:focus-visible {
     opacity: 1;
 
     animation:
-        rj7LineDisappear 0.25s ease forwards;
+    rj7LineDisappear 0.25s ease forwards;
 
-    animation-delay: 2.15s;
+animation-delay: 120s;
 }
 
 
@@ -10547,10 +10547,10 @@ a:focus-visible {
     */
 
     animation:
-        rj7ProcessingLine
-        0.72s
-        linear
-        infinite;
+    rj7ProcessingLine
+    120s
+    linear
+    1;
 }
 
 
