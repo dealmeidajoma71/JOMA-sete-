@@ -10443,3 +10443,140 @@ a:focus-visible {
     outline: 2px solid #111;
     outline-offset: 2px;
 }
+
+/* ======================================================
+   RJ7 — LOGO ART / DRAWING ANIMATION
+====================================================== */
+
+.rj7-logo-art {
+    width: 100%;
+    padding: 130px 24px 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #fff;
+}
+
+.rj7-logo-art-stage {
+    position: relative;
+    width: min(820px, 90vw);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* LOGO FINAL */
+
+.rj7-logo-art-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    opacity: 0;
+
+    animation:
+        rj7LogoReveal 0.35s ease forwards;
+
+    animation-delay: 1.25s;
+}
+
+
+/* SVG DA LINHA */
+
+.rj7-logo-drawing {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+}
+
+
+/* LINHA */
+
+.rj7-draw-line {
+    fill: none;
+
+    stroke: #111;
+
+    stroke-width: 7;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+
+    animation:
+        rj7DrawLogo 0.75s cubic-bezier(.55, .05, .2, .95)
+        forwards;
+}
+
+
+/* SEGUNDO TRAÇO */
+
+.rj7-draw-2 {
+    animation-delay: 0.38s;
+}
+
+
+/* TERCEIRO TRAÇO */
+
+.rj7-draw-3 {
+    animation-delay: 0.68s;
+}
+
+
+/* DESENHO */
+
+@keyframes rj7DrawLogo {
+
+    from {
+        stroke-dashoffset: 1;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+
+}
+
+
+/* APARECIMENTO DO LOGO REAL */
+
+@keyframes rj7LogoReveal {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .rj7-logo-art {
+        padding: 90px 18px 110px;
+    }
+
+    .rj7-logo-art-stage {
+        width: 94vw;
+    }
+
+    .rj7-draw-line {
+        stroke-width: 6;
+    }
+
+}
