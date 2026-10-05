@@ -326,7 +326,7 @@ renderRJ7Carousel(
         renderFeaturedProducts();
 
         updateCartCount();
-
+loadHomeContent();
     } catch (error) {
 
         console.error(
@@ -1154,6 +1154,310 @@ function renderBuildYourLook() {
         </strong>
 
     `;
+
+}
+// ======================================================
+// RJ7 — HOME CONTENT — SUPABASE
+// ======================================================
+
+async function loadHomeContent() {
+
+    try {
+
+        const {
+            data,
+            error
+        } = await supabase
+            .from("home_content")
+            .select(`
+                id,
+                type,
+                position,
+                title,
+                description,
+                button_text,
+                category,
+                image_1,
+                active,
+                sort_order
+            `)
+            .eq("active", true)
+            .order("sort_order", {
+                ascending: true
+            });
+
+
+        if (error) {
+
+            console.error(
+                "RJ7 HOME — erro ao carregar conteúdo:",
+                error
+            );
+
+            return;
+        }
+
+
+        if (!data || !data.length) {
+
+            console.warn(
+                "RJ7 HOME — nenhum conteúdo encontrado."
+            );
+
+            return;
+        }
+
+
+        console.log(
+            "RJ7 HOME — conteúdo carregado do Supabase:",
+            data
+        );
+
+
+        // ==================================================
+        // BANNERS
+        // ==================================================
+
+        const banners =
+            data.filter(
+                item =>
+                    item.type === "banner"
+            );
+
+
+        const bannerContainer =
+            document.querySelector(
+                ".home-banners"
+            );
+
+
+        if (
+            bannerContainer &&
+            banners.length
+        ) {
+
+            bannerContainer.innerHTML = "";
+
+
+            banners.forEach(
+                banner => {
+
+                    const article =
+                        document.createElement(
+                            "article"
+                        );
+
+                    article.className =
+                        "home-banner";
+
+
+                    const image =
+                        document.createElement(
+                            "img"
+                        );
+
+                    image.src =
+                        banner.image_1 || "";
+
+                    image.alt =
+                        banner.title ||
+                        "RIGHTJOMA7";
+
+
+                    const content =
+                        document.createElement(
+                            "div"
+                        );
+
+                    content.className =
+                        "banner-content";
+
+
+                    const span =
+                        document.createElement(
+                            "span"
+                        );
+
+                    span.textContent =
+                        "RIGHTJOMA7";
+
+
+                    const title =
+                        document.createElement(
+                            "h1"
+                        );
+
+                    title.textContent =
+                        banner.title || "";
+
+
+                    const description =
+                        document.createElement(
+                            "p"
+                        );
+
+                    description.textContent =
+                        banner.description || "";
+
+
+                    const button =
+                        document.createElement(
+                            "a"
+                        );
+
+                    button.href =
+                        "pages/shop.html";
+
+                    button.textContent =
+                        banner.button_text ||
+                        "Shop";
+
+
+                    content.appendChild(span);
+                    content.appendChild(title);
+                    content.appendChild(description);
+                    content.appendChild(button);
+
+
+                    article.appendChild(image);
+                    article.appendChild(content);
+
+
+                    bannerContainer.appendChild(
+                        article
+                    );
+
+                }
+            );
+
+        }
+
+
+        // ==================================================
+        // CATEGORIAS
+        // ==================================================
+
+        const categories =
+            data.filter(
+                item =>
+                    item.type === "category"
+            );
+
+
+        const categoryContainer =
+            document.querySelector(
+                ".rj7-experience-grid"
+            );
+
+
+        if (
+            categoryContainer &&
+            categories.length
+        ) {
+
+            categoryContainer.innerHTML = "";
+
+
+            categories.forEach(
+                category => {
+
+                    const link =
+                        document.createElement(
+                            "a"
+                        );
+
+                    link.className =
+                        "rj7-experience-card";
+
+
+                    link.href =
+                        `pages/shop.html?category=${encodeURIComponent(
+                            category.category || ""
+                        )}`;
+
+
+                    const imageContainer =
+                        document.createElement(
+                            "div"
+                        );
+
+                    imageContainer.className =
+                        "rj7-experience-image";
+
+
+                    const image =
+                        document.createElement(
+                            "img"
+                        );
+
+                    image.src =
+                        category.image_1 || "";
+
+                    image.alt =
+                        category.title || "";
+
+
+                    const content =
+                        document.createElement(
+                            "div"
+                        );
+
+                    content.className =
+                        "rj7-experience-content";
+
+
+                    const title =
+                        document.createElement(
+                            "span"
+                        );
+
+                    title.textContent =
+                        category.title || "";
+
+
+                    const button =
+                        document.createElement(
+                            "strong"
+                        );
+
+                    button.textContent =
+                        category.button_text ||
+                        "Explorar →";
+
+
+                    imageContainer.appendChild(
+                        image
+                    );
+
+                    content.appendChild(title);
+                    content.appendChild(button);
+
+                    link.appendChild(
+                        imageContainer
+                    );
+
+                    link.appendChild(
+                        content
+                    );
+
+
+                    categoryContainer.appendChild(
+                        link
+                    );
+
+                }
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "RJ7 HOME — erro inesperado:",
+            error
+        );
+
+    }
 
 }
 // ======================================================
