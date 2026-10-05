@@ -299,7 +299,9 @@ async function loadProducts() {
             shopProducts
         );
 
-
+renderRJ7Carousel(
+    products
+);
         renderFeaturedProducts();
 
         updateCartCount();
@@ -567,7 +569,59 @@ function renderProducts(list) {
     });
 
 }
+// ======================================================
+// RJ7 — RENDERIZAR CAROUSEL DE PRODUTOS
+// ======================================================
 
+function renderRJ7Carousel(list) {
+
+    const carouselTrack =
+        document.getElementById("rj7CarouselTrack");
+
+    if (!carouselTrack) return;
+
+    carouselTrack.innerHTML = "";
+
+    if (!list || !list.length) return;
+
+
+    list.forEach(product => {
+
+        carouselTrack.innerHTML += `
+
+            <article
+                class="product-card"
+                data-id="${product.id}"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="${getImagePath(product)}"
+                        alt="${product.name}"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h3>
+                        ${product.name}
+                    </h3>
+
+                    <p>
+                        ${product.price.toLocaleString("pt-PT")} Kz
+                    </p>
+
+                </div>
+
+            </article>
+
+        `;
+
+    });
+
+}
 
 // ======================================================
 // 6. RJ7 WORLD — CURRENT COLLECTION
