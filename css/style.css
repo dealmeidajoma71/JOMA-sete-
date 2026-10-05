@@ -10645,3 +10645,71 @@ animation-delay: 120s;
     }
 
 }
+/* ======================================================
+   RJ7 — CAROUSEL HORIZONTAL DE PRODUTOS
+   ====================================================== */
+
+.rj7-products-carousel {
+    width: 100%;
+    padding: 70px 0 90px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.rj7-carousel-track {
+    width: 100%;
+    display: flex;
+    gap: 18px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 0 24px 12px;
+
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+}
+
+.rj7-carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* ======================================================
+   CARTÕES DO CAROUSEL
+   ====================================================== */
+
+.rj7-carousel-track .product-card {
+    flex: 0 0 260px;
+    width: 260px;
+
+    scroll-snap-align: start;
+}
+
+
+/* ======================================================
+   TELEMÓVEL
+   ====================================================== */
+
+@media (max-width: 600px) {
+
+    .rj7-products-carousel {
+        padding: 55px 0 70px;
+    }
+
+    .rj7-carousel-track {
+        gap: 14px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .rj7-carousel-track .product-card {
+        flex: 0 0 72vw;
+        width: 72vw;
+    }
+
+}
