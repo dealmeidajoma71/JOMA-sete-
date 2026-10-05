@@ -147,7 +147,26 @@ async function loadProducts() {
             products
         );
 
+// ==================================================
+// RJ7 — CATEGORIA RECEBIDA DA HOME
+// ==================================================
 
+const categoryFromUrl =
+    new URLSearchParams(
+        window.location.search
+    ).get("category");
+
+if (categoryFromUrl) {
+
+    rj7Filters.category =
+        categoryFromUrl;
+
+    console.log(
+        "RJ7 — categoria recebida da Home:",
+        categoryFromUrl
+    );
+
+}
         // ==================================================
         // RJ7 — CATÁLOGO ROTATIVO DA SHOP
         // ==================================================
@@ -295,9 +314,11 @@ async function loadProducts() {
         // MOSTRAR SOMENTE OS PRODUTOS DESTA ENTRADA
         // ==================================================
 
-        renderProducts(
-            shopProducts
-        );
+        if (categoryFromUrl) {
+    applyRJ7Filters();
+} else {
+    renderProducts(shopProducts);
+}
 
 renderRJ7Carousel(
     products
