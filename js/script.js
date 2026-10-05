@@ -7698,7 +7698,7 @@ async function loadAllProductVariants() {
 // ======================================================
 
 loadProducts().then(loadAllProductVariants);
-loadHomeContent();
+// loadHomeContent();
 loadProductReviews();
 
 initRJ7CartUser().then(() => {
