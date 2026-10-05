@@ -10533,24 +10533,15 @@ animation-delay: 120s;
     stroke-linecap: round;
     stroke-linejoin: round;
 
-    /*
-       Pequeno trecho visível.
-       O resto fica transparente.
-    */
-
     stroke-dasharray: 0.075 0.925;
 
     stroke-dashoffset: 0;
 
-    /*
-       A linha fica constantemente a correr.
-    */
-
     animation:
-    rj7ProcessingLine
-    120s
-    linear
-    1;
+        rj7ProcessingLine
+        1.4s
+        linear
+        infinite;
 }
 
 
